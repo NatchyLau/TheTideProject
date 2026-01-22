@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Tide | Administrative Portal</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: linear-gradient(135deg, #1a1a1a 0%, #2c2c2c 100%);
+            min-height: 100vh;
+            padding: 40px 20px;
+            color: #fff;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 60px;
+            padding-bottom: 30px;
+            border-bottom: 1px solid rgba(201, 169, 97, 0.3);
+        }
+        
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5em;
+            font-weight: 300;
+            letter-spacing: 8px;
+            color: #c9a961;
+            margin-bottom: 10px;
+        }
+        
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2em;
+            font-weight: 300;
+            letter-spacing: 3px;
+            color: #fff;
+            margin-top: 20px;
+        }
+        
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+        
+        .stat-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(201, 169, 97, 0.2);
+            padding: 35px;
+            border-radius: 2px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        
+        .stat-card:hover {
+            background: rgba(255, 255, 255, 0.08);
+            border-color: rgba(201, 169, 97, 0.5);
+            transform: translateY(-5px);
+        }
+        
+        .stat-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3em;
+            margin-bottom: 10px;
+            color: #c9a961;
+            font-weight: 300;
+        }
+        
+        .stat-card p {
+            font-size: 0.9em;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            opacity: 0.8;
+            font-weight: 300;
+        }
+        
+        .actions {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+        
+        .btn {
+            padding: 12px 30px;
+            border: none;
+            border-radius: 0;
+            cursor: pointer;
+            font-size: 0.9em;
+            text-decoration: none;
+            display: inline-block;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 500;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary {
+            background: transparent;
+            color: #c9a961;
+            border: 1px solid #c9a961;
+        }
+        
+        .btn-primary:hover {
+            background: #c9a961;
+            color: #1a1a1a;
+        }
+        
+        .btn-danger {
+            background: transparent;
+            color: #e74c3c;
+            border: 1px solid #e74c3c;
+        }
+        
+        .btn-danger:hover {
+            background: #e74c3c;
+            color: white;
+        }
+        
+        .table-container {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(201, 169, 97, 0.2);
+            border-radius: 2px;
+            overflow: hidden;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        
+        th, td {
+            padding: 20px;
+            text-align: left;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        
+        th {
+            background: rgba(201, 169, 97, 0.1);
+            color: #c9a961;
+            font-weight: 500;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            font-size: 0.85em;
+        }
+        
+        tr:hover {
+            background: rgba(255, 255, 255, 0.03);
+        }
+        
+        .empty-state {
+            text-align: center;
+            padding: 100px 40px;
+        }
+        
+        .empty-state h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2em;
+            margin-bottom: 15px;
+            color: #c9a961;
+            font-weight: 300;
+        }
+        
+        .empty-state p {
+            color: rgba(255, 255, 255, 0.6);
+            margin-bottom: 30px;
+        }
+        
+        .alert {
+            padding: 20px 25px;
+            margin-bottom: 30px;
+            border-radius: 0;
+            border-left: 3px solid;
+            font-weight: 400;
+        }
+        
+        .alert-success {
+            background: rgba(46, 204, 113, 0.1);
+            color: #2ecc71;
+            border-color: #2ecc71;
+        }
+        
+        .badge {
+            padding: 6px 14px;
+            border-radius: 2px;
+            font-size: 0.8em;
+            font-weight: 500;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+        
+        .badge-buying { background: rgba(52, 152, 219, 0.2); color: #3498db; border: 1px solid #3498db; }
+        .badge-renting { background: rgba(46, 204, 113, 0.2); color: #2ecc71; border: 1px solid #2ecc71; }
+        .badge-selling { background: rgba(230, 126, 34, 0.2); color: #e67e22; border: 1px solid #e67e22; }
+        .badge-investment { background: rgba(155, 89, 182, 0.2); color: #9b59b6; border: 1px solid #9b59b6; }
+        
+        @media (max-width: 768px) {
+            .table-container {
+                overflow-x: auto;
+            }
+            
+            table {
+                min-width: 800px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">THE TIDE</div>
+            <h1>Administrative Portal</h1>
+        </header>
+        
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <div class="alert alert-{{ category }}">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+        
+        <div class="stats">
+            <div class="stat-card">
+                <h3>{{ registrations|length }}</h3>
+                <p>Total Inquiries</p>
+            </div>
+            <div class="stat-card">
+                <h3>{{ registrations|selectattr('interest', 'equalto', 'buying')|list|length }}</h3>
+                <p>Acquisitions</p>
+            </div>
+            <div class="stat-card">
+                <h3>{{ registrations|selectattr('interest', 'equalto', 'renting')|list|length }}</h3>
+                <p>Rentals</p>
+            </div>
+            <div class="stat-card">
+                <h3>{{ registrations|selectattr('interest', 'equalto', 'investment')|list|length }}</h3>
+                <p>Investments</p>
+            </div>
+        </div>
+        
+        {% if registrations %}
+            <div class="actions">
+                <a href="/" class="btn btn-primary">← Return to Portal</a>
+                <form action="/admin/clear" method="POST" onsubmit="return confirm('Are you sure you want to delete all registrations?');">
+                    <button type="submit" class="btn btn-danger">Clear All Records</button>
+                </form>
+            </div>
+            
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Client Name</th>
+                            <th>Email</th>
+                            <th>Contact</th>
+                            <th>Interest</th>
+                            <th>Registered</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for registration in registrations %}
+                        <tr>
+                            <td>{{ loop.index }}</td>
+                            <td>{{ registration.name }}</td>
+                            <td>{{ registration.email }}</td>
+                            <td>{{ registration.phone or '—' }}</td>
+                            <td>
+                                <span class="badge badge-{{ registration.interest }}">
+                                    {{ registration.interest|title }}
+                                </span>
+                            </td>
+                            <td>{{ registration.timestamp }}</td>
+                            <td>
+                                <form action="/admin/delete/{{ loop.index0 }}" method="POST" style="display: inline;">
+                                    <button type="submit" class="btn btn-danger" style="padding: 8px 16px; font-size: 0.8em;" onclick="return confirm('Delete this registration?');">Remove</button>
+                                </form>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        {% else %}
+            <div class="empty-state">
+                <h2>No Inquiries Recorded</h2>
+                <p>Client registrations will appear here once submitted</p>
+                <a href="/" class="btn btn-primary" style="margin-top: 20px;">Return to Portal</a>
+            </div>
+        {% endif %}
+    </div>
+</body>
+</html>

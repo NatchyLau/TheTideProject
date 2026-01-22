@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us | The Tide</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&family=Sarabun:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Montserrat', 'Sarabun', sans-serif;
+            line-height: 1.6;
+            color: #2c3e50;
+        }
+        
+        /* Navigation Styles */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(26, 26, 26, 0.98);
+            backdrop-filter: blur(10px);
+            z-index: 100;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.3);
+        }
+        
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 40px;
+        }
+        
+        .nav-logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8em;
+            font-weight: 300;
+            letter-spacing: 6px;
+            color: white;
+            padding: 20px 0;
+            text-decoration: none;
+        }
+        
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 0;
+        }
+        
+        .nav-item {
+            position: relative;
+        }
+        
+        .nav-link {
+            display: block;
+            color: white;
+            text-decoration: none;
+            padding: 30px 25px;
+            font-size: 0.95em;
+            font-weight: 400;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            font-family: 'Sarabun', sans-serif;
+        }
+        
+        .nav-link:hover {
+            background: rgba(201, 169, 97, 0.1);
+            color: #c9a961;
+        }
+        
+        /* Dropdown Styles */
+        .dropdown-content {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: rgba(26, 26, 26, 0.98);
+            min-width: 280px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.4);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: all 0.3s ease;
+            border-top: 2px solid #c9a961;
+        }
+        
+        .nav-item:hover .dropdown-content {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        
+        .dropdown-item {
+            display: block;
+            color: white;
+            text-decoration: none;
+            padding: 15px 25px;
+            font-size: 0.9em;
+            transition: all 0.3s ease;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            font-family: 'Sarabun', sans-serif;
+        }
+        
+        .dropdown-item:last-child {
+            border-bottom: none;
+        }
+        
+        .dropdown-item:hover {
+            background: rgba(201, 169, 97, 0.15);
+            padding-left: 30px;
+            color: #c9a961;
+        }
+
+        /* Page Header */
+        .page-header {
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.6)),
+                        url('https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=1920') center/cover;
+            height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 80px;
+            color: white;
+        }
+
+        .page-header h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 4em;
+            font-weight: 300;
+            letter-spacing: 3px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        /* Content Section */
+        .content-section {
+            max-width: 1200px;
+            margin: 80px auto;
+            padding: 0 40px;
+        }
+
+        .content-section h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5em;
+            margin-bottom: 30px;
+            color: #1a1a1a;
+            font-weight: 400;
+        }
+
+        .content-section p {
+            font-size: 1.1em;
+            line-height: 1.8;
+            margin-bottom: 20px;
+            color: #555;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin: 60px 0;
+        }
+
+        .stat-card {
+            text-align: center;
+            padding: 40px 20px;
+            background: #f8f9fa;
+            border-top: 3px solid #c9a961;
+        }
+
+        .stat-number {
+            font-family: 'Playfair Display', serif;
+            font-size: 3em;
+            color: #c9a961;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .stat-label {
+            font-size: 1.1em;
+            color: #666;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Footer */
+        .footer {
+            background: #1a1a1a;
+            color: white;
+            padding: 60px 40px 20px;
+            margin-top: 80px;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .footer p {
+            opacity: 0.8;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+<nav class="navbar" id="navbar">
+    <div class="nav-container">
+        <a href="{{ url_for('index') }}" class="nav-logo">THE TIDE</a>
+        
+        <button class="mobile-menu-btn" id="mobile-menu-btn">
+            ☰
+        </button>
+        
+        <ul class="nav-menu" id="nav-menu">
+            <li class="nav-item">
+                <a href="{{ url_for('about') }}" class="nav-link">รู้จักเดอะไทด์</a>
+                <div class="dropdown-content">
+                    <a href="{{ url_for('about') }}" class="dropdown-item">เกี่ยวกับเรา</a>
+                    <a href="{{ url_for('team') }}" class="dropdown-item">ทีมงาน</a>
+                    <a href="{{ url_for('vision') }}" class="dropdown-item">วิสัยทัศน์และพันธกิจ</a>
+                    <a href="{{ url_for('awards') }}" class="dropdown-item">รางวัลและความสำเร็จ</a>
+                </div>
+            </li>
+            
+            <li class="nav-item">
+                <a href="{{ url_for('projects') }}" class="nav-link">โครงการ</a>
+                <div class="dropdown-content">
+                    <a href="{{ url_for('project_nawong') }}" class="dropdown-item">โครงการเดอะไทด์นาวง</a>
+                    <a href="{{ url_for('project_buddhaphumi') }}" class="dropdown-item">โครงการเดอะไทด์ แกรนด์ พุทธภูมิ</a>
+                </div>
+            </li>
+            
+            <li class="nav-item">
+                <a href="{{ url_for('services') }}" class="nav-link">บริการ</a>
+                <div class="dropdown-content">
+                    <a href="{{ url_for('buy_sell') }}" class="dropdown-item">บริการซื้อ-ขาย</a>
+                    <a href="{{ url_for('rental') }}" class="dropdown-item">บริการให้เช่า</a>
+                    <a href="{{ url_for('investment') }}" class="dropdown-item">การลงทุน</a>
+                    <a href="{{ url_for('concierge') }}" class="dropdown-item">คอนเซียร์จพิเศษ</a>
+                    <a href="{{ url_for('consulting') }}" class="dropdown-item">ที่ปรึกษาอสังหาริมทรัพย์</a>
+                </div>
+            </li>
+            
+            <li class="nav-item">
+                <a href="{{ url_for('investor_relations') }}" class="nav-link">นักลงทุนสัมพันธ์</a>
+                <div class="dropdown-content">
+                    <a href="{{ url_for('company_info') }}" class="dropdown-item">ข้อมูลบริษัท</a>
+                    <a href="{{ url_for('financial_reports') }}" class="dropdown-item">รายงานทางการเงิน</a>
+                    <a href="{{ url_for('investor_news') }}" class="dropdown-item">ข่าวสารนักลงทุน</a>
+                    <a href="{{ url_for('investor_events') }}" class="dropdown-item">กิจกรรมนักลงทุน</a>
+                    <a href="{{ url_for('investor_contact') }}" class="dropdown-item">ติดต่อนักลงทุนสัมพันธ์</a>
+                </div>
+            </li>
+            
+            <li class="nav-item">
+                <a href="{{ url_for('sustainability') }}" class="nav-link">ความยั่งยืน</a>
+                <div class="dropdown-content">
+                    <a href="{{ url_for('sustainability_policy') }}" class="dropdown-item">นโยบายความยั่งยืน</a>
+                    <a href="{{ url_for('environmental') }}" class="dropdown-item">โครงการสิ่งแวดล้อม</a>
+                    <a href="{{ url_for('csr') }}" class="dropdown-item">ความรับผิดชอบต่อสังคม</a>
+                    <a href="{{ url_for('community') }}" class="dropdown-item">การพัฒนาชุมชน</a>
+                    <a href="{{ url_for('sustainability_report') }}" class="dropdown-item">รายงานความยั่งยืน</a>
+                </div>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+    <!-- Page Header -->
+    <div class="page-header">
+        <h1>เกี่ยวกับเรา</h1>
+    </div>
+
+    <!-- Content Section -->
+    <div class="content-section">
+        <h2>Welcome to The Tide</h2>
+        <p>
+            The Tide is a premier luxury real estate developer specializing in exclusive waterfront properties. 
+            With over two decades of experience in creating sophisticated living spaces, we have established 
+            ourselves as the leading name in coastal luxury developments across Thailand.
+        </p>
+        <p>
+            Our commitment to excellence, attention to detail, and dedication to sustainable development 
+            have earned us numerous accolades and the trust of discerning property owners and investors 
+            worldwide. Each project we undertake is a testament to our vision of harmonizing luxury 
+            living with the natural beauty of coastal environments.
+        </p>
+
+        <div class="stats">
+            <div class="stat-card">
+                <div class="stat-number">20+</div>
+                <div class="stat-label">Years Experience</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">50+</div>
+                <div class="stat-label">Completed Projects</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">2,000+</div>
+                <div class="stat-label">Happy Clients</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">15</div>
+                <div class="stat-label">Awards Won</div>
+            </div>
+        </div>
+
+        <h2>Our Philosophy</h2>
+        <p>
+            We believe that luxury is not just about opulence—it's about creating spaces that enrich 
+            lives and inspire meaningful experiences. Every detail in our developments is carefully 
+            curated to provide residents with unparalleled comfort, convenience, and connection to 
+            their surroundings.
+        </p>
+        <p>
+            From the initial concept to the final handover, we maintain the highest standards of 
+            quality and craftsmanship. Our team of world-class architects, designers, and engineers 
+            work in harmony to bring our vision to life, ensuring that each property stands as a 
+            masterpiece of modern living.
+        </p>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        <div class="footer-content">
+            <p>&copy; 2026 The Tide Exclusive Properties. All rights reserved.</p>
+            <p>Where Luxury Meets the Shore</p>
+        </div>
+    </div>
+</body>
+</html>

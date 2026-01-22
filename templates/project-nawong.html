@@ -1,0 +1,746 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>โครงการเดอะไทด์นาวง | The Tide</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&family=Sarabun:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Montserrat', 'Sarabun', sans-serif;
+            line-height: 1.6;
+            color: #2c3e50;
+        }
+        
+        /* Navigation Styles */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(26, 26, 26, 0.98);
+            backdrop-filter: blur(10px);
+            z-index: 100;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.3);
+        }
+        
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 40px;
+        }
+        
+        .nav-logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8em;
+            font-weight: 300;
+            letter-spacing: 6px;
+            color: white;
+            padding: 20px 0;
+            text-decoration: none;
+        }
+        
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 0;
+        }
+        
+        .nav-item {
+            position: relative;
+        }
+        
+        .nav-link {
+            display: block;
+            color: white;
+            text-decoration: none;
+            padding: 30px 25px;
+            font-size: 0.95em;
+            font-weight: 400;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            font-family: 'Sarabun', sans-serif;
+        }
+        
+        .nav-link:hover {
+            background: rgba(201, 169, 97, 0.1);
+            color: #c9a961;
+        }
+        
+        /* Dropdown Styles */
+        .dropdown-content {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: rgba(26, 26, 26, 0.98);
+            min-width: 280px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.4);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: all 0.3s ease;
+            border-top: 2px solid #c9a961;
+        }
+        
+        .nav-item:hover .dropdown-content {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        
+        .dropdown-item {
+            display: block;
+            color: white;
+            text-decoration: none;
+            padding: 15px 25px;
+            font-size: 0.9em;
+            transition: all 0.3s ease;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            font-family: 'Sarabun', sans-serif;
+        }
+        
+        .dropdown-item:last-child {
+            border-bottom: none;
+        }
+        
+        .dropdown-item:hover {
+            background: rgba(201, 169, 97, 0.15);
+            padding-left: 30px;
+            color: #c9a961;
+        }
+
+        /* Page Header */
+        .page-header {
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.6)),
+                        url('https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=1920') center/cover;
+            height: 500px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 80px;
+            color: white;
+            position: relative;
+        }
+
+        .page-header-content {
+            text-align: center;
+            z-index: 2;
+        }
+
+        .page-header h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 4em;
+            font-weight: 300;
+            letter-spacing: 3px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            margin-bottom: 20px;
+        }
+
+        .page-header .subtitle {
+            font-size: 1.3em;
+            opacity: 0.9;
+            letter-spacing: 2px;
+        }
+
+        /* Project Info Section */
+        .project-info {
+            max-width: 1200px;
+            margin: 80px auto;
+            padding: 0 40px;
+        }
+
+        .project-intro {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .project-intro h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            color: #1a1a1a;
+            font-weight: 400;
+        }
+
+        .project-intro p {
+            font-size: 1.15em;
+            color: #555;
+            line-height: 1.8;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* Project Stats */
+        .project-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin: 60px 0;
+            padding: 60px 40px;
+            background: #f8f9fa;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-icon {
+            font-size: 3em;
+            margin-bottom: 15px;
+        }
+
+        .stat-value {
+            font-family: 'Playfair Display', serif;
+            font-size: 2em;
+            color: #c9a961;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .stat-label {
+            font-size: 1em;
+            color: #666;
+            font-family: 'Sarabun', sans-serif;
+        }
+
+        /* House Types Section */
+        .house-types-section {
+            max-width: 1200px;
+            margin: 80px auto;
+            padding: 0 40px;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5em;
+            text-align: center;
+            margin-bottom: 60px;
+            color: #1a1a1a;
+            font-weight: 400;
+        }
+
+        /* House Card Component */
+        .house-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+            margin-bottom: 80px;
+        }
+
+        .house-card {
+            background: white;
+            border-radius: 2px;
+            overflow: hidden;
+            box-shadow: 0 5px 30px rgba(0,0,0,0.1);
+            transition: all 0.4s ease;
+            border-top: 3px solid #c9a961;
+        }
+
+        .house-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 50px rgba(0,0,0,0.2);
+        }
+
+        .house-image {
+            width: 100%;
+            height: 280px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .house-content {
+            padding: 30px;
+        }
+
+        .house-type {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8em;
+            color: #1a1a1a;
+            margin-bottom: 10px;
+            font-weight: 500;
+        }
+
+        .house-description {
+            color: #666;
+            font-size: 0.95em;
+            margin-bottom: 25px;
+            line-height: 1.7;
+        }
+
+        .house-price {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.6em;
+            color: #c9a961;
+            font-weight: 600;
+            margin-bottom: 25px;
+        }
+
+        .house-features {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #555;
+            font-size: 0.95em;
+        }
+
+        .feature-icon {
+            font-size: 1.3em;
+            color: #c9a961;
+        }
+
+        .house-btn {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(135deg, #1a1a1a 0%, #2c2c2c 100%);
+            color: white;
+            text-align: center;
+            text-decoration: none;
+            font-weight: 500;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-family: 'Sarabun', sans-serif;
+            text-transform: uppercase;
+            font-size: 0.9em;
+        }
+
+        .house-btn:hover {
+            background: linear-gradient(135deg, #c9a961 0%, #d4b76a 100%);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+
+        /* Location Section */
+        .location-section {
+            background: #f8f9fa;
+            padding: 80px 40px;
+            margin-top: 80px;
+        }
+
+        .location-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .location-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5em;
+            text-align: center;
+            margin-bottom: 40px;
+            color: #1a1a1a;
+            font-weight: 400;
+        }
+
+        .location-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .location-info h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8em;
+            margin-bottom: 20px;
+            color: #1a1a1a;
+        }
+
+        .location-info p {
+            color: #666;
+            line-height: 1.8;
+            margin-bottom: 30px;
+        }
+
+        .nearby-places {
+            list-style: none;
+        }
+
+        .nearby-places li {
+            padding: 12px 0;
+            border-bottom: 1px solid #ddd;
+            color: #555;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .nearby-places li:last-child {
+            border-bottom: none;
+        }
+
+        .location-icon {
+            color: #c9a961;
+            font-size: 1.2em;
+        }
+
+        .map-placeholder {
+            width: 100%;
+            height: 400px;
+            background: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.1)),
+                        url('https://images.unsplash.com/photo-1524661135-423995f22d0b?w=800') center/cover;
+            border-radius: 2px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2em;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        /* Footer */
+        .footer {
+            background: #1a1a1a;
+            color: white;
+            padding: 60px 40px 20px;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .footer p {
+            opacity: 0.8;
+            margin: 10px 0;
+        }
+
+        /* Responsive */
+        @media (max-width: 968px) {
+            .page-header h1 {
+                font-size: 2.5em;
+            }
+
+            .house-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .location-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .project-stats {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .house-features {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="{{ url_for('index') }}" class="nav-logo">THE TIDE</a>
+            
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="{{ url_for('about') }}" class="nav-link">รู้จักเดอะไทด์</a>
+                    <div class="dropdown-content">
+                        <a href="{{ url_for('about') }}" class="dropdown-item">เกี่ยวกับเรา</a>
+                        <a href="{{ url_for('team') }}" class="dropdown-item">ทีมงาน</a>
+                        <a href="{{ url_for('vision') }}" class="dropdown-item">วิสัยทัศน์และพันธกิจ</a>
+                        <a href="{{ url_for('awards') }}" class="dropdown-item">รางวัลและความสำเร็จ</a>
+                    </div>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="{{ url_for('projects') }}" class="nav-link">โครงการ</a>
+                    <div class="dropdown-content">
+                        <a href="{{ url_for('project_nawong') }}" class="dropdown-item">โครงการเดอะไทด์นาวง</a>
+                        <a href="{{ url_for('project_buddhaphumi') }}" class="dropdown-item">โครงการเดอะไทด์ แกรนด์ พุทธภูมิ</a>
+                    </div>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="{{ url_for('services') }}" class="nav-link">บริการ</a>
+                    <div class="dropdown-content">
+                        <a href="{{ url_for('buy_sell') }}" class="dropdown-item">บริการซื้อ-ขาย</a>
+                        <a href="{{ url_for('rental') }}" class="dropdown-item">บริการให้เช่า</a>
+                        <a href="{{ url_for('investment') }}" class="dropdown-item">การลงทุน</a>
+                        <a href="{{ url_for('concierge') }}" class="dropdown-item">คอนเซียร์จพิเศษ</a>
+                        <a href="{{ url_for('consulting') }}" class="dropdown-item">ที่ปรึกษาอสังหาริมทรัพย์</a>
+                    </div>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="{{ url_for('investor_relations') }}" class="nav-link">นักลงทุนสัมพันธ์</a>
+                    <div class="dropdown-content">
+                        <a href="{{ url_for('company_info') }}" class="dropdown-item">ข้อมูลบริษัท</a>
+                        <a href="{{ url_for('financial_reports') }}" class="dropdown-item">รายงานทางการเงิน</a>
+                        <a href="{{ url_for('investor_news') }}" class="dropdown-item">ข่าวสารนักลงทุน</a>
+                        <a href="{{ url_for('investor_events') }}" class="dropdown-item">กิจกรรมนักลงทุน</a>
+                        <a href="{{ url_for('investor_contact') }}" class="dropdown-item">ติดต่อนักลงทุนสัมพันธ์</a>
+                    </div>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="{{ url_for('sustainability') }}" class="nav-link">ความยั่งยืน</a>
+                    <div class="dropdown-content">
+                        <a href="{{ url_for('sustainability_policy') }}" class="dropdown-item">นโยบายความยั่งยืน</a>
+                        <a href="{{ url_for('environmental') }}" class="dropdown-item">โครงการสิ่งแวดล้อม</a>
+                        <a href="{{ url_for('csr') }}" class="dropdown-item">ความรับผิดชอบต่อสังคม</a>
+                        <a href="{{ url_for('community') }}" class="dropdown-item">การพัฒนาชุมชน</a>
+                        <a href="{{ url_for('sustainability_report') }}" class="dropdown-item">รายงานความยั่งยืน</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <div class="page-header">
+        <div class="page-header-content">
+            <h1>โครงการเดอะไทด์นาวง</h1>
+            <p class="subtitle">บ้านเดี่ยว พหล - วัชรพล งดงามในทุกรายละเอียด</p>
+        </div>
+    </div>
+
+    <!-- Project Introduction -->
+    <div class="project-info">
+        <div class="project-intro">
+            <h2>บ้านหรูระดับ Luxury ในทำเลศักยภาพสูง</h2>
+            <p>
+                โครงการเดอะไทด์นาวง ตั้งอยู่ในทำเลยุทธศาสตร์บนถนนพหลโยธิน-วัชรพล 
+                ออกแบบด้วยสถาปัตยกรรมร่วมสมัยผสานความคลาสสิก พร้อมสิ่งอำนวยความสะดวกครบครัน 
+                ใกล้ทางด่วน โรงเรียนชั้นนำ และย่านธุรกิจสำคัญ เหมาะสำหรับครอบครัวที่ต้องการความเป็นส่วนตัว
+                และความสะดวกสบายในการใช้ชีวิต
+            </p>
+        </div>
+
+        <!-- Project Stats -->
+        <div class="project-stats">
+            <div class="stat-item">
+                <div class="stat-icon">🏠</div>
+                <div class="stat-value">45 ล้านบาท</div>
+                <div class="stat-label">เริ่มต้นที่</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-icon">🏗️</div>
+                <div class="stat-value">4.1 กม.</div>
+                <div class="stat-label">ทางด่วนรามอินทรา - อาจณรงค์</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-icon">🎓</div>
+                <div class="stat-value">6.1 กม.</div>
+                <div class="stat-label">รร.นานาชาติ รพ.ดัง</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-icon">🌳</div>
+                <div class="stat-value">70%</div>
+                <div class="stat-label">พื้นที่สีเขียว</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- House Types Section -->
+    <div class="house-types-section">
+        <h2 class="section-title">แบบบ้านในโครงการ</h2>
+        
+        <div class="house-grid">
+            <!-- House Type 1: Prestige -->
+            <div class="house-card">
+                <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=800" alt="บ้านเดอะไทด์ Prestige" class="house-image">
+                <div class="house-content">
+                    <h3 class="house-type">แบบ Prestige</h3>
+                    <p class="house-description">
+                        บ้านเดี่ยว 3 ชั้น ดีไซน์โมเดิร์นหรูหรา เน้นความกว้างขวางและการใช้สอยที่ลงตัว 
+                        พร้อมห้องนอนขนาดใหญ่ 5 ห้อง เหมาะสำหรับครอบครัวใหญ่
+                    </p>
+                    <div class="house-price">฿ 68,000,000</div>
+                    
+                    <div class="house-features">
+                        <div class="feature-item">
+                            <span class="feature-icon">🛏️</span>
+                            <span>5 ห้องนอน</span>
+                        </div>
+                        <div class="feature-item">
+                            <span class="feature-icon">🚿</span>
+                            <span>6 ห้องน้ำ</span>
+                        </div>
+                        <div class="feature-item">
+                            <span class="feature-icon">🚗</span>
+                            <span>4 ที่จอดรถ</span>
+                        </div>
+                        <div class="feature-item">
+                            <span class="feature-icon">📐</span>
+                            <span>650 ตร.ม.</span>
+                        </div>
+                        <div class="feature-item">
+                            <span class="feature-icon">🏡</span>
+                            <span>ที่ดิน 120 ตร.ว.</span>
+                        </div>
+                        <div class="feature-item">
+                            <span class="feature-icon">🏊</span>
+                            <span>สระว่ายน้ำส่วนตัว</span>
+                        </div>
+                    </div>
+                    
+                    <button class="house-btn">ดูรายละเอียด</button>
+                </div>
+            </div>
+
+            <!-- House Type 2: Elite -->
+            <div class="house-card">
+                <img src="https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=800" alt="บ้านเดอะไทด์ Elite" class="house-image">
+                <div class="house-content">
+                    <h3 class="house-type">แบบ Elite</h3>
+                    <p class="house-description">
+                        บ้านเดี่ยว 2.5 ชั้น สไตล์ Contemporary ผสานความทันสมัยกับความอบอุ่น 
+                        เหมาะสำหรับครอบครัวขนาดกลางที่ชื่นชอบความเรียบหรู
+                    </p>
+                    <div class="house-price">฿ 52,000,000</div>
+                    
+                    <div class="house-features">
+                        <div class="feature-item">
+                            <span class="feature-icon">🛏️</span>
+                            <span>4 ห้องนอน</span>
+                        </div>
+                        <div class="feature-item">
+                            <span class="feature-icon">🚿</span>
+                            <span>5 ห้องน้ำ</span>
+                        </div>
+                        <div class="feature-item">
+                            <span class="feature-icon">🚗</span>
+                            <span>3 ที่จอดรถ</span>
+                        </div>
+                        <div class="feature-item">
+                            <span class="feature-icon">📐</span>
+                            <span>480 ตร.ม.</span>
+                        </div>
+                        <div class="feature-item">
+                            <span class="feature-icon">🏡</span>
+                            <span>ที่ดิน 100 ตร.ว.</span>
+                        </div>
+                        <div class="feature-item">
+                            <span class="feature-icon">🌿</span>
+                            <span>สวนหย่อมส่วนตัว</span>
+                        </div>
+                    </div>
+                    
+                    <button class="house-btn">ดูรายละเอียด</button>
+                </div>
+            </div>
+
+            <!-- House Type 3: Signature -->
+            <div class="house-card">
+                <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=800" alt="บ้านเดอะไทด์ Signature" class="house-image">
+                <div class="house-content">
+                    <h3 class="house-type">แบบ Signature</h3>
+                    <p class="house-description">
+                        บ้านเดี่ยว 2 ชั้น ดีไซน์เรียบหรู เน้นการใช้พื้นที่อย่างมีประสิทธิภาพ 
+                        เหมาะสำหรับครอบครัวเริ่มต้นหรือผู้ที่ชื่นชอบความเป็นส่วนตัว
+                    </p>
+                    <div class="house-price">฿ 45,000,000</div>
+                    
+                    <div class="house-features">
+                        <div class="feature-item">
+                            <span class="feature-icon">🛏️</span>
+                            <span>4 ห้องนอน</span>
+                        </div>
+                        <div class="feature-item">
+                            <span class="feature-icon">🚿</span>
+                            <span>4 ห้องน้ำ</span>
+                        </div>
+                        <div class="feature-item">
+                            <span class="feature-icon">🚗</span>
+                            <span>2 ที่จอดรถ</span>
+                        </div>
+                        <div class="feature-item">
+                            <span class="feature-icon">📐</span>
+                            <span>380 ตร.ม.</span>
+                        </div>
+                        <div class="feature-item">
+                            <span class="feature-icon">🏡</span>
+                            <span>ที่ดิน 80 ตร.ว.</span>
+                        </div>
+                        <div class="feature-item">
+                            <span class="feature-icon">🏋️</span>
+                            <span>ห้อง Home Gym</span>
+                        </div>
+                    </div>
+                    
+                    <button class="house-btn">ดูรายละเอียด</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Location Section -->
+    <div class="location-section">
+        <div class="location-content">
+            <h2 class="location-title">ทำเลและสถานที่ใกล้เคียง</h2>
+            
+            <div class="location-grid">
+                <div class="location-info">
+                    <h3>ทำเลศักยภาพสูง ครบครันทุกความสะดวก</h3>
+                    <p>
+                        โครงการเดอะไทด์นาวงตั้งอยู่ในย่านพหลโยธิน-วัชรพล พื้นที่ยุทธศาสตร์ที่กำลังพัฒนา
+                        เชื่อมต่อกับเส้นทางคมนาคมหลักและใกล้สถานที่สำคัญมากมาย
+                    </p>
+                    
+                    <ul class="nearby-places">
+                        <li>
+                            <span class="location-icon">🛣️</span>
+                            <span>ทางด่วนรามอินทรา-อาจณรงค์ (4.1 กม.)</span>
+                        </li>
+                        <li>
+                            <span class="location-icon">🎓</span>
+                            <span>โรงเรียนนานาชาติ รัชโยธิน (3.8 กม.)</span>
+                        </li>
+                        <li>
+                            <span class="location-icon">🏥</span>
+                            <span>โรงพยาบาลเกษมราษฎร์ รัชโยธิน (5.2 กม.)</span>
+                        </li>
+                        <li>
+                            <span class="location-icon">🛒</span>
+                            <span>Central ลาดพร้าว (6.8 กม.)</span>
+                        </li>
+                        <li>
+                            <span class="location-icon">✈️</span>
+                            <span>สนามบินดอนเมือง (12 กม.)</span>
+                        </li>
+                        <li>
+                            <span class="location-icon">🚇</span>
+                            <span>MRT ห้าแยกลาดพร้าว (7.5 กม.)</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="map-placeholder">
+                    📍 แผนที่ตำแหน่งโครงการ
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        <div class="footer-content">
+            <p>&copy; 2026 The Tide Exclusive Properties. All rights reserved.</p>
+            <p>Where Luxury Meets the Shore</p>
+        </div>
+    </div>
+</body>
+</html>
