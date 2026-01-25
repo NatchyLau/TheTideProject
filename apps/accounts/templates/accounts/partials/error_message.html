@@ -1,0 +1,10 @@
+<div class="bg-red-50 border border-red-200 rounded-lg p-4">
+    <p class="text-red-800 font-semibold mb-2">กรุณาตรวจสอบข้อมูล:</p>
+    <ul class="list-disc list-inside text-red-700">
+        {% for field, errors in form.errors.items %}
+            {% for error in errors %}
+                <li>{{ error }}</li>
+            {% endfor %}
+        {% endfor %}
+    </ul>
+</div>

@@ -1,0 +1,4 @@
+<option value="">เลือกเขต/อำเภอ</option>
+{% for district in districts %}
+<option value="{{ district.id }}">{{ district.name_th }}</option>
+{% endfor %}
