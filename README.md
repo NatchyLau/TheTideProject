@@ -1,8 +1,12 @@
 
 ```bash
-git clone <url>
-cd the_tide_project
+git clone https://github.com/NatchyLau/TheTideProject.git
+cd TheTideProject
+```
 
+
+```bash
+get checkout develop
 ```
 
 
@@ -26,5 +30,5 @@ python manage.py runserver
 ```
 
 
-**[http://127.0.0.1:8000/](https://www.google.com/search?q=http://127.0.0.1:8000/)**
+**[http://127.0.0.1:8000/](http://127.0.0.1:8000/)**
 
