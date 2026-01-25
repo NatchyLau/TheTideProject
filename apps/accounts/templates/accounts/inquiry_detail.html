@@ -1,0 +1,155 @@
+<div class="p-8">
+    <!-- Header -->
+    <div class="flex items-center justify-between mb-6 pb-6 border-b border-slate-200">
+        <div>
+            <h2 class="text-2xl font-bold text-ocean-900">รายละเอียดลูกค้า</h2>
+            <p class="text-sm text-slate-600 mt-1">สร้างเมื่อ {{ inquiry.created_at|date:"d/m/Y H:i" }}</p>
+        </div>
+        <button onclick="closeModal()" class="p-2 hover:bg-slate-100 rounded-lg transition">
+            <svg class="w-6 h-6 text-slate-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+            </svg>
+        </button>
+    </div>
+
+    <!-- Status Badge -->
+    <div class="mb-6">
+        <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium
+                     {% if inquiry.is_contacted %}
+                     bg-green-100 text-green-700
+                     {% else %}
+                     bg-sand-100 text-sand-700
+                     {% endif %}">
+            {% if inquiry.is_contacted %}
+            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+            </svg>
+            ติดต่อแล้ว
+            {% else %}
+            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd"></path>
+            </svg>
+            รอติดต่อ
+            {% endif %}
+        </span>
+    </div>
+
+    <!-- Content Grid -->
+    <div class="grid md:grid-cols-2 gap-6">
+        
+        <!-- Personal Info -->
+        <div class="space-y-4">
+            <h3 class="text-lg font-semibold text-slate-900 mb-4">ข้อมูลส่วนตัว</h3>
+            
+            <div class="bg-slate-50 rounded-lg p-4">
+                <label class="text-xs text-slate-500 uppercase tracking-wide">ชื่อ-นามสกุล</label>
+                <p class="text-slate-900 font-medium mt-1">{{ inquiry.first_name }} {{ inquiry.last_name }}</p>
+            </div>
+
+            <div class="bg-slate-50 rounded-lg p-4">
+                <label class="text-xs text-slate-500 uppercase tracking-wide">เบอร์โทรศัพท์</label>
+                <p class="text-slate-900 font-medium mt-1">
+                    <a href="tel:{{ inquiry.phone }}" class="text-ocean-900 hover:text-ocean-800">
+                        {{ inquiry.phone }}
+                    </a>
+                </p>
+            </div>
+
+            {% if inquiry.line_id %}
+            <div class="bg-slate-50 rounded-lg p-4">
+                <label class="text-xs text-slate-500 uppercase tracking-wide">Line ID</label>
+                <p class="text-slate-900 font-medium mt-1">{{ inquiry.line_id }}</p>
+            </div>
+            {% endif %}
+        </div>
+
+        <!-- Address -->
+        <div class="space-y-4">
+            <h3 class="text-lg font-semibold text-slate-900 mb-4">ที่อยู่</h3>
+            
+            <div class="bg-slate-50 rounded-lg p-4">
+                <label class="text-xs text-slate-500 uppercase tracking-wide">จังหวัด</label>
+                <p class="text-slate-900 font-medium mt-1">{{ inquiry.province.name_th }}</p>
+            </div>
+
+            <div class="bg-slate-50 rounded-lg p-4">
+                <label class="text-xs text-slate-500 uppercase tracking-wide">เขต/อำเภอ</label>
+                <p class="text-slate-900 font-medium mt-1">{{ inquiry.district.name_th }}</p>
+            </div>
+
+            {% if inquiry.address_detail %}
+            <div class="bg-slate-50 rounded-lg p-4">
+                <label class="text-xs text-slate-500 uppercase tracking-wide">ที่อยู่เพิ่มเติม</label>
+                <p class="text-slate-900 mt-1">{{ inquiry.address_detail }}</p>
+            </div>
+            {% endif %}
+        </div>
+
+        <!-- Preferences -->
+        <div class="space-y-4">
+            <h3 class="text-lg font-semibold text-slate-900 mb-4">ความสนใจ</h3>
+            
+            <div class="bg-slate-50 rounded-lg p-4">
+                <label class="text-xs text-slate-500 uppercase tracking-wide">งบประมาณ</label>
+                <p class="text-slate-900 font-medium mt-1">{{ inquiry.get_budget_display }}</p>
+            </div>
+
+            <div class="bg-slate-50 rounded-lg p-4">
+                <label class="text-xs text-slate-500 uppercase tracking-wide">วันที่สะดวก</label>
+                <p class="text-slate-900 font-medium mt-1">{{ inquiry.get_preferred_day_display }}</p>
+            </div>
+
+            <div class="bg-slate-50 rounded-lg p-4">
+                <label class="text-xs text-slate-500 uppercase tracking-wide">เวลาที่สะดวก</label>
+                <p class="text-slate-900 font-medium mt-1">{{ inquiry.get_preferred_time_display }}</p>
+            </div>
+        </div>
+
+        <!-- Notes -->
+        <div class="space-y-4">
+            <h3 class="text-lg font-semibold text-slate-900 mb-4">หมายเหตุ</h3>
+            
+            {% if inquiry.note %}
+            <div class="bg-slate-50 rounded-lg p-4">
+                <p class="text-slate-900">{{ inquiry.note }}</p>
+            </div>
+            {% else %}
+            <div class="bg-slate-50 rounded-lg p-4">
+                <p class="text-slate-500 italic">ไม่มีหมายเหตุ</p>
+            </div>
+            {% endif %}
+
+            <div class="bg-slate-50 rounded-lg p-4">
+                <label class="text-xs text-slate-500 uppercase tracking-wide">อัพเดทล่าสุด</label>
+                <p class="text-slate-900 font-medium mt-1">{{ inquiry.updated_at|date:"d/m/Y H:i" }}</p>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Actions -->
+    <div class="mt-8 pt-6 border-t border-slate-200 flex gap-4">
+        <button 
+            hx-post="{% url 'accounts:update_inquiry_status' inquiry.id %}"
+            hx-target="#inquiry-{{ inquiry.id }}"
+            hx-swap="outerHTML"
+            onclick="closeModal()"
+            class="flex-1 px-6 py-3 rounded-lg font-semibold transition
+                   {% if inquiry.is_contacted %}
+                   bg-sand-100 text-sand-700 hover:bg-sand-200
+                   {% else %}
+                   bg-green-600 text-white hover:bg-green-700
+                   {% endif %}">
+            {% if inquiry.is_contacted %}
+            เปลี่ยนเป็น "รอติดต่อ"
+            {% else %}
+            ทำเครื่องหมายว่าติดต่อแล้ว
+            {% endif %}
+        </button>
+        
+        <a href="tel:{{ inquiry.phone }}" class="flex-1 px-6 py-3 bg-ocean-900 text-white rounded-lg font-semibold hover:bg-ocean-800 transition text-center">
+            โทรหาลูกค้า
+        </a>
+    </div>
+
+</div>

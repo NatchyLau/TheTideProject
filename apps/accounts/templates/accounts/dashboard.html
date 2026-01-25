@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - ข้อมูลลูกค้า | The Tide</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/htmx.org@1.9.10"></script>
+    <meta name="htmx-config" content='{"getCacheBusterParam":true}'>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Prompt', sans-serif; }
+        .htmx-indicator { display: none; }
+        .htmx-request .htmx-indicator { display: flex; }
+        .htmx-request.htmx-indicator { display: flex; }
+    </style>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        ocean: {
+                            50: '#f0f9ff',
+                            100: '#e0f2fe',
+                            800: '#075985',
+                            900: '#0c4a6e',
+                            950: '#082f49',
+                        },
+                        sand: {
+                            100: '#fdf6e3',
+                            500: '#d4af37',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-slate-50 min-h-screen">
+    
+    <header class="bg-white border-b border-slate-200 sticky top-0 z-40 shadow-sm">
+        <div class="container mx-auto px-4 md:px-6 py-4">
+            <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+                <div>
+                    <h1 class="text-xl md:text-2xl font-bold text-ocean-900">The Tide Dashboard</h1>
+                    <p class="text-xs md:text-sm text-slate-600">ระบบจัดการข้อมูลลูกค้า</p>
+                </div>
+                <div class="flex items-center justify-between md:justify-end gap-4">
+                    <span class="text-sm text-slate-600 truncate max-w-[150px] md:max-w-none">สวัสดี, {{ user.get_full_name|default:user.username }}</span>
+                    <a href="{% url 'admin:index' %}" class="px-4 py-2 bg-slate-100 text-slate-700 rounded-lg hover:bg-slate-200 transition text-sm font-medium whitespace-nowrap">
+                        Admin Panel
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="container mx-auto px-4 md:px-6 py-6 md:py-8">
+        
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 mb-6 md:mb-8">
+            <div class="bg-white rounded-2xl p-5 md:p-6 shadow-sm border border-slate-100 hover:shadow-md transition">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <p class="text-sm text-slate-600 mb-1">ทั้งหมด</p>
+                        <p class="text-3xl font-bold text-ocean-900">{{ total_count }}</p>
+                    </div>
+                    <div class="w-12 h-12 bg-ocean-100 rounded-full flex items-center justify-center shrink-0">
+                        <svg class="w-6 h-6 text-ocean-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-2xl p-5 md:p-6 shadow-sm border border-slate-100 hover:shadow-md transition">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <p class="text-sm text-slate-600 mb-1">รอติดต่อ</p>
+                        <p class="text-3xl font-bold text-sand-500">{{ new_count }}</p>
+                    </div>
+                    <div class="w-12 h-12 bg-sand-100 rounded-full flex items-center justify-center shrink-0">
+                        <svg class="w-6 h-6 text-sand-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-2xl p-5 md:p-6 shadow-sm border border-slate-100 hover:shadow-md transition">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <p class="text-sm text-slate-600 mb-1">ติดต่อแล้ว</p>
+                        <p class="text-3xl font-bold text-green-600">{{ contacted_count }}</p>
+                    </div>
+                    <div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center shrink-0">
+                        <svg class="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="bg-white rounded-2xl p-4 md:p-6 shadow-sm border border-slate-100 mb-6">
+            <form id="filter-form" 
+                  hx-get="{% url 'accounts:inquiry_dashboard' %}" 
+                  hx-target="#dashboard-content"
+                  hx-push-url="true"
+                  hx-indicator="#loading-indicator"
+                  class="grid grid-cols-1 md:grid-cols-4 gap-4">
+                <div>
+                    <label class="block text-sm font-medium text-slate-700 mb-2">สถานะ</label>
+                    <select name="status" class="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-ocean-900 focus:border-transparent transition appearance-none" onchange="htmx.trigger('#filter-form', 'submit')">
+                        <option value="all" {% if status_filter == 'all' %}selected{% endif %}>ทั้งหมด</option>
+                        <option value="new" {% if status_filter == 'new' %}selected{% endif %}>รอติดต่อ</option>
+                        <option value="contacted" {% if status_filter == 'contacted' %}selected{% endif %}>ติดต่อแล้ว</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label class="block text-sm font-medium text-slate-700 mb-2">งบประมาณ</label>
+                    <select name="budget" class="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-ocean-900 focus:border-transparent transition appearance-none" onchange="htmx.trigger('#filter-form', 'submit')">
+                        <option value="">ทั้งหมด</option>
+                        {% for value, label in budget_choices %}
+                        <option value="{{ value }}" {% if budget_filter == value %}selected{% endif %}>{{ label }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+
+                <div class="md:col-span-2">
+                    <label class="block text-sm font-medium text-slate-700 mb-2">ค้นหา</label>
+                    <div class="flex flex-col sm:flex-row gap-2">
+                        <input type="text" name="search" value="{{ search }}" placeholder="ชื่อ, เบอร์โทร, Line ID..." class="flex-1 px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-ocean-900 focus:border-transparent transition">
+                        <div class="flex gap-2">
+                            <button type="submit" class="flex-1 sm:flex-none px-6 py-2.5 bg-ocean-900 text-white rounded-lg hover:bg-ocean-800 transition font-medium">
+                                ค้นหา
+                            </button>
+                            {% if search or budget_filter or status_filter != 'all' %}
+                            <a href="{% url 'accounts:inquiry_dashboard' %}" class="flex-1 sm:flex-none flex items-center justify-center px-6 py-2.5 bg-slate-200 text-slate-700 rounded-lg hover:bg-slate-300 transition font-medium">
+                                ล้าง
+                            </a>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </form>
+
+            <div id="loading-indicator" class="htmx-indicator mt-4">
+                <div class="flex items-center gap-2 text-ocean-900">
+                    <svg class="animate-spin h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                        <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                    </svg>
+                    <span class="text-sm font-medium">กำลังโหลด...</span>
+                </div>
+            </div>
+        </div>
+
+        <div id="dashboard-content">
+            {% include 'accounts/partials/inquiry_table.html' %}
+        </div>
+
+    </div>
+
+    <div id="detail-modal" class="hidden fixed inset-0 z-50 flex items-center justify-center p-4">
+        <div class="absolute inset-0 bg-black/60 backdrop-blur-sm" onclick="closeModal()"></div>
+        <div id="modal-content" class="bg-white rounded-2xl shadow-2xl w-full max-w-lg md:max-w-2xl relative z-10 max-h-[90vh] overflow-y-auto">
+            </div>
+    </div>
+
+    <script>
+        document.body.addEventListener('htmx:configRequest', (event) => {
+            event.detail.headers['X-CSRFToken'] = '{{ csrf_token }}';
+        });
+
+        function closeModal() {
+            document.getElementById('detail-modal').classList.add('hidden');
+        }
+
+        document.body.addEventListener('htmx:afterSwap', function(event) {
+            if (event.detail.target.id === 'modal-content') {
+                document.getElementById('detail-modal').classList.remove('hidden');
+            }
+        });
+    </script>
+
+</body>
+</html>

@@ -1,6 +1,8 @@
 from django.shortcuts import render, get_object_or_404
 from django.http import JsonResponse, HttpResponse
 from django.views.decorators.http import require_http_methods
+from django.contrib.admin.views.decorators import staff_member_required
+from django.db.models import Q
 from apps.locations.models import Province, District
 from .models import CustomerInquiry
 from .forms import CustomerInquiryForm
@@ -48,3 +50,82 @@ def submit_inquiry(request):
         return render(request, 'accounts/partials/error_message.html', {
             'form': form
         })
+
+
+# ==================== Dashboard Views ====================
+
+@staff_member_required
+def inquiry_dashboard(request):
+    """Dashboard สำหรับ Sales/Admin ดูข้อมูลลูกค้า"""
+    # Filters
+    status_filter = request.GET.get('status', 'all')
+    budget_filter = request.GET.get('budget', '')
+    search = request.GET.get('search', '')
+    
+    inquiries = CustomerInquiry.objects.select_related('province', 'district')
+    
+    # Apply filters
+    if status_filter == 'new':
+        inquiries = inquiries.filter(is_contacted=False)
+    elif status_filter == 'contacted':
+        inquiries = inquiries.filter(is_contacted=True)
+    
+    if budget_filter:
+        inquiries = inquiries.filter(budget=budget_filter)
+    
+    if search:
+        inquiries = inquiries.filter(
+            Q(first_name__icontains=search) |
+            Q(last_name__icontains=search) |
+            Q(phone__icontains=search) |
+            Q(line_id__icontains=search)
+        )
+    
+    # Stats
+    total_count = CustomerInquiry.objects.count()
+    new_count = CustomerInquiry.objects.filter(is_contacted=False).count()
+    contacted_count = CustomerInquiry.objects.filter(is_contacted=True).count()
+    
+    context = {
+        'inquiries': inquiries,
+        'total_count': total_count,
+        'new_count': new_count,
+        'contacted_count': contacted_count,
+        'status_filter': status_filter,
+        'budget_filter': budget_filter,
+        'search': search,
+        'budget_choices': CustomerInquiry.BUDGET_CHOICES,
+    }
+    
+    # If HTMX request, return only the table partial
+    if request.headers.get('HX-Request'):
+        return render(request, 'accounts/partials/inquiry_table.html', context)
+    
+    # Otherwise, return full page
+    return render(request, 'accounts/dashboard.html', context)
+
+
+@staff_member_required
+@require_http_methods(["POST"])
+def update_inquiry_status(request, inquiry_id):
+    """อัพเดทสถานะการติดต่อ (HTMX)"""
+    inquiry = get_object_or_404(CustomerInquiry, id=inquiry_id)
+    inquiry.is_contacted = not inquiry.is_contacted
+    inquiry.save()
+    
+    return render(request, 'accounts/partials/inquiry_row.html', {
+        'inquiry': inquiry
+    })
+
+
+@staff_member_required
+def inquiry_detail(request, inquiry_id):
+    """รายละเอียดลูกค้า (Modal/Page)"""
+    inquiry = get_object_or_404(
+        CustomerInquiry.objects.select_related('province', 'district'),
+        id=inquiry_id
+    )
+    
+    return render(request, 'accounts/inquiry_detail.html', {
+        'inquiry': inquiry
+    })
