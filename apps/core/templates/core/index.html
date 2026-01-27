@@ -383,7 +383,7 @@
                 </div>
 
                 <div class="md:w-2/3 p-8 md:p-12">
-                    <form method="post" hx-post="{% url 'accounts:submit_inquiry' %}" hx-target="#form-response" hx-swap="innerHTML" class="space-y-8">
+                    <form id="inquiry-form" method="post" hx-post="{% url 'accounts:submit_inquiry' %}" hx-target="#form-response" hx-swap="innerHTML" class="space-y-8">
                         {% csrf_token %}
                         <div id="form-response"></div>
                         

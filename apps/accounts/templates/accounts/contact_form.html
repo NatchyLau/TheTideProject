@@ -78,7 +78,7 @@
             <div class="max-w-3xl mx-auto">
                 <div class="bg-white p-8 md:p-12 rounded-2xl shadow-2xl reveal">
                     
-                    <form hx-post="{% url 'accounts:submit_inquiry' %}" 
+                      <form id="inquiry-form" hx-post="{% url 'accounts:submit_inquiry' %}" 
                           hx-target="#form-response" 
                           hx-swap="innerHTML"
                           class="space-y-6">
