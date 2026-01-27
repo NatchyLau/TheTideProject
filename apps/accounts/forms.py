@@ -1,7 +1,9 @@
+# forms.py
 from django import forms
 from apps.locations.models import Province, District
 from .models import CustomerInquiry
 
+COMMON_STYLE = 'block w-full px-4 h-12 text-lg text-ocean-900 bg-transparent border-b border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-ocean-900 peer invalid:text-gray-400'
 
 class CustomerInquiryForm(forms.ModelForm):
     class Meta:
@@ -12,48 +14,26 @@ class CustomerInquiryForm(forms.ModelForm):
             'budget', 'preferred_day', 'preferred_time', 'note'
         ]
         widgets = {
-            'first_name': forms.TextInput(attrs={
-                'class': 'w-full px-4 py-2 bg-slate-50 border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-ocean-900 focus:border-transparent transition',
-                'placeholder': 'กรอกชื่อ'
-            }),
-            'last_name': forms.TextInput(attrs={
-                'class': 'w-full px-4 py-2 bg-slate-50 border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-ocean-900 focus:border-transparent transition',
-                'placeholder': 'กรอกนามสกุล'
-            }),
-            'phone': forms.TextInput(attrs={
-                'class': 'w-full px-4 py-2 bg-slate-50 border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-ocean-900 focus:border-transparent transition',
-                'placeholder': '08X-XXX-XXXX'
-            }),
-            'line_id': forms.TextInput(attrs={
-                'class': 'w-full px-4 py-2 bg-slate-50 border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-ocean-900 focus:border-transparent transition',
-                'placeholder': 'Line ID (ถ้ามี)'
-            }),
-            'province': forms.Select(attrs={
-                'class': 'w-full px-4 py-2 bg-slate-50 border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-ocean-900 focus:border-transparent transition',
-                'hx-get': '/api/districts/',
-                'hx-target': '#id_district',
-                'hx-trigger': 'change'
-            }),
-            'district': forms.Select(attrs={
-                'class': 'w-full px-4 py-2 bg-slate-50 border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-ocean-900 focus:border-transparent transition',
-            }),
-            'address_detail': forms.Textarea(attrs={
-                'class': 'w-full px-4 py-2 bg-slate-50 border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-ocean-900 focus:border-transparent transition',
-                'placeholder': 'บ้านเลขที่ หมู่ ซอย ถนน (ถ้ามี)',
-                'rows': 3
-            }),
-            'budget': forms.Select(attrs={
-                'class': 'w-full px-4 py-2 bg-slate-50 border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-ocean-900 focus:border-transparent transition',
-            }),
-            'preferred_day': forms.Select(attrs={
-                'class': 'w-full px-4 py-2 bg-slate-50 border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-ocean-900 focus:border-transparent transition',
-            }),
-            'preferred_time': forms.Select(attrs={
-                'class': 'w-full px-4 py-2 bg-slate-50 border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-ocean-900 focus:border-transparent transition',
-            }),
-            'note': forms.Textarea(attrs={
-                'class': 'w-full px-4 py-2 bg-slate-50 border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-ocean-900 focus:border-transparent transition',
-                'placeholder': 'ข้อมูลเพิ่มเติม (ถ้ามี)',
-                'rows': 3
-            }),
-        }
+        # Text Input (ไม่ใช้ invalid color เพราะมี placeholder attribute อยู่แล้ว)
+        'first_name': forms.TextInput(attrs={'class': COMMON_STYLE.replace('invalid:text-gray-400', ''), 'placeholder': ' '}),
+        'last_name': forms.TextInput(attrs={'class': COMMON_STYLE.replace('invalid:text-gray-400', ''), 'placeholder': ' '}),
+        'phone': forms.TextInput(attrs={'class': COMMON_STYLE.replace('invalid:text-gray-400', ''), 'placeholder': ' '}),
+        'line_id': forms.TextInput(attrs={'class': COMMON_STYLE.replace('invalid:text-gray-400', ''), 'placeholder': ' '}),
+        
+        # Dropdown: ต้องใส่ required=True เพื่อให้ CSS invalid ทำงาน
+        'province': forms.Select(attrs={
+            'class': COMMON_STYLE,
+            'hx-get': '/api/districts/',
+            'hx-target': '#id_district',
+            'hx-trigger': 'change',
+            'required': True 
+        }),
+        'district': forms.Select(attrs={'class': COMMON_STYLE, 'id': 'id_district', 'required': True}),
+        'budget': forms.Select(attrs={'class': COMMON_STYLE, 'required': True}),
+        'preferred_day': forms.Select(attrs={'class': COMMON_STYLE, 'required': True}),
+        'preferred_time': forms.Select(attrs={'class': COMMON_STYLE, 'required': True}),
+        
+        # Textarea
+        'address_detail': forms.Textarea(attrs={'class': 'block w-full px-4 py-3 text-lg text-ocean-900 bg-transparent border-b border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-ocean-900 peer', 'rows': 2, 'placeholder': ' '}),
+        'note': forms.Textarea(attrs={'class': 'block w-full px-4 py-3 text-lg text-ocean-900 bg-transparent border-b border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-ocean-900 peer', 'rows': 2, 'placeholder': ' '}),
+    }
