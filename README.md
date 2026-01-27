@@ -6,7 +6,7 @@ cd TheTideProject
 
 
 ```bash
-get checkout develop
+git checkout develop
 ```
 
 
@@ -20,6 +20,7 @@ pip install -r requirements.txt
 ```bash
 python manage.py makemigrations
 python manage.py migrate
+python manage.py import_locations
 
 ```
 

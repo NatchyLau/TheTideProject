@@ -1,6 +1,6 @@
 import json
 from django.core.management.base import BaseCommand
-from locations.models import Province, District, SubDistrict
+from apps.locations.models import Province, District, SubDistrict
 
 
 class Command(BaseCommand):
