@@ -70,10 +70,10 @@
 
     <nav class="fixed w-full top-0 z-50 transition-all duration-300 bg-white/90 backdrop-blur-md border-b border-white/20 shadow-sm" id="navbar">
         <div class="container mx-auto px-6 py-4 flex items-center justify-between">
-            <a href="/" class="text-xl font-serif font-bold text-ocean-950 tracking-widest flex items-center gap-2 hover:opacity-80 transition">
+            <a href="{% url 'core:home' %}" class="text-xl font-serif font-bold text-ocean-950 tracking-widest flex items-center gap-2 hover:opacity-80 transition">
                 <span class="text-sand-500 text-2xl">✦</span> THE TIDE
             </a>
-            <a href="/#projects" class="group flex items-center gap-2 text-sm font-medium text-ocean-900 hover:text-sand-500 transition">
+            <a href="{% url 'core:home' %}#projects" class="group flex items-center gap-2 text-sm font-medium text-ocean-900 hover:text-sand-500 transition">
                 <svg class="w-4 h-4 transform group-hover:-translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
                 กลับไปหน้าโครงการ
             </a>
@@ -378,7 +378,7 @@
         <div class="container mx-auto px-6 text-center reveal">
             <h3 class="text-3xl font-serif font-bold text-ocean-950 mb-4">ต้องการนัดหมายเข้าชมโครงการ?</h3>
             <p class="text-slate-500 mb-8 font-light max-w-xl mx-auto">กรอกข้อมูลเพื่อรับคำแนะนำแบบบ้านที่เหมาะกับคุณ หรือสอบถามรายละเอียดเพิ่มเติม ทีมงานของเราพร้อมให้บริการ</p>
-            <a href="/#contact-form" class="inline-flex items-center justify-center px-10 py-4 bg-ocean-900 text-white text-sm font-bold tracking-widest hover:bg-sand-500 transition shadow-xl hover:-translate-y-1 transform duration-300 rounded-sm">
+            <a href="{% url 'core:home' %}#contact-form" class="inline-flex items-center justify-center px-10 py-4 bg-ocean-900 text-white text-sm font-bold tracking-widest hover:bg-sand-500 transition shadow-xl hover:-translate-y-1 transform duration-300 rounded-sm">
                 ไปยังแบบฟอร์มนัดหมาย
             </a>
         </div>

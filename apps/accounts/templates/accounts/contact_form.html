@@ -139,13 +139,13 @@
                                     </label>
                                     <select name="province" 
                                             id="id_province"
-                                            class="w-full px-4 py-2 bg-slate-50 border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-ocean-900 focus:border-transparent transition"
+                                            class="w-full px-4 py-2 bg-slate-50 border border-slate-200 rounded-lg text-slate-900 invalid:text-slate-400 rounded-lg focus:outline-none focus:ring-2 focus:ring-ocean-900 focus:border-transparent transition"
                                             hx-get="{% url 'accounts:get_districts' %}"
                                             hx-target="#id_district"
-                                            hx-trigger="change"
+                                            hx-trigger="change[this.value!='']"
                                             hx-include="[name='province']"
                                             required>
-                                        <option value="">เลือกจังหวัด</option>
+                                        <option value="" disabled selected hidden>กรุณาเลือกจังหวัด...</option>
                                         {% for province in provinces %}
                                             <option value="{{ province.id }}">{{ province.name_th }}</option>
                                         {% endfor %}
@@ -158,9 +158,10 @@
                                     </label>
                                     <select name="district" 
                                             id="id_district"
-                                            class="w-full px-4 py-2 bg-slate-50 border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-ocean-900 focus:border-transparent transition"
-                                            required>
-                                        <option value="">เลือกเขต/อำเภอ</option>
+                                            class="w-full px-4 py-2 bg-slate-50 border border-slate-200 text-slate-900 invalid:text-slate-400 disabled:text-slate-400 rounded-lg focus:outline-none focus:ring-2 focus:ring-ocean-900 focus:border-transparent transition"
+                                            required
+                                            disabled>
+                                        <option value="" disabled selected hidden>กรุณาเลือกอำเภอ/เขต...</option>
                                     </select>
                                 </div>
                             </div>
@@ -225,6 +226,28 @@
     </section>
     
     <script>
+        // Disable district until province selected
+        (function syncProvinceDistrict() {
+            const province = document.getElementById('id_province');
+            const district = document.getElementById('id_district');
+            if (!province || !district) return;
+
+            function sync() {
+                const hasProvince = Boolean(province.value);
+                district.disabled = !hasProvince;
+                if (!hasProvince) {
+                    district.value = '';
+                }
+            }
+
+            province.addEventListener('change', sync);
+            document.body.addEventListener('htmx:afterSwap', (evt) => {
+                const target = evt?.detail?.target || evt?.target;
+                if (target && target.id === 'id_district') sync();
+            });
+            sync();
+        })();
+
         // Reveal animation
         function reveal() {
             var reveals = document.querySelectorAll(".reveal");
