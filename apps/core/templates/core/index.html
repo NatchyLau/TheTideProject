@@ -2,320 +2,22 @@
 {% load static %}
 
 {% block content %}
-<section id="home" class="relative h-screen w-full flex items-center justify-center overflow-hidden">
-  <div class="absolute inset-0 z-0">
-    <div class="w-full h-full animate-ken-burns">
-      <img
-        src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?q=80&w=2070&auto=format&fit=crop"
-        class="w-full h-full object-cover"
-        alt="Luxury Home"
-      />
-    </div>
-    <div class="absolute inset-0 bg-gradient-to-b from-slate-900/40 via-transparent to-slate-900/90"></div>
-    <div class="absolute inset-0 bg-ocean-950/20 mix-blend-multiply"></div>
-  </div>
+  {% include "core/includes/home/hero-section.html" %}
 
-  <div class="absolute top-1/4 left-1/4 w-96 h-96 rounded-full pointer-events-none bg-glow-gold"></div>
-  <div class="absolute bottom-1/4 right-1/4 w-[30rem] h-[30rem] rounded-full pointer-events-none bg-glow-blue"></div>
+  {% include "core/includes/home/philosophy-section.html" %}
 
-  <div class="container mx-auto px-6 relative z-10 text-center text-white mt-10">
-    <div class="reveal">
-      <span class="inline-block py-2 px-6 border border-white/30 backdrop-blur-md rounded-full text-xs font-light tracking-widest mb-8 text-sand-100 uppercase">
-        Residential • Beachfront
-      </span>
-      <h1 class="font-serif text-5xl md:text-7xl font-bold mb-6 leading-tight drop-shadow-lg">
-        Discover Your<br />
-        <span class="text-transparent bg-clip-text bg-gradient-to-r from-sand-100 to-sand-500 italic">True Sanctuary</span>
-      </h1>
-      <p class="text-lg md:text-xl text-gray-200 mb-10 max-w-2xl mx-auto font-light leading-relaxed opacity-90">
-        บ้านเดี่ยวหรูติดทะเล ที่ผสมผสานความทันสมัยเข้ากับธรรมชาติอย่างลงตัว พร้อมเอกสิทธิ์ความเป็นส่วนตัวเพียง 50 ครอบครัว
-      </p>
+  {% include "core/includes/home/facilities-section.html" %}
 
-      <div class="flex flex-col md:flex-row gap-4 justify-center items-center">
-        <a href="#projects" class="btn btn-primary w-full md:w-auto px-8 py-4 text-base">ดูโครงการ</a>
-        <a href="#contact-form" class="btn btn-glass w-full md:w-auto px-8 py-4 text-base">สอบถามโปรโมชั่น</a>
-      </div>
+  {% include "core/includes/home/projects-section.html" %}
 
-      <div class="mt-12 inline-flex items-center gap-4 bg-black/40 backdrop-blur-md rounded-full pr-6 p-2 border border-white/10">
-        <span class="bg-sand-500 text-white text-xs font-bold px-3 py-1 rounded-full">SPECIAL</span>
-        <span class="text-sm text-gray-200">ลงทะเบียนวันนี้ รับส่วนลดสูงสุด 500,000 บาท*</span>
-      </div>
-    </div>
-  </div>
+  {% include "core/includes/home/location-section.html" %}
 
-  <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce text-white/50">
-    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
-    </svg>
-  </div>
-</section>
-
-<section id="about" class="py-32 bg-white relative overflow-hidden">
-  <div class="absolute top-20 right-0 text-[10rem] font-serif text-gray-50 opacity-50 leading-none select-none -z-0">Design</div>
-
-  <div class="container mx-auto px-6 relative z-10">
-    <div class="flex flex-col md:flex-row items-center gap-16">
-      <div class="w-full md:w-1/2 relative reveal">
-        <div class="relative z-10 parallax-wrapper rounded-lg overflow-hidden shadow-2xl">
-          <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?q=80&w=2053&auto=format&fit=crop" alt="Interior" class="w-full h-[550px] object-cover parallax-img hover:scale-105 transition duration-700" />
-        </div>
-        <div class="absolute -bottom-10 -right-10 z-20 w-60 h-72 parallax-wrapper border-8 border-white shadow-xl hidden md:block rounded-lg overflow-hidden">
-          <img src="https://images.unsplash.com/photo-1598928506311-c55ded91a20c?q=80&w=2070&auto=format&fit=crop" class="w-full h-full object-cover parallax-img" />
-        </div>
-      </div>
-
-      <div class="w-full md:w-1/2 md:pl-8 reveal">
-        <h4 class="section-subtitle">Philosophy</h4>
-        <h2 class="section-title">งานออกแบบที่ใส่ใจ<br />ในทุกรายละเอียดของชีวิต</h2>
-        <div class="w-20 h-1.5 bg-sand-500 mb-8 rounded-full"></div>
-        <p class="text-slate-600 mb-8 leading-loose font-light text-lg">
-          The Tide Project ไม่ใช่แค่ที่อยู่อาศัย แต่คือพื้นที่แห่งความสุข เราออกแบบโดยคำนึงถึงทิศทางลมและแสงแดด (Passive Design) เพื่อให้บ้านเย็นสบายตลอดทั้งวัน พร้อมวัสดุเกรดพรีเมียมที่เป็นมิตรต่อสิ่งแวดล้อม
-        </p>
-
-        <div class="grid grid-cols-2 gap-8">
-          <div class="group cursor-pointer">
-            <div class="w-12 h-12 bg-ocean-50 text-ocean-800 rounded-xl flex items-center justify-center mb-4 group-hover:bg-ocean-900 group-hover:text-white transition">
-              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-            </div>
-            <h5 class="font-bold text-lg text-slate-800 mb-1">Eco-Friendly</h5>
-            <p class="text-sm text-slate-500">วัสดุประหยัดพลังงาน</p>
-          </div>
-          <div class="group cursor-pointer">
-            <div class="w-12 h-12 bg-ocean-50 text-ocean-800 rounded-xl flex items-center justify-center mb-4 group-hover:bg-ocean-900 group-hover:text-white transition">
-              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg>
-            </div>
-            <h5 class="font-bold text-lg text-slate-800 mb-1">Private & Safe</h5>
-            <p class="text-sm text-slate-500">ระบบความปลอดภัย 24 ชม.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="facilities" class="py-28 bg-slate-50 border-t border-slate-200">
-  <div class="container mx-auto px-6 mb-16 text-center reveal">
-    <h4 class="section-subtitle">Facilities</h4>
-    <h2 class="section-title">World Class Facilities</h2>
-    <p class="text-slate-600 text-lg font-light">ยกระดับคุณภาพชีวิตด้วยส่วนกลางครบวงจร</p>
-  </div>
-
-  <div class="container mx-auto px-6">
-    <div class="grid md:grid-cols-4 gap-4 h-[450px]">
-      <div class="md:col-span-2 group relative rounded-xl overflow-hidden cursor-pointer reveal shadow-lg hover:shadow-2xl transition-all duration-500">
-        <img src="https://plus.unsplash.com/premium_photo-1664478314391-fe64b61e1b6c?q=80&w=2069&auto=format&fit=crop" class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110" />
-        <div class="absolute inset-0 bg-gradient-to-t from-ocean-950/90 via-transparent to-transparent"></div>
-        <div class="absolute bottom-8 left-8 text-white">
-          <h3 class="font-serif text-3xl italic mb-2 group-hover:text-sand-500 transition-colors">Infinity Pool</h3>
-          <p class="text-sm font-light text-gray-200 tracking-wide">สระว่ายน้ำระบบเกลือวิวทะเล</p>
-        </div>
-      </div>
-      <div class="group relative rounded-xl overflow-hidden cursor-pointer reveal shadow-lg hover:shadow-2xl transition-all duration-500 delay-100">
-        <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=2070&auto=format&fit=crop" class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110" />
-        <div class="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-colors"></div>
-        <div class="absolute bottom-8 left-8 text-white translate-y-4 group-hover:translate-y-0 transition-transform">
-          <h3 class="font-serif text-2xl mb-1">Sky Fitness</h3>
-          <div class="w-0 group-hover:w-8 h-0.5 bg-sand-500 mt-2 transition-all duration-500"></div>
-        </div>
-      </div>
-      <div class="group relative rounded-xl overflow-hidden cursor-pointer reveal shadow-lg hover:shadow-2xl transition-all duration-500 delay-200">
-        <img src="https://images.unsplash.com/photo-1604328703693-18313fe20f3a?q=80&w=2070&auto=format&fit=crop" class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110" />
-        <div class="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-colors"></div>
-        <div class="absolute bottom-8 left-8 text-white translate-y-4 group-hover:translate-y-0 transition-transform">
-          <h3 class="font-serif text-2xl mb-1">Co-Working</h3>
-          <div class="w-0 group-hover:w-8 h-0.5 bg-sand-500 mt-2 transition-all duration-500"></div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="projects" class="py-32 bg-ocean-950 relative">
-  <div class="absolute inset-0 opacity-10 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')]"></div>
-  <div class="container mx-auto px-6 relative z-10">
-    <div class="text-center mb-20 reveal">
-      <span class="text-sand-500 font-bold tracking-widest uppercase text-xs">Our Collection</span>
-      <h2 class="font-serif text-4xl md:text-5xl text-white mt-4">เลือกโครงการที่ใช่</h2>
-      <p class="text-ocean-200 mt-4 font-light">แล้วไปดูแบบบ้านของโครงการนั้นได้ทันที</p>
-    </div>
-
-    <div class="grid md:grid-cols-2 lg:grid-cols-2 gap-12 max-w-5xl mx-auto">
-      <a href="{% url 'core:project_plans' slug='the-tide-grand-nawong' %}" class="group block reveal hover:transform hover:-translate-y-2 transition-all duration-500">
-        <div class="relative h-[400px] overflow-hidden mb-6 rounded-lg shadow-2xl border border-white/10">
-          <div class="absolute top-6 left-6 z-20 bg-white/90 backdrop-blur text-ocean-900 px-4 py-2 text-xs font-bold uppercase tracking-widest rounded-sm">Grand Series</div>
-          <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=2070&auto=format&fit=crop" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" alt="Grand Nawong" />
-        </div>
-        <div class="flex justify-between items-start border-b border-white/10 pb-6 group-hover:border-sand-500 transition-colors">
-          <div>
-            <h3 class="font-serif text-2xl md:text-3xl text-white mb-2 group-hover:text-sand-500 transition">THE TIDE GRAND NAWONG</h3>
-            <p class="text-slate-400 font-light text-sm">บ้าน 3 แบบ 3 สไตล์ | 141-202 ตร.ม.</p>
-          </div>
-          <div class="text-right pl-4">
-            <p class="text-xs text-slate-400 uppercase tracking-widest mb-1">ราคาเริ่มต้น</p>
-            <p class="font-serif text-2xl text-sand-500">2.59 ลบ.</p>
-          </div>
-        </div>
-      </a>
-
-      <a href="{% url 'core:project_plans' slug='the-tide-privilege-therdphra-kiat' %}" class="group block reveal hover:transform hover:-translate-y-2 transition-all duration-500 delay-200">
-        <div class="relative h-[400px] overflow-hidden mb-6 rounded-lg shadow-2xl border border-white/10">
-          <div class="absolute top-6 left-6 z-20 bg-sand-500 text-white px-4 py-2 text-xs font-bold uppercase tracking-widest rounded-sm">Privilege Series</div>
-          <img src="https://images.unsplash.com/photo-1568605114967-8130f3a36994?q=80&w=2070&auto=format&fit=crop" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" alt="Privilege" />
-        </div>
-        <div class="flex justify-between items-start border-b border-white/10 pb-6 group-hover:border-sand-500 transition-colors">
-          <div>
-            <h3 class="font-serif text-2xl md:text-3xl text-white mb-2 group-hover:text-sand-500 transition">THE TIDE PRIVILEGE</h3>
-            <p class="text-slate-400 font-light text-sm">เทิดพระเกียรติ | 22 ครอบครัว</p>
-          </div>
-          <div class="text-right pl-4">
-            <p class="text-xs text-slate-400 uppercase tracking-widest mb-1">ราคาเริ่มต้น</p>
-            <p class="font-serif text-2xl text-sand-500">4.7 ลบ.</p>
-          </div>
-        </div>
-      </a>
-    </div>
-  </div>
-</section>
-
-<section id="location" class="py-24 bg-dark-900 text-white relative overflow-hidden">
-  <div class="absolute top-0 right-0 w-[500px] h-[500px] bg-ocean-800 rounded-full blur-[120px] opacity-20"></div>
-  <div class="absolute bottom-0 left-0 w-[500px] h-[500px] bg-sand-600 rounded-full blur-[120px] opacity-10"></div>
-
-  <div class="container mx-auto px-6 lg:px-12 relative z-10">
-    <div class="flex flex-col lg:flex-row gap-16 items-center">
-      <div class="lg:w-1/3 reveal">
-        <h2 class="font-serif text-4xl mb-6">Start Your New Life Here</h2>
-        <p class="text-slate-400 mb-10 font-light leading-relaxed">
-          ดูตำแหน่งโครงการแบบชัดเจน พร้อมเส้นทางการเดินทางที่สะดวก<br />คลิกที่แผนที่เพื่อเปิดดูรายละเอียด
-        </p>
-        <ul class="space-y-8">
-            <li class="flex items-center gap-6 group cursor-pointer">
-                <div class="w-12 h-12 rounded-full bg-white/5 border border-white/20 flex items-center justify-center group-hover:border-sand-500 group-hover:text-sand-500 transition">
-                   <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
-                </div>
-                <div>
-                   <h5 class="font-bold text-white text-lg">Location</h5>
-                   <p class="text-sm text-slate-400">นาวง, นครศรีธรรมราช</p>
-                </div>
-             </li>
-             </ul>
-      </div>
-      <div class="lg:w-2/3 w-full reveal delay-100">
-        <div class="w-full aspect-video bg-slate-800 rounded-lg overflow-hidden shadow-2xl border border-white/5 hover:border-sand-500/50 transition-all duration-700 relative group">
-          <iframe title="Google Map" class="w-full h-full opacity-70 group-hover:opacity-100 transition-opacity grayscale group-hover:grayscale-0 duration-700" loading="lazy" src="https://maps.google.com/maps?q=Nakhon+Si+Thammarat&t=&z=13&ie=UTF8&iwloc=&output=embed"></iframe>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="contact-form" class="py-32 bg-white relative">
-  <div class="container mx-auto px-6">
-    <div class="max-w-6xl mx-auto bg-white shadow-2xl rounded-lg overflow-hidden flex flex-col md:flex-row reveal border border-slate-100">
-      <div class="md:w-1/3 bg-ocean-950 text-white p-12 flex flex-col justify-between relative overflow-hidden">
-        <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?q=80&w=2000&auto=format&fit=crop')] opacity-20 bg-cover bg-center"></div>
-        <div class="relative z-10">
-          <h3 class="font-serif text-3xl mb-4">นัดหมายเข้าชม</h3>
-          <p class="text-ocean-200 font-light text-base leading-relaxed">กรอกข้อมูลเพื่อให้ทีมงานติดต่อกลับเพื่อยืนยันวันและเวลาเข้าชมโครงการ</p>
-        </div>
-        <div class="relative z-10 mt-12">
-          <p class="text-6xl font-serif text-sand-500 opacity-50">50</p>
-          <p class="text-sm tracking-widest uppercase mt-2 opacity-80">Families Only</p>
-        </div>
-      </div>
-
-      <div class="md:w-2/3 p-8 md:p-12">
-        <form id="inquiry-form" method="post" hx-post="{% url 'accounts:submit_inquiry' %}" hx-target="#form-response" hx-swap="innerHTML" class="space-y-8">
-          {% csrf_token %}
-          <div id="form-response"></div>
-
-          <div>
-            <h4 class="text-ocean-900 font-bold text-lg mb-6 border-l-4 border-sand-500 pl-3">ข้อมูลส่วนตัว</h4>
-            <div class="grid md:grid-cols-2 gap-8">
-              <div class="relative group mt-2">
-                <input type="text" name="first_name" placeholder=" " class="form-input-styled peer" required />
-                <label class="form-label-floating">ชื่อ *</label>
-              </div>
-              <div class="relative group mt-2">
-                <input type="text" name="last_name" placeholder=" " class="form-input-styled peer" required />
-                <label class="form-label-floating">นามสกุล *</label>
-              </div>
-            </div>
-            <div class="grid md:grid-cols-2 gap-8 mt-6">
-                <div class="relative group mt-2">
-                    <input type="tel" name="phone" placeholder=" " class="form-input-styled peer" required />
-                    <label class="form-label-floating">เบอร์โทรศัพท์ *</label>
-                </div>
-                <div class="relative group mt-2">
-                    <input type="text" name="line_id" placeholder=" " class="form-input-styled peer" />
-                    <label class="form-label-floating">Line ID</label>
-                </div>
-            </div>
-          </div>
-
-          <div>
-            <h4 class="text-ocean-900 font-bold text-lg mb-6 border-l-4 border-sand-500 pl-3">ที่อยู่ปัจจุบัน</h4>
-            <div class="grid md:grid-cols-2 gap-8">
-              <div class="relative group mt-2">
-                {% if form.province %}
-                    {{ form.province }}
-                {% else %}
-                    <select name="province" id="id_province" required class="form-input-styled peer invalid:text-gray-400">
-                        <option value="" disabled selected hidden>กรุณาเลือกจังหวัด...</option>
-                        {% for val, text in form.fields.province.choices %}
-                            <option value="{{ val }}">{{ text }}</option>
-                        {% endfor %}
-                    </select>
-                {% endif %}
-                <label class="form-label-floating">จังหวัด</label>
-              </div>
-              <div class="relative group mt-2">
-                <div id="id_district_container">
-                    {% if form.district %}
-                        {{ form.district }}
-                    {% else %}
-                        <select name="district" id="id_district" required class="form-input-styled peer invalid:text-gray-400" disabled>
-                            <option value="" disabled selected hidden>กรุณาเลือกอำเภอ...</option>
-                        </select>
-                    {% endif %}
-                </div>
-                <label class="form-label-floating">อำเภอ / เขต</label>
-              </div>
-            </div>
-          </div>
-
-          <div>
-            <h4 class="text-ocean-900 font-bold text-lg mb-6 border-l-4 border-sand-500 pl-3">ความสนใจและการนัดหมาย</h4>
-            <div class="grid md:grid-cols-2 gap-8">
-                <div class="relative group mt-2">
-                    <select name="budget" required class="form-input-styled peer invalid:text-gray-400">
-                        <option value="" disabled selected hidden>กรุณาเลือกงบประมาณ...</option>
-                        <option value="2.01-2.50">2.01-2.50 ล้านบาท</option>
-                        <option value="5.00+">มากกว่า 5.00 ล้านบาท</option>
-                    </select>
-                    <label class="form-label-floating">งบประมาณ</label>
-                </div>
-                <div class="relative group mt-2">
-                    <select name="preferred_day" required class="form-input-styled peer invalid:text-gray-400">
-                        <option value="" disabled selected hidden>กรุณาเลือกวันที่สะดวก...</option>
-                        <option value="weekday">วันทำการ (จันทร์-ศุกร์)</option>
-                        <option value="weekend">วันหยุด (เสาร์-อาทิตย์)</option>
-                    </select>
-                    <label class="form-label-floating">วันที่สะดวก</label>
-                </div>
-            </div>
-          </div>
-
-          <button type="submit" class="btn btn-ocean w-full mt-12 py-5 text-lg shadow-xl">ส่งข้อมูลนัดหมาย</button>
-        </form>
-      </div>
-    </div>
-  </div>
-</section>
+  {% include "core/includes/home/contact-form-section.html" %}
 {% endblock %}
 
 {% block extra_scripts %}
 <script>
+  // Script สำหรับจัดการ Dropdown จังหวัด/อำเภอ
   (function syncProvinceDistrict() {
     const province = document.getElementById("id_province");
     const district = document.getElementById("id_district");
@@ -328,10 +30,13 @@
     }
 
     province.addEventListener("change", sync);
+    
+    // รองรับ HTMX กรณีที่มีการ swap ข้อมูล
     document.body.addEventListener("htmx:afterSwap", (evt) => {
       const target = evt?.detail?.target || evt?.target;
       if (target && target.id === "id_district") sync();
     });
+    
     sync();
   })();
 </script>
