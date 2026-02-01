@@ -3,7 +3,7 @@ tailwind.config = {
     extend: {
       fontFamily: {
         sans: ["Prompt", "sans-serif"],
-        serif: ["Playfair Display", "serif"],
+        serif: ["Playfair Display", "Prompt", "serif"],
       },
       colors: {
         // Minimal Luxury Palette

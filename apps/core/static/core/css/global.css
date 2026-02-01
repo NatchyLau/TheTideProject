@@ -253,7 +253,7 @@ body {
 }
 
 .section-title {
-  font-family: "Playfair Display", serif;
+  font-family: "Playfair Display", "Prompt", serif;
   font-size: 2.25rem;
   color: var(--color-premium-900);
   margin-bottom: 1.5rem;
@@ -265,4 +265,3 @@ body {
     font-size: 3rem;
   }
 }
-
