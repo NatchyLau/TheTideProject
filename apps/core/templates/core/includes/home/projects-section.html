@@ -61,13 +61,14 @@
 
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10">
 
-      {% url 'core:project_plans' slug='the-tide-grand-phutthaphum' as url_grand_phutthaphum %}
-      {% include "core/includes/components/project-card.html" with url=url_grand_phutthaphum image="/static/core/images/svg/grand-phutthaphum.svg" title="The Tide Grand Phutthaphum" description="โครงการตั้งอยู่ทำเลดีการเดินทางสะดวกใกล้ถนนพุทธภูมิ" price="เริ่มต้น 2.7 M" %}
-
       {% url 'core:project_plans' slug='the-tide-grand-nawong' as url_grand_nawong %}
-      {% include "core/includes/components/project-card.html" with url=url_grand_nawong image="/static/core/images/grand-nawong.png" title="The Tide GRAND Nawong,<br/> Nakhon Si Thammarat" description="เพื่อการใช้ชีวิตที่ลงตัวสำหรับคุณและครอบครัวในทุกช่วงเวลา" price="เริ่มต้น 2.89 M" delay="delay-100" %}
+      {% include "core/includes/components/project-card.html" with url=url_grand_nawong image="/static/core/images/grand-nawong.png" title=" THE TIDE GRAND,<br/> นครศรีธรรมราช" description="เพื่อการใช้ชีวิตที่ลงตัวสำหรับคุณ <br>และครอบครัวในทุกช่วงเวลา" price="เริ่มต้น 2.89 M" delay="delay-100" %}
 
-      {% include "core/includes/components/project-card.html" with url="#" image="/static/core/images/grand-monk.png" title="The Tide Grand Thoet Phra Kiat" description="เพราะความสุขของการอยู่อาศัย เริ่มต้นจากการได้ใช้ชีวิตอย่าง “อิสระ”" price="---" delay="delay-200" coming_soon=True %}
+      {% url 'core:project_plans' slug='the-tide-grand-phutthaphum' as url_grand_phutthaphum %}
+      {% include "core/includes/components/project-card.html" with url="#" image="/static/core/images/grand-monk.png" title="THE TIDE PRIVILEGE,<br>เทิดพระเกียรติ" description="เพราะความสุขของการอยู่อาศัย <br>เริ่มต้นจากการได้ใช้ชีวิตอย่าง “อิสระ”" price="เริ่มต้น 4.7 M" delay="delay-200" coming_soon=True %}
+
+      {% url 'core:project_plans' slug='the-tide-grand-phutthaphum' as url_grand_phutthaphum %}
+      {% include "core/includes/components/project-card.html" with url=url_grand_phutthaphum image="/static/core/images/svg/grand-phutthaphum.svg" title="THE TIDE GRAND,<br/> พุทธภูมิ" description="โครงการตั้งอยู่ทำเลดีการเดินทางสะดวกใกล้ถนนพุทธภูมิ" price="เริ่มต้น 2.7 M" %}
 
     </div>
     
