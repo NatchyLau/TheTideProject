@@ -5,12 +5,13 @@
   class="relative h-[100svh] w-full flex items-center justify-center overflow-hidden bg-slate-900"
 >
   <div class="absolute inset-0 z-0">
-    <div class="w-full h-full animate-cinematic-enter">
+    <div class="w-full h-full animate-cinematic-enter bg-black relative">
       <img
         src="{% static '/core/images/house-section.png' %}"
         class="w-full h-full object-cover opacity-90"
         alt="The Tide Luxury Home"
       />
+      <div class="absolute inset-0 bg-black/40"></div>
     </div>
 
     <div
@@ -22,8 +23,9 @@
   <div
     class="container mx-auto px-4 sm:px-6 relative z-10 text-center text-white h-full flex flex-col justify-center items-center"
   >
-    <div class="reveal max-w-5xl mx-auto flex flex-col items-center mt-[-10svh] md:mt-0">
-      
+    <div
+      class="reveal max-w-5xl mx-auto flex flex-col items-center mt-[-10svh] md:mt-0"
+    >
       <h1 class="fade-in-up mb-6 relative" style="animation-delay: 200ms">
         <span
           class="block font-serif text-5xl sm:text-7xl md:text-8xl lg:text-9xl text-white leading-[0.9] italic tracking-tighter"
@@ -41,7 +43,8 @@
         class="fade-in-up text-sm sm:text-base md:text-lg text-slate-300 font-light leading-relaxed max-w-xs sm:max-w-2xl mx-auto mb-8 sm:mb-10 tracking-wide"
         style="animation-delay: 300ms"
       >
-        โครงการที่มุ่งมั่นในการสร้าง “บ้านที่น่าอยู่” <br class="md:hidden"> เพื่อ “ชาวนครศรีธรรมราช” อย่างแท้จริง
+        โครงการที่มุ่งมั่นในการสร้าง “บ้านที่น่าอยู่” <br class="md:hidden" />
+        เพื่อ “ชาวนครศรีธรรมราช” อย่างแท้จริง
       </p>
 
       <div
@@ -73,7 +76,8 @@
       </div>
     </div>
 
-    {% comment %} <div
+    {% comment %}
+    <div
       class="absolute bottom-8 sm:bottom-12 md:bottom-20 w-full px-4 flex justify-center fade-in-up z-20"
       style="animation-delay: 600ms"
     >
@@ -85,14 +89,17 @@
         >
           Exclusive
         </div>
-        <p class="text-[10px] sm:text-xs md:text-sm text-white/90 font-light truncate">
+        <p
+          class="text-[10px] sm:text-xs md:text-sm text-white/90 font-light truncate"
+        >
           ลงทะเบียนรับส่วนลดสูงสุด
           <span
             class="font-medium text-white group-hover:text-accent-gold transition-colors"
             >500,000 บาท*</span
           >
         </p>
-      </div> {% endcomment %}
+      </div>
+      {% endcomment %}
     </div>
   </div>
 
@@ -142,14 +149,22 @@
 
   /* 3. Gold Text Shimmer */
   @keyframes shimmer {
-    0% { background-position: 200% center; }
-    100% { background-position: -200% center; }
+    0% {
+      background-position: 200% center;
+    }
+    100% {
+      background-position: -200% center;
+    }
   }
 
   /* 4. Scroll Line Animation */
   @keyframes scrollDown {
-    0% { transform: translateY(-100%); }
-    100% { transform: translateY(200%); }
+    0% {
+      transform: translateY(-100%);
+    }
+    100% {
+      transform: translateY(200%);
+    }
   }
 
   /* Classes */
@@ -170,9 +185,9 @@
   .animate-scroll-down {
     animation: scrollDown 2s cubic-bezier(0.77, 0, 0.175, 1) infinite;
   }
-  
+
   /* Support for BG clip text */
   .bg-300% {
-      background-size: 300% auto;
+    background-size: 300% auto;
   }
 </style>
