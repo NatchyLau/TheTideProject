@@ -1,92 +1,109 @@
-<section id="about" class="py-32 bg-white relative overflow-hidden">
+{% load static %}
+
+<section id="about" class="py-24 md:py-32 bg-premium-50 relative overflow-hidden">
   <div
-    class="absolute top-20 right-0 text-[10rem] font-serif text-gray-50 opacity-50 leading-none select-none -z-0"
+    class="absolute top-20 left-0 md:left-20 text-[8rem] md:text-[12rem] font-serif text-premium-200/20 opacity-30 leading-none select-none pointer-events-none -z-0 mix-blend-multiply"
+    style="writing-mode: vertical-rl; text-orientation: mixed;"
   >
-    Design
+    Philosophy
   </div>
 
   <div class="container mx-auto px-6 relative z-10">
-    <div class="flex flex-col md:flex-row items-center gap-16">
+    <div class="flex flex-col md:flex-row items-center gap-12 lg:gap-24">
+      
       <div class="w-full md:w-1/2 relative reveal">
-        <div
-          class="relative z-10 parallax-wrapper rounded-lg overflow-hidden shadow-2xl"
-        >
-          <img
-            src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?q=80&w=2053&auto=format&fit=crop"
-            alt="Interior"
-            class="w-full h-[550px] object-cover parallax-img hover:scale-105 transition duration-700"
-          />
+        <div class="relative z-10 overflow-hidden rounded-sm shadow-2xl w-[90%] md:w-[85%]">
+          <div class="parallax-wrapper h-[400px] md:h-[600px] w-full">
+             <img
+              src="{% static 'core/images/example-inside.jpg' %}"
+              alt="Interior Design"
+              class="w-full h-[120%] object-cover parallax-img transition-transform duration-1000 ease-out"
+            />
+          </div>
         </div>
-        <div
-          class="absolute -bottom-10 -right-10 z-20 w-60 h-72 parallax-wrapper border-8 border-white shadow-xl hidden md:block rounded-lg overflow-hidden"
-        >
-          <img
-            src="https://images.unsplash.com/photo-1598928506311-c55ded91a20c?q=80&w=2070&auto=format&fit=crop"
-            class="w-full h-full object-cover parallax-img"
-          />
+
+        <div class="absolute -bottom-8 -right-4 md:bottom-12 md:-right-8 z-20 w-48 md:w-64 aspect-[3/4] hidden sm:block">
+           <div class="relative w-full h-full p-2 bg-white/50 backdrop-blur-md border border-white/40 shadow-xl rounded-sm">
+              <div class="w-full h-full overflow-hidden relative">
+                  <img
+                    src="{% static 'core/images/example-outside.jpg' %}"
+                    class="w-full h-full object-cover hover:scale-110 transition-transform duration-700"
+                    alt="Exterior Detail"
+                  />
+              </div>
+           </div>
         </div>
+        
+        <div class="absolute -top-6 -left-6 w-32 h-32 border border-accent-gold/30 rounded-full -z-10 animate-spin-slow opacity-60"></div>
       </div>
 
-      <div class="w-full md:w-1/2 md:pl-8 reveal">
-        <h4 class="section-subtitle">Philosophy</h4>
-        <h2 class="section-title">
-          งานออกแบบที่ใส่ใจ<br />ในทุกรายละเอียดของชีวิต
-        </h2>
-        <div class="w-20 h-1.5 bg-sand-500 mb-8 rounded-full"></div>
-        <p class="text-slate-600 mb-8 leading-loose font-light text-lg">
-          The Tide Project ไม่ใช่แค่ที่อยู่อาศัย แต่คือพื้นที่แห่งความสุข
-          เราออกแบบโดยคำนึงถึงทิศทางลมและแสงแดด (Passive Design)
-          เพื่อให้บ้านเย็นสบายตลอดทั้งวัน
-          พร้อมวัสดุเกรดพรีเมียมที่เป็นมิตรต่อสิ่งแวดล้อม
-        </p>
+      <div class="w-full md:w-1/2 reveal">
+        <div class="space-y-6">
+          
+          <div class="relative pl-6 border-l-2 border-accent-gold">
+            <h4 class="text-xs font-bold tracking-[0.25em] text-accent-gold uppercase mb-2">
+              Our Philosophy
+            </h4>
+            <h2 class="font-serif text-4xl md:text-5xl lg:text-6xl text-premium-900 leading-[1.15]">
+              ใส่ใจ... <br/>
+              <span class="italic font-light text-premium-500">ในทุกรายละเอียด</span>
+            </h2>
+          </div>
 
-        <div class="grid grid-cols-2 gap-8">
-          <div class="group cursor-pointer">
-            <div
-              class="w-12 h-12 bg-ocean-50 text-ocean-800 rounded-xl flex items-center justify-center mb-4 group-hover:bg-ocean-900 group-hover:text-white transition"
-            >
-              <svg
-                class="w-6 h-6"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-                ></path>
-              </svg>
+          <p class="text-premium-500 font-light text-base md:text-lg leading-loose pt-4 border-t border-premium-200/50 mt-8">
+            The Tide Project ไม่ใช่แค่ที่อยู่อาศัย แต่คือพื้นที่แห่งความสุข 
+            เราผสานหลักการ <span class="text-premium-800 font-medium">Passive Design</span> 
+            เข้ากับทิศทางลมและแสงแดด เพื่อให้บ้านเย็นสบายตลอดทั้งวัน 
+            คัดสรรวัสดุเกรดพรีเมียมที่เป็นมิตรต่อสิ่งแวดล้อม เพื่อคุณภาพชีวิตที่ยั่งยืน
+          </p>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-8 pt-8 mt-4">
+            
+            <div class="group flex items-start gap-4 cursor-default">
+              <div class="w-12 h-12 shrink-0 rounded-full border border-premium-200 group-hover:border-accent-gold flex items-center justify-center transition-colors duration-300">
+                <svg class="w-5 h-5 text-premium-400 group-hover:text-accent-gold transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                </svg>
+              </div>
+              <div>
+                <h5 class="font-serif text-lg text-premium-900 mb-1 group-hover:text-accent-gold transition-colors">Eco-Friendly</h5>
+                <p class="text-xs text-premium-400 font-light tracking-wide">ใช้วัสดุประหยัดพลังงาน เป็นมิตรต่อโลก</p>
+              </div>
             </div>
-            <h5 class="font-bold text-lg text-slate-800 mb-1">Eco-Friendly</h5>
-            <p class="text-sm text-slate-500">วัสดุประหยัดพลังงาน</p>
-          </div>
-          <div class="group cursor-pointer">
-            <div
-              class="w-12 h-12 bg-ocean-50 text-ocean-800 rounded-xl flex items-center justify-center mb-4 group-hover:bg-ocean-900 group-hover:text-white transition"
-            >
-              <svg
-                class="w-6 h-6"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"
-                ></path>
-              </svg>
+
+            <div class="group flex items-start gap-4 cursor-default">
+              <div class="w-12 h-12 shrink-0 rounded-full border border-premium-200 group-hover:border-accent-gold flex items-center justify-center transition-colors duration-300">
+                 <svg class="w-5 h-5 text-premium-400 group-hover:text-accent-gold transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
+                  </svg>
+              </div>
+              <div>
+                <h5 class="font-serif text-lg text-premium-900 mb-1 group-hover:text-accent-gold transition-colors">Private & Safe</h5>
+                <p class="text-xs text-premium-400 font-light tracking-wide">ระบบความปลอดภัยอัจฉริยะ 24 ชม.</p>
+              </div>
             </div>
-            <h5 class="font-bold text-lg text-slate-800 mb-1">
-              Private & Safe
-            </h5>
-            <p class="text-sm text-slate-500">ระบบความปลอดภัย 24 ชม.</p>
+
           </div>
+
+          <div class="pt-6">
+            <a href="#projects" class="group inline-flex items-center gap-3 text-sm tracking-widest uppercase font-medium text-premium-900 hover:text-accent-gold transition-colors">
+                <span class="border-b border-premium-900 group-hover:border-accent-gold pb-1 transition-colors">Read our Story</span>
+                <svg class="w-4 h-4 transform group-hover:translate-x-2 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+            </a>
+          </div>
+
         </div>
       </div>
     </div>
   </div>
 </section>
+
+<style>
+    .animate-spin-slow {
+        animation: spin 12s linear infinite;
+    }
+    @keyframes spin {
+        from { transform: rotate(0deg); }
+        to { transform: rotate(360deg); }
+    }
+</style>
