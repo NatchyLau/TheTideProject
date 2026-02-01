@@ -1,47 +1,178 @@
-<section id="home" class="relative h-screen w-full flex items-center justify-center overflow-hidden">
+{% load static %}
+
+<section
+  id="home"
+  class="relative h-[100svh] w-full flex items-center justify-center overflow-hidden bg-slate-900"
+>
   <div class="absolute inset-0 z-0">
-    <div class="w-full h-full animate-ken-burns">
+    <div class="w-full h-full animate-cinematic-enter">
       <img
-        src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?q=80&w=2070&auto=format&fit=crop"
-        class="w-full h-full object-cover"
-        alt="Luxury Home"
+        src="{% static '/core/images/house-section.png' %}"
+        class="w-full h-full object-cover opacity-90"
+        alt="The Tide Luxury Home"
       />
     </div>
-    <div class="absolute inset-0 bg-gradient-to-b from-slate-900/40 via-transparent to-slate-900/90"></div>
-    <div class="absolute inset-0 bg-ocean-950/20 mix-blend-multiply"></div>
+
+    <div
+      class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-900/50 to-transparent opacity-90"
+    ></div>
+    <div class="absolute inset-0 bg-black/10 mix-blend-overlay"></div>
   </div>
 
-  <div class="absolute top-1/4 left-1/4 w-96 h-96 rounded-full pointer-events-none bg-glow-gold"></div>
-  <div class="absolute bottom-1/4 right-1/4 w-[30rem] h-[30rem] rounded-full pointer-events-none bg-glow-blue"></div>
-
-  <div class="container mx-auto px-6 relative z-10 text-center text-white mt-10">
-    <div class="reveal">
-      <span class="inline-block py-2 px-6 border border-white/30 backdrop-blur-md rounded-full text-xs font-light tracking-widest mb-8 text-sand-100 uppercase">
-        Residential • Beachfront
-      </span>
-      <h1 class="font-serif text-5xl md:text-7xl font-bold mb-6 leading-tight drop-shadow-lg">
-        Discover Your<br />
-        <span class="text-transparent bg-clip-text bg-gradient-to-r from-sand-100 to-sand-500 italic">True Sanctuary</span>
+  <div
+    class="container mx-auto px-4 sm:px-6 relative z-10 text-center text-white h-full flex flex-col justify-center items-center"
+  >
+    <div class="reveal max-w-5xl mx-auto flex flex-col items-center mt-[-10svh] md:mt-0">
+      
+      <h1 class="fade-in-up mb-6 relative" style="animation-delay: 200ms">
+        <span
+          class="block font-serif text-5xl sm:text-7xl md:text-8xl lg:text-9xl text-white leading-[0.9] italic tracking-tighter"
+        >
+          The
+          <span
+            class="text-transparent bg-clip-text bg-gradient-to-r from-accent-gold via-[#E5D5B8] to-accent-gold bg-300% animate-shimmer tracking-wider"
+          >
+            Tide Grand
+          </span>
+        </span>
       </h1>
-      <p class="text-lg md:text-xl text-gray-200 mb-10 max-w-2xl mx-auto font-light leading-relaxed opacity-90">
-        บ้านเดี่ยวหรูติดทะเล ที่ผสมผสานความทันสมัยเข้ากับธรรมชาติอย่างลงตัว พร้อมเอกสิทธิ์ความเป็นส่วนตัวเพียง 50 ครอบครัว
+
+      <p
+        class="fade-in-up text-sm sm:text-base md:text-lg text-slate-300 font-light leading-relaxed max-w-xs sm:max-w-2xl mx-auto mb-8 sm:mb-10 tracking-wide"
+        style="animation-delay: 300ms"
+      >
+        โครงการที่มุ่งมั่นในการสร้าง “บ้านที่น่าอยู่” <br class="md:hidden"> เพื่อ “ชาวนครศรีธรรมราช” อย่างแท้จริง
       </p>
 
-      <div class="flex flex-col md:flex-row gap-4 justify-center items-center">
-        <a href="#projects" class="btn btn-primary w-full md:w-auto px-8 py-4 text-base">ดูโครงการ</a>
-        <a href="#contact-form" class="btn btn-glass w-full md:w-auto px-8 py-4 text-base">สอบถามโปรโมชั่น</a>
-      </div>
+      <div
+        class="fade-in-up flex flex-col sm:flex-row gap-4 w-full max-w-[280px] sm:max-w-none sm:w-auto"
+        style="animation-delay: 400ms"
+      >
+        <a
+          href="#projects"
+          class="group relative px-8 py-4 bg-white text-premium-900 overflow-hidden rounded-full transition-all duration-500 hover:shadow-[0_0_30px_rgba(255,255,255,0.3)] w-full sm:w-auto flex justify-center"
+        >
+          <div
+            class="absolute inset-0 w-full h-full bg-slate-100 scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"
+          ></div>
+          <span
+            class="relative z-10 text-xs sm:text-sm font-medium tracking-widest uppercase group-hover:text-premium-900"
+            >ดูโครงการ</span
+          >
+        </a>
 
-      <div class="mt-12 inline-flex items-center gap-4 bg-black/40 backdrop-blur-md rounded-full pr-6 p-2 border border-white/10">
-        <span class="bg-sand-500 text-white text-xs font-bold px-3 py-1 rounded-full">SPECIAL</span>
-        <span class="text-sm text-gray-200">ลงทะเบียนวันนี้ รับส่วนลดสูงสุด 500,000 บาท*</span>
+        <a
+          href="#contact-form"
+          class="group relative px-8 py-4 bg-white/5 backdrop-blur-sm border border-white/20 text-white rounded-full transition-all duration-300 hover:border-white/60 hover:bg-white/10 w-full sm:w-auto flex justify-center"
+        >
+          <span
+            class="relative z-10 text-xs sm:text-sm font-medium tracking-widest uppercase"
+            >สอบถามโปรโมชั่น</span
+          >
+        </a>
       </div>
+    </div>
+
+    {% comment %} <div
+      class="absolute bottom-8 sm:bottom-12 md:bottom-20 w-full px-4 flex justify-center fade-in-up z-20"
+      style="animation-delay: 600ms"
+    >
+      <div
+        class="group flex flex-row items-center gap-3 sm:gap-4 p-1.5 pr-4 sm:pr-6 bg-black/20 backdrop-blur-xl border border-white/10 rounded-full shadow-2xl hover:border-white/20 transition-all duration-300 cursor-default"
+      >
+        <div
+          class="bg-accent-gold text-premium-900 text-[9px] sm:text-[10px] font-bold px-3 py-1.5 rounded-full uppercase tracking-wider shadow-lg whitespace-nowrap"
+        >
+          Exclusive
+        </div>
+        <p class="text-[10px] sm:text-xs md:text-sm text-white/90 font-light truncate">
+          ลงทะเบียนรับส่วนลดสูงสุด
+          <span
+            class="font-medium text-white group-hover:text-accent-gold transition-colors"
+            >500,000 บาท*</span
+          >
+        </p>
+      </div> {% endcomment %}
     </div>
   </div>
 
-  <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce text-white/50">
-    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
-    </svg>
-  </div>
+  <a
+    href="#about"
+    class="hidden sm:flex absolute bottom-6 left-1/2 transform -translate-x-1/2 text-white/30 hover:text-white transition-colors duration-500 flex-col items-center gap-2 group z-20"
+  >
+    <div
+      class="w-[1px] h-12 bg-gradient-to-b from-white/0 via-white/50 to-white/0 relative overflow-hidden"
+    >
+      <div
+        class="absolute top-0 left-0 w-full h-1/2 bg-white animate-scroll-down"
+      ></div>
+    </div>
+  </a>
 </section>
+
+<style>
+  /* 1. Cinematic Zoom Out Animation */
+  @keyframes cinematicEnter {
+    0% {
+      opacity: 0;
+      transform: scale(1.2); /* Start zoomed in */
+    }
+    10% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 1;
+      transform: scale(1); /* End at natural size */
+    }
+  }
+
+  /* 2. Fade Up Text Animation */
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(40px);
+      filter: blur(8px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+      filter: blur(0);
+    }
+  }
+
+  /* 3. Gold Text Shimmer */
+  @keyframes shimmer {
+    0% { background-position: 200% center; }
+    100% { background-position: -200% center; }
+  }
+
+  /* 4. Scroll Line Animation */
+  @keyframes scrollDown {
+    0% { transform: translateY(-100%); }
+    100% { transform: translateY(200%); }
+  }
+
+  /* Classes */
+  .animate-cinematic-enter {
+    animation: cinematicEnter 3s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  }
+
+  .fade-in-up {
+    opacity: 0;
+    animation: fadeInUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+
+  .animate-shimmer {
+    background-size: 200% auto;
+    animation: shimmer 5s linear infinite;
+  }
+
+  .animate-scroll-down {
+    animation: scrollDown 2s cubic-bezier(0.77, 0, 0.175, 1) infinite;
+  }
+  
+  /* Support for BG clip text */
+  .bg-300% {
+      background-size: 300% auto;
+  }
+</style>
