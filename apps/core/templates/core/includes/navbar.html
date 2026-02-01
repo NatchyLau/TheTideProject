@@ -12,7 +12,12 @@
 
   <div class="container mx-auto px-6 py-5 relative">
     <div class="flex justify-between items-center">
-      
+      <img
+        src="{% static 'core/images/logo-the-tide-grande.png' %}"
+        alt="Logo"
+        class="w-20"
+      />
+      {% comment %}
       <a href="#" class="relative z-20 flex items-center gap-3 group/logo">
         <span
           class="font-serif text-3xl transition-colors duration-300 text-white"
@@ -26,6 +31,7 @@
           The Tide
         </span>
       </a>
+      {% endcomment %}
 
       <div class="hidden md:flex items-center space-x-10">
         <div class="flex space-x-8">
@@ -78,10 +84,7 @@
         </a>
       </div>
 
-      <button
-        class="md:hidden relative z-20 text-white"
-        id="mobile-menu-btn"
-      >
+      <button class="md:hidden relative z-20 text-white" id="mobile-menu-btn">
         <svg
           class="w-6 h-6"
           fill="none"
@@ -96,7 +99,6 @@
           ></path>
         </svg>
       </button>
-
     </div>
   </div>
 </nav>
