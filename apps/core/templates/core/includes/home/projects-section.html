@@ -1,100 +1,82 @@
-<section id="projects" class="py-32 bg-ocean-950 relative">
-  <div
-    class="absolute inset-0 opacity-10 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')]"
-  ></div>
+{% load static %}
+
+<section id="projects" class="py-24 md:py-32 bg-slate-900 relative overflow-hidden min-h-screen">
+  
+  <div class="absolute inset-0 pointer-events-none overflow-hidden">
+    <svg class="absolute w-full h-full" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 800" preserveAspectRatio="none">
+      <defs>
+        <linearGradient id="fade-gold" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" style="stop-color:#D4AF37;stop-opacity:0.7" />
+          <stop offset="50%" style="stop-color:#D4AF37;stop-opacity:1" />
+          <stop offset="100%" style="stop-color:#D4AF37;stop-opacity:0.7" />
+        </linearGradient>
+         <linearGradient id="fade-white" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" style="stop-color:#ffffff;stop-opacity:0.7" />
+          <stop offset="50%" style="stop-color:#ffffff;stop-opacity:1" />
+          <stop offset="100%" style="stop-color:#ffffff;stop-opacity:0.7" />
+        </linearGradient>
+      </defs>
+
+      <path class="opacity-[0.08]" fill="none" stroke="url(#fade-gold)" stroke-width="1.5"
+            d="M-100,550 C300,350 600,750 1000,500 S1500,300 1900,550" />
+      
+      <path class="opacity-[0.08]" fill="none" stroke="url(#fade-white)" stroke-width="1"
+            d="M-100,650 C400,550 800,850 1200,600 S1600,450 2000,650" />
+
+      <path class="opacity-[0.07]" fill="none" stroke="#D4AF37" stroke-width="0.8"
+            d="M-100,300 C350,150 750,450 1150,250 S1550,100 1950,300" />
+            
+       <path class="opacity-[0.08]" fill="none" stroke="#ffffff" stroke-width="0.5"
+            d="M0,750 Q360,650 720,750 T1440,750" />
+    </svg>
+  </div>
+  
+  <div class="absolute top-0 left-0 w-[600px] h-[600px] bg-accent-gold/5 rounded-full blur-[150px] pointer-events-none mix-blend-screen"></div>
+  <div class="absolute bottom-0 right-0 w-[600px] h-[600px] bg-slate-700/10 rounded-full blur-[150px] pointer-events-none mix-blend-screen"></div>
+  <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-accent-gold/3 rounded-full blur-[200px] pointer-events-none"></div>
+  
+  <div class="absolute top-12 right-12 w-32 h-32 border border-accent-gold/10 rotate-45 pointer-events-none hidden lg:block"></div>
+  <div class="absolute bottom-12 left-12 w-24 h-24 border border-accent-gold/10 rotate-12 pointer-events-none hidden lg:block"></div>
+  
   <div class="container mx-auto px-6 relative z-10">
-    <div class="text-center mb-20 reveal">
-      <span class="text-sand-500 font-bold tracking-widest uppercase text-xs"
-        >Our Collection</span
-      >
-      <h2 class="font-serif text-4xl md:text-5xl text-white mt-4">
-        เลือกโครงการที่ใช่
+    
+    <div class="text-center mb-16 md:mb-24 reveal">
+      <div class="inline-flex items-center gap-3 mb-6 opacity-80">
+        <span class="w-12 h-[1px] bg-gradient-to-r from-transparent via-accent-gold to-transparent"></span>
+        <span class="text-accent-gold font-medium tracking-[0.3em] uppercase text-[10px] md:text-xs">
+          Exclusive Collection
+        </span>
+        <span class="w-12 h-[1px] bg-gradient-to-r from-transparent via-accent-gold to-transparent"></span>
+      </div>
+      
+      <h2 class="font-serif text-4xl md:text-5xl lg:text-6xl text-white leading-tight">
+        Curated <span class="italic font-light text-white/40">Living</span>
       </h2>
-      <p class="text-ocean-200 mt-4 font-light">
-        แล้วไปดูแบบบ้านของโครงการนั้นได้ทันที
+      
+      <p class="text-slate-400 mt-6 font-light max-w-xl mx-auto text-sm md:text-xl leading-relaxed">
+        คัดสรรโครงการคุณภาพบนทำเลศักยภาพ  <br class="hidden md:block">
+        ที่ตอบโจทย์ทุกไลฟ์สไตล์ พร้อมเอกสิทธิ์เฉพาะลูกบ้าน The Tide
       </p>
     </div>
 
-    <div class="grid md:grid-cols-2 lg:grid-cols-2 gap-12 max-w-5xl mx-auto">
-      <a
-        href="{% url 'core:project_plans' slug='the-tide-grand-nawong' %}"
-        class="group block reveal hover:transform hover:-translate-y-2 transition-all duration-500"
-      >
-        <div
-          class="relative h-[400px] overflow-hidden mb-6 rounded-lg shadow-2xl border border-white/10"
-        >
-          <div
-            class="absolute top-6 left-6 z-20 bg-white/90 backdrop-blur text-ocean-900 px-4 py-2 text-xs font-bold uppercase tracking-widest rounded-sm"
-          >
-            Grand Series
-          </div>
-          <img
-            src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=2070&auto=format&fit=crop"
-            class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-            alt="Grand Nawong"
-          />
-        </div>
-        <div
-          class="flex justify-between items-start border-b border-white/10 pb-6 group-hover:border-sand-500 transition-colors"
-        >
-          <div>
-            <h3
-              class="font-serif text-2xl md:text-3xl text-white mb-2 group-hover:text-sand-500 transition"
-            >
-              THE TIDE GRAND NAWONG
-            </h3>
-            <p class="text-slate-400 font-light text-sm">
-              บ้าน 3 แบบ 3 สไตล์ | 141-202 ตร.ม.
-            </p>
-          </div>
-          <div class="text-right pl-4">
-            <p class="text-xs text-slate-400 uppercase tracking-widest mb-1">
-              ราคาเริ่มต้น
-            </p>
-            <p class="font-serif text-2xl text-sand-500">2.59 ลบ.</p>
-          </div>
-        </div>
-      </a>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10">
 
-      <a
-        href="{% url 'core:project_plans' slug='the-tide-privilege-therdphra-kiat' %}"
-        class="group block reveal hover:transform hover:-translate-y-2 transition-all duration-500 delay-200"
-      >
-        <div
-          class="relative h-[400px] overflow-hidden mb-6 rounded-lg shadow-2xl border border-white/10"
-        >
-          <div
-            class="absolute top-6 left-6 z-20 bg-sand-500 text-white px-4 py-2 text-xs font-bold uppercase tracking-widest rounded-sm"
-          >
-            Privilege Series
-          </div>
-          <img
-            src="https://images.unsplash.com/photo-1568605114967-8130f3a36994?q=80&w=2070&auto=format&fit=crop"
-            class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-            alt="Privilege"
-          />
-        </div>
-        <div
-          class="flex justify-between items-start border-b border-white/10 pb-6 group-hover:border-sand-500 transition-colors"
-        >
-          <div>
-            <h3
-              class="font-serif text-2xl md:text-3xl text-white mb-2 group-hover:text-sand-500 transition"
-            >
-              THE TIDE PRIVILEGE
-            </h3>
-            <p class="text-slate-400 font-light text-sm">
-              เทิดพระเกียรติ | 22 ครอบครัว
-            </p>
-          </div>
-          <div class="text-right pl-4">
-            <p class="text-xs text-slate-400 uppercase tracking-widest mb-1">
-              ราคาเริ่มต้น
-            </p>
-            <p class="font-serif text-2xl text-sand-500">4.7 ลบ.</p>
-          </div>
-        </div>
-      </a>
+      {% url 'core:project_plans' slug='the-tide-grand-phutthaphum' as url_grand_phutthaphum %}
+      {% include "core/includes/components/project-card.html" with url=url_grand_phutthaphum image="/static/core/images/svg/grand-phutthaphum.svg" title="The Tide Grand Phutthaphum" description="โครงการตั้งอยู่ทำเลดีการเดินทางสะดวกใกล้ถนนพุทธภูมิ" price="เริ่มต้น 2.7 M" %}
+
+      {% url 'core:project_plans' slug='the-tide-grand-nawong' as url_grand_nawong %}
+      {% include "core/includes/components/project-card.html" with url=url_grand_nawong image="/static/core/images/grand-nawong.png" title="The Tide GRAND Nawong,<br/> Nakhon Si Thammarat" description="เพื่อการใช้ชีวิตที่ลงตัวสำหรับคุณและครอบครัวในทุกช่วงเวลา" price="เริ่มต้น 2.89 M" delay="delay-100" %}
+
+      {% include "core/includes/components/project-card.html" with url="#" image="/static/core/images/grand-monk.png" title="The Tide Grand Thoet Phra Kiat" description="เพราะความสุขของการอยู่อาศัย เริ่มต้นจากการได้ใช้ชีวิตอย่าง “อิสระ”" price="---" delay="delay-200" coming_soon=True %}
+
     </div>
+    
+    <div class="mt-20 text-center reveal">
+        <a href="#contact-form" class="inline-flex items-center gap-4 text-xs tracking-widest uppercase text-slate-500 hover:text-white transition-colors duration-500 group">
+            <span>นัดหมายเพื่อเยี่ยมชมโครงการ</span>
+            <div class="w-12 h-[1px] bg-slate-700 group-hover:w-20 group-hover:bg-accent-gold transition-all duration-500"></div>
+        </a>
+    </div>
+
   </div>
 </section>

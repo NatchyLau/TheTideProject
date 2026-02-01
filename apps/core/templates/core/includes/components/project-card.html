@@ -1,0 +1,36 @@
+<a href="{{ url }}" class="group relative block reveal {{ delay|default:'' }}">
+  <div
+    class="relative aspect-[3/4] overflow-hidden rounded-sm bg-slate-900 border border-white/5 group-hover:border-accent-gold/30 transition-colors duration-500"
+  >
+    <img
+      src="{{ image }}"
+      class="w-full h-full object-cover transition-transform duration-1000 ease-[cubic-bezier(0.25,1,0.5,1)] group-hover:scale-110 opacity-80 group-hover:opacity-100 grayscale-[20%] group-hover:grayscale-0"
+      alt="{{ title }}"
+    />
+    <div
+      class="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent opacity-80 group-hover:opacity-40 transition-opacity duration-500"
+    ></div>
+
+    <div
+      class="absolute bottom-6 left-6 right-6 border-b border-white/20 pb-4 group-hover:border-accent-gold/50 transition-colors duration-500"
+    >
+      <h3
+        class="font-serif text-2xl text-white mb-1 group-hover:text-accent-gold transition-colors duration-300"
+      >
+        {{ title|safe }}
+      </h3>
+      <div class="flex justify-between items-end mt-2">
+        <p
+          class="text-slate-400 text-xs font-light {% if not coming_soon %}group-hover:text-white{% endif %} transition-colors duration-500"
+        >
+          {{ description }}
+        </p>
+        <p
+          class="{% if coming_soon %}font-serif text-lg text-white tracking-widest{% else %}text-lg text-white group-hover:text-accent-gold transition-colors duration-500{% endif %}"
+        >
+          {{ price }}
+        </p>
+      </div>
+    </div>
+  </div>
+</a>
