@@ -33,22 +33,62 @@
       class="grid grid-cols-1 lg:grid-cols-12 gap-4 md:gap-8 h-auto lg:h-[600px]"
     >
       <div
-        class="lg:col-span-8 group relative rounded-2xl overflow-hidden cursor-default reveal shadow-sm hover:shadow-2xl transition-all duration-700 min-h-[400px]"
+        class="lg:col-span-8 group relative rounded-2xl overflow-hidden cursor-default reveal shadow-sm hover:shadow-2xl transition-all duration-700 min-h-[400px] bg-gray-100"
+        id="slider-container"
       >
         <img
+          id="active-slide"
           src="{% static 'core/images/fitness.png' %}"
           alt="Sky Fitness"
-          class="w-full h-full object-cover transition-transform duration-[1.5s] ease-[cubic-bezier(0.25,1,0.5,1)] group-hover:scale-105"
+          class="w-full h-full object-cover transition-all duration-700 ease-in-out opacity-100 scale-100"
         />
 
         <div
-          class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-60"
+          class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-60 pointer-events-none"
         ></div>
 
         <div
-          class="absolute top-6 right-6 bg-white/10 backdrop-blur-md border border-white/20 text-white px-4 py-2 rounded-full text-xs tracking-widest uppercase font-medium"
+          class="absolute bottom-6 right-6 flex items-center gap-2 z-20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 translate-y-2 group-hover:translate-y-0"
         >
-          Panoramic View
+          <button
+            onclick="changeSlide(-1)"
+            class="w-10 h-10 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white flex items-center justify-center hover:bg-white hover:text-premium-900 transition-all duration-300"
+          >
+            <svg
+              class="w-4 h-4"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="1.5"
+                d="M15 19l-7-7 7-7"
+              ></path>
+            </svg>
+          </button>
+
+          <div class="flex gap-1.5 px-2" id="slider-dots"></div>
+
+          <button
+            onclick="changeSlide(1)"
+            class="w-10 h-10 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white flex items-center justify-center hover:bg-white hover:text-premium-900 transition-all duration-300"
+          >
+            <svg
+              class="w-4 h-4"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="1.5"
+                d="M9 5l7 7-7 7"
+              ></path>
+            </svg>
+          </button>
         </div>
       </div>
 
@@ -69,7 +109,6 @@
               stroke-width="2"
               stroke-linecap="round"
               stroke-linejoin="round"
-              class="lucide lucide-dumbbell-icon lucide-dumbbell"
             >
               <path
                 d="M17.596 12.768a2 2 0 1 0 2.829-2.829l-1.768-1.767a2 2 0 0 0 2.828-2.829l-2.828-2.828a2 2 0 0 0-2.829 2.828l-1.767-1.768a2 2 0 1 0-2.829 2.829z"
@@ -110,7 +149,7 @@
             </li>
           </ul>
         </div>
-
+{% comment %} 
         <div
           class="bg-premium-900 rounded-2xl p-6 flex items-center justify-between text-white reveal delay-200 cursor-default group h-[120px]"
         >
@@ -137,9 +176,107 @@
                 d="M12 6v6m0 0v6m0-6h6m-6 0H6"
               ></path>
             </svg>
-          </div>
+          </div> {% endcomment %}
         </div>
       </div>
     </div>
   </div>
 </section>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    // 1. Define Images Array (From Django Static)
+    // IMPORTANT: Make sure these images exist in your static folder!
+    const slideImages = [
+      "{% static 'core/images/fitness.png' %}",
+      "{% static 'core/images/fitness-2.png' %}", // Add real image paths here
+      "{% static 'core/images/fitness-3.png' %}", // Add real image paths here
+    ];
+
+    let currentIndex = 0;
+    const slideIntervalTime = 5000; // 5 Seconds
+    let slideInterval;
+
+    const imgElement = document.getElementById("active-slide");
+    const dotsContainer = document.getElementById("slider-dots");
+    const sliderContainer = document.getElementById("slider-container");
+
+    // 2. Initialize Dots
+    if (dotsContainer) {
+      slideImages.forEach((_, idx) => {
+        const dot = document.createElement("button");
+        dot.className = `w-2 h-2 rounded-full transition-all duration-300 ${idx === 0 ? "bg-accent-gold w-6" : "bg-white/50 hover:bg-white"}`;
+        dot.onclick = () => manualSelect(idx);
+        dotsContainer.appendChild(dot);
+      });
+    }
+
+    // 3. Core Slide Function
+    window.changeSlide = (direction) => {
+      let nextIndex = currentIndex + direction;
+      if (nextIndex >= slideImages.length) nextIndex = 0;
+      if (nextIndex < 0) nextIndex = slideImages.length - 1;
+      updateSlide(nextIndex);
+    };
+
+    window.manualSelect = (index) => {
+      updateSlide(index);
+    };
+
+    function updateSlide(index) {
+      currentIndex = index;
+
+      // Fade Out Effect
+      imgElement.style.opacity = "0";
+      // Optional: Add slight zoom out reset for effect
+      imgElement.style.transform = "scale(1.05)";
+
+      setTimeout(() => {
+        // Change Source
+        imgElement.src = slideImages[currentIndex];
+
+        // Fade In Effect
+        imgElement.onload = () => {
+          imgElement.style.opacity = "1";
+          imgElement.style.transform = "scale(1)";
+        };
+      }, 300); // Wait for fade out
+
+      // Update Dots
+      const dots = dotsContainer.children;
+      for (let i = 0; i < dots.length; i++) {
+        if (i === index) {
+          dots[i].className =
+            "w-6 h-2 rounded-full bg-accent-gold transition-all duration-300";
+        } else {
+          dots[i].className =
+            "w-2 h-2 rounded-full bg-white/50 hover:bg-white transition-all duration-300";
+        }
+      }
+
+      // Reset Timer on manual interaction
+      resetTimer();
+    }
+
+    // 4. Auto Play Logic
+    function startTimer() {
+      slideInterval = setInterval(() => {
+        changeSlide(1);
+      }, slideIntervalTime);
+    }
+
+    function resetTimer() {
+      clearInterval(slideInterval);
+      startTimer();
+    }
+
+    // Stop on Hover (User Friendly)
+    sliderContainer.addEventListener("mouseenter", () =>
+      clearInterval(slideInterval),
+    );
+    sliderContainer.addEventListener("mouseleave", startTimer);
+
+    // Start
+    startTimer();
+  });
+</script>
