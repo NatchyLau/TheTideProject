@@ -1,0 +1,38 @@
+{% load static %}
+<!doctype html>
+<html lang="th" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+      {% block title %}The Tide Project - Private Sanctuary{% endblock %}
+    </title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/htmx.org@1.9.10"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&family=Prompt:wght@200;300;400;500&display=swap" rel="stylesheet" />
+
+    <script src="{% static 'core/js/tailwind-config.js' %}"></script>
+    
+    <link rel="stylesheet" href="{% static 'core/css/global.css' %}" />
+
+    {% block extra_head %}{% endblock %}
+  </head>
+  <body class="bg-premium-50 text-premium-800 font-sans antialiased selection:bg-accent-gold selection:text-white">
+    
+    {% include "core/includes/navbar.html" %}
+
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+
+    {% include "core/includes/footer.html" %}
+
+    <script src="{% static 'core/js/main.js' %}"></script>
+    
+    {% block extra_scripts %}{% endblock %}
+  </body>
+</html>

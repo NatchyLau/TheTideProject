@@ -1,0 +1,102 @@
+{% load static %}
+
+<nav
+  class="fixed w-full top-0 z-50 transition-all duration-500 ease-out border-b border-transparent group"
+  id="navbar"
+  data-scrolled="false"
+>
+  <div
+    class="absolute inset-0 bg-transparent transition-all duration-500 backdrop-blur-[0px]"
+    id="nav-bg"
+  ></div>
+
+  <div class="container mx-auto px-6 py-5 relative">
+    <div class="flex justify-between items-center">
+      
+      <a href="#" class="relative z-20 flex items-center gap-3 group/logo">
+        <span
+          class="font-serif text-3xl transition-colors duration-300 text-white"
+          id="logo-icon"
+          >✦</span
+        >
+        <span
+          class="font-serif text-xl font-medium tracking-[0.2em] uppercase transition-colors duration-300 text-white"
+          id="logo-text"
+        >
+          The Tide
+        </span>
+      </a>
+
+      <div class="hidden md:flex items-center space-x-10">
+        <div class="flex space-x-8">
+          <a href="#home" class="nav-item group/link">
+            <span
+              class="nav-text text-sm font-light tracking-widest text-white/90 transition-colors duration-300 relative py-2"
+            >
+              หน้าแรก
+              <span
+                class="absolute bottom-0 left-0 w-0 h-[1px] bg-accent-gold transition-all duration-300 group-hover/link:w-full"
+              ></span>
+            </span>
+          </a>
+          <a href="#about" class="nav-item group/link">
+            <span
+              class="nav-text text-sm font-light tracking-widest text-white/90 transition-colors duration-300 relative py-2"
+            >
+              เกี่ยวกับเรา
+              <span
+                class="absolute bottom-0 left-0 w-0 h-[1px] bg-accent-gold transition-all duration-300 group-hover/link:w-full"
+              ></span>
+            </span>
+          </a>
+          <a href="#projects" class="nav-item group/link">
+            <span
+              class="nav-text text-sm font-light tracking-widest text-white/90 transition-colors duration-300 relative py-2"
+            >
+              โครงการ
+              <span
+                class="absolute bottom-0 left-0 w-0 h-[1px] bg-accent-gold transition-all duration-300 group-hover/link:w-full"
+              ></span>
+            </span>
+          </a>
+        </div>
+
+        <a
+          href="#contact-form"
+          class="relative px-6 py-2.5 overflow-hidden transition-all duration-300 border border-white/30 hover:border-accent-gold group/btn"
+          id="nav-cta"
+        >
+          <span
+            class="absolute inset-0 w-full h-full bg-white/10 scale-x-0 group-hover/btn:scale-x-100 group-hover/btn:bg-accent-gold origin-left transition-transform duration-500 ease-out"
+          ></span>
+          <span
+            class="relative text-xs font-medium tracking-widest uppercase text-white transition-colors duration-300"
+            id="nav-cta-text"
+          >
+            นัดหมายเข้าชม
+          </span>
+        </a>
+      </div>
+
+      <button
+        class="md:hidden relative z-20 text-white"
+        id="mobile-menu-btn"
+      >
+        <svg
+          class="w-6 h-6"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="1"
+            d="M4 6h16M4 12h16M4 18h16"
+          ></path>
+        </svg>
+      </button>
+
+    </div>
+  </div>
+</nav>
