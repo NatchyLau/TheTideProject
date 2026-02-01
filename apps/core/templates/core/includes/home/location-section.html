@@ -1,31 +1,359 @@
-<section id="location" class="py-24 bg-dark-900 text-white relative overflow-hidden">
-  <div class="absolute top-0 right-0 w-[500px] h-[500px] bg-ocean-800 rounded-full blur-[120px] opacity-20"></div>
-  <div class="absolute bottom-0 left-0 w-[500px] h-[500px] bg-sand-600 rounded-full blur-[120px] opacity-10"></div>
+{% load static %}
 
-  <div class="container mx-auto px-6 lg:px-12 relative z-10">
-    <div class="flex flex-col lg:flex-row gap-16 items-center">
-      <div class="lg:w-1/3 reveal">
-        <h2 class="font-serif text-4xl mb-6">Start Your New Life Here</h2>
-        <p class="text-slate-400 mb-10 font-light leading-relaxed">
-          ดูตำแหน่งโครงการแบบชัดเจน พร้อมเส้นทางการเดินทางที่สะดวก<br />คลิกที่แผนที่เพื่อเปิดดูรายละเอียด
-        </p>
-        <ul class="space-y-8">
-            <li class="flex items-center gap-6 group cursor-pointer">
-                <div class="w-12 h-12 rounded-full bg-white/5 border border-white/20 flex items-center justify-center group-hover:border-sand-500 group-hover:text-sand-500 transition">
-                   <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
-                </div>
-                <div>
-                   <h5 class="font-bold text-white text-lg">Location</h5>
-                   <p class="text-sm text-slate-400">นาวง, นครศรีธรรมราช</p>
-                </div>
-             </li>
-        </ul>
+<section
+  id="location"
+  class="py-24 md:py-32 bg-white relative border-b border-slate-100 overflow-hidden min-h-screen"
+>
+  <div class="container mx-auto px-6 relative z-10">
+    <div class="flex flex-col lg:flex-row gap-12 lg:gap-20">
+      <div class="lg:w-1/3 flex flex-col justify-center reveal">
+        <div class="mb-10">
+          <span
+            class="text-accent-gold font-bold tracking-[0.2em] uppercase text-xs mb-3 block"
+          >
+            Prime Locations
+          </span>
+          <h2
+            class="font-serif text-3xl md:text-4xl text-premium-900 leading-tight mb-4"
+          >
+            Connect to <br />
+            <span class="italic text-slate-400">Every Destination</span>
+          </h2>
+          <p class="text-slate-500 font-light text-sm leading-relaxed">
+            เลือกดูพิกัดโครงการที่คุณสนใจ<br />บนทำเลศักยภาพใจกลางเมือง
+          </p>
+        </div>
+
+        <div class="space-y-4" id="location-tabs">
+          <button
+            onclick="switchMap('map-grand')"
+            class="location-tab active group w-full text-left p-4 rounded-xl border border-slate-200 hover:border-accent-gold/50 bg-white shadow-sm hover:shadow-md transition-all duration-300 flex items-center justify-between"
+            data-target="map-grand"
+          >
+            <div class="flex items-center gap-4">
+              <div
+                class="w-10 h-10 rounded-full bg-accent-gold flex items-center justify-center text-white group-[.active]:bg-accent-gold group-[.active]:text-white transition-colors shadow-sm"
+              >
+                <span class="font-serif font-bold text-lg">01</span>
+              </div>
+              <div>
+                <h4
+                  class="text-premium-900 font-medium group-[.active]:text-accent-gold transition-colors"
+                >
+                  The Tide Grand Nawong
+                </h4>
+                <p class="text-xs text-slate-500">นาวง, นครศรีธรรมราช</p>
+              </div>
+            </div>
+            <svg
+              class="w-5 h-5 text-slate-400 group-[.active]:text-accent-gold opacity-0 group-[.active]:opacity-100 transition-all duration-300"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M9 5l7 7-7 7"
+              ></path>
+            </svg>
+          </button>
+
+          <button
+            onclick="switchMap('map-privilege')"
+            class="location-tab group w-full text-left p-4 rounded-xl border border-transparent hover:border-accent-gold/30 bg-transparent hover:bg-white hover:shadow-sm transition-all duration-300 flex items-center justify-between"
+            data-target="map-privilege"
+          >
+            <div class="flex items-center gap-4">
+              <div
+                class="w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center text-slate-400 group-hover:text-accent-gold group-[.active]:bg-accent-gold group-[.active]:text-white transition-colors"
+              >
+                <span class="font-serif font-bold text-lg">02</span>
+              </div>
+              <div>
+                <h4
+                  class="text-premium-900 font-medium group-[.active]:text-accent-gold transition-colors"
+                >
+                  The Tide Privilege
+                </h4>
+                <p class="text-xs text-slate-500">เทิดพระเกียรติ</p>
+              </div>
+            </div>
+            <svg
+              class="w-5 h-5 text-slate-400 group-[.active]:text-accent-gold opacity-0 group-[.active]:opacity-100 transition-all duration-300"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M9 5l7 7-7 7"
+              ></path>
+            </svg>
+          </button>
+
+          <button
+            onclick="switchMap('map-signature')"
+            class="location-tab group w-full text-left p-4 rounded-xl border border-transparent hover:border-accent-gold/30 bg-transparent hover:bg-white hover:shadow-sm transition-all duration-300 flex items-center justify-between"
+            data-target="map-signature"
+          >
+            <div class="flex items-center gap-4">
+              <div
+                class="w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center text-slate-400 group-hover:text-accent-gold group-[.active]:bg-accent-gold group-[.active]:text-white transition-colors"
+              >
+                <span class="font-serif font-bold text-lg">03</span>
+              </div>
+              <div>
+                <h4
+                  class="text-premium-900 font-medium group-[.active]:text-accent-gold transition-colors"
+                >
+                  The Tide Grand
+                </h4>
+                <p class="text-xs text-slate-500">พุทธภูมิ, นครศรีธรรมราช</p>
+              </div>
+            </div>
+            <svg
+              class="w-5 h-5 text-slate-400 group-[.active]:text-accent-gold opacity-0 group-[.active]:opacity-100 transition-all duration-300"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M9 5l7 7-7 7"
+              ></path>
+            </svg>
+          </button>
+        </div>
       </div>
-      <div class="lg:w-2/3 w-full reveal delay-100">
-        <div class="w-full aspect-video bg-slate-800 rounded-lg overflow-hidden shadow-2xl border border-white/5 hover:border-sand-500/50 transition-all duration-700 relative group">
-          <iframe title="Google Map" class="w-full h-full opacity-70 group-hover:opacity-100 transition-opacity grayscale group-hover:grayscale-0 duration-700" loading="lazy" src="https://maps.google.com/maps?q=Nakhon+Si+Thammarat&t=&z=13&ie=UTF8&iwloc=&output=embed"></iframe>
+
+      <div class="lg:w-2/3 w-full reveal delay-100 relative">
+        <div
+          class="w-full aspect-square md:aspect-video bg-white rounded-2xl overflow-hidden shadow-2xl border border-slate-100 relative group"
+        >
+          <div
+            id="map-grand"
+            class="map-pane absolute inset-0 transition-opacity duration-500 opacity-100 z-10"
+          >
+            <iframe
+              title="Grand Nawong Map"
+              class="w-full h-full"
+              loading="lazy"
+              src="https://www.google.com/maps?q=8.4508776,99.9988572&hl=en&z=17&output=embed"
+            >
+            </iframe>
+
+            <div
+              class="absolute bottom-6 left-6 bg-white/90 backdrop-blur-md px-5 py-4 rounded-lg border-l-4 border-accent-gold shadow-lg"
+            >
+              <p
+                class="text-[10px] text-accent-gold uppercase tracking-widest font-bold mb-1"
+              >
+                Location
+              </p>
+              <p class="text-premium-900 font-serif text-lg mb-3">
+                The Tide Grand Nawong
+              </p>
+
+              <a
+                href="https://www.google.com/maps/dir/?api=1&destination=8.4508776,99.9988572"
+                target="_blank"
+                class="inline-flex items-center gap-2 text-xs font-bold text-slate-500 hover:text-accent-gold transition-colors group/btn"
+              >
+                <div
+                  class="w-8 h-8 rounded-full bg-slate-100 group-hover/btn:bg-accent-gold group-hover/btn:text-white flex items-center justify-center transition-colors"
+                >
+                  <svg
+                    class="w-4 h-4"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
+                    ></path>
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
+                    ></path>
+                  </svg>
+                </div>
+                <span>Get Directions</span>
+              </a>
+            </div>
+          </div>
+
+          <div
+            id="map-privilege"
+            class="map-pane absolute inset-0 transition-opacity duration-500 opacity-0 z-0 pointer-events-none"
+          >
+            <iframe
+              title="Privilege Thoet Phra Kiat Map"
+              class="w-full h-full"
+              loading="lazy"
+              src="https://www.google.com/maps?q=8.4018216,99.9465077&hl=en&z=17&output=embed"
+            >
+            </iframe>
+            <div
+              class="absolute bottom-6 left-6 bg-white/90 backdrop-blur-md px-5 py-4 rounded-lg border-l-4 border-accent-gold shadow-lg"
+            >
+              <p
+                class="text-[10px] text-accent-gold uppercase tracking-widest font-bold mb-1"
+              >
+                Location
+              </p>
+              <p class="text-premium-900 font-serif text-lg mb-3">
+                The Tide Privilege 
+              </p>
+
+              <a
+                href="https://www.google.com/maps/dir/?api=1&destination=8.4018216,99.9465077"
+                target="_blank"
+                class="inline-flex items-center gap-2 text-xs font-bold text-slate-500 hover:text-accent-gold transition-colors group/btn"
+              >
+                <div
+                  class="w-8 h-8 rounded-full bg-slate-100 group-hover/btn:bg-accent-gold group-hover/btn:text-white flex items-center justify-center transition-colors"
+                >
+                  <svg
+                    class="w-4 h-4"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
+                    ></path>
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
+                    ></path>
+                  </svg>
+                </div>
+                <span>Get Directions</span>
+              </a>
+            </div>
+          </div>
+
+          <div
+            id="map-signature"
+            class="map-pane absolute inset-0 transition-opacity duration-500 opacity-0 z-0 pointer-events-none"
+          >
+            <iframe
+              title="Grand Phutthaphum Map"
+              class="w-full h-full"
+              loading="lazy"
+              src="https://www.google.com/maps?q=8.4127833,99.9604217&hl=en&z=16&output=embed"
+            >
+            </iframe>
+
+            <div
+              class="absolute bottom-6 left-6 bg-white/90 backdrop-blur-md px-5 py-4 rounded-lg border-l-4 border-accent-gold shadow-lg"
+            >
+              <p
+                class="text-[10px] text-accent-gold uppercase tracking-widest font-bold mb-1"
+              >
+                Location
+              </p>
+              <p class="text-premium-900 font-serif text-lg mb-3">
+                The Tide Grand Phutthaphum
+              </p>
+
+              <a
+                href="https://www.google.com/maps/dir/?api=1&destination=8.4127833,99.9604217"
+                target="_blank"
+                class="inline-flex items-center gap-2 text-xs font-bold text-slate-500 hover:text-accent-gold transition-colors group/btn"
+              >
+                <div
+                  class="w-8 h-8 rounded-full bg-slate-100 group-hover/btn:bg-accent-gold group-hover/btn:text-white flex items-center justify-center transition-colors"
+                >
+                  <svg
+                    class="w-4 h-4"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
+                    ></path>
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
+                    ></path>
+                  </svg>
+                </div>
+                <span>Get Directions</span>
+              </a>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </div>
 </section>
+
+<script>
+  function switchMap(mapId) {
+    // อัปเดต Logic JS ให้เปลี่ยน Class สำหรับ Light Mode
+
+    document.querySelectorAll(".location-tab").forEach((btn) => {
+      // เอาสถานะ Active ออก (กลับไปเป็นพื้นใส)
+      btn.classList.remove(
+        "active",
+        "bg-white",
+        "shadow-sm",
+        "border-slate-200",
+      );
+      btn.classList.add("bg-transparent", "border-transparent");
+
+      // Reset ตัวเลข (กลับไปเป็นสีเทา)
+      const numBg = btn.querySelector("div > div");
+      numBg.classList.remove("bg-accent-gold", "text-white");
+      numBg.classList.add("bg-slate-100", "text-slate-400");
+    });
+
+    // ใส่สถานะ Active ให้ปุ่มที่กด (พื้นขาว มีเงา)
+    const activeBtn = document.querySelector(`button[data-target="${mapId}"]`);
+    activeBtn.classList.add(
+      "active",
+      "bg-white",
+      "shadow-sm",
+      "border-slate-200",
+    );
+    activeBtn.classList.remove("bg-transparent", "border-transparent");
+
+    // Highlight ตัวเลข (สีทอง)
+    const activeNumBg = activeBtn.querySelector("div > div");
+    activeNumBg.classList.remove("bg-slate-100", "text-slate-400");
+    activeNumBg.classList.add("bg-accent-gold", "text-white");
+
+    // จัดการ Map pane (เหมือนเดิม)
+    document.querySelectorAll(".map-pane").forEach((map) => {
+      map.classList.remove("opacity-100", "z-10");
+      map.classList.add("opacity-0", "z-0", "pointer-events-none");
+    });
+
+    const targetMap = document.getElementById(mapId);
+    targetMap.classList.remove("opacity-0", "z-0", "pointer-events-none");
+    targetMap.classList.add("opacity-100", "z-10");
+  }
+</script>
