@@ -21,7 +21,7 @@
         />
       </a>
 
-      <div class="hidden md:flex items-center gap-10">
+      <div class="hidden md:flex items-center gap-8">
         <div class="flex items-center gap-8">
           <a href="#home" class="nav-item group/link relative py-2">
             <span class="nav-text text-sm font-light tracking-[0.15em] text-white/90 transition-all duration-300 group-hover/link:text-white group-hover/link:shadow-glow">หน้าแรก</span>
@@ -35,31 +35,45 @@
             <span class="nav-text text-sm font-light tracking-[0.15em] text-white/90 transition-all duration-300 group-hover/link:text-white group-hover/link:shadow-glow">โครงการ</span>
             <span class="absolute -bottom-1 left-1/2 w-0 h-0.5 bg-accent-gold transition-all duration-300 -translate-x-1/2 group-hover/link:w-1/2 rounded-full"></span>
           </a>
+          <a href="#contact-form" class="nav-item group/link relative py-2">
+            <span class="nav-text text-sm font-light tracking-[0.15em] text-white/90 transition-all duration-300 group-hover/link:text-white group-hover/link:shadow-glow">ติดต่อเรา</span>
+            <span class="absolute -bottom-1 left-1/2 w-0 h-0.5 bg-accent-gold transition-all duration-300 -translate-x-1/2 group-hover/link:w-1/2 rounded-full"></span>
+          </a>
         </div>
+
         <div class="h-6 w-[1px] bg-white/30 transition-colors duration-300" id="nav-divider"></div>
-        <a href="#contact-form" class="relative px-6 py-2 rounded-full overflow-hidden border border-white/40 hover:border-accent-gold group/btn transition-all duration-300" id="nav-cta">
-          <span class="absolute inset-0 bg-accent-gold scale-x-0 group-hover/btn:scale-x-100 origin-left transition-transform duration-500 ease-out"></span>
-          <span class="relative flex items-center gap-2">
-            <span class="text-xs font-medium tracking-widest uppercase text-white transition-colors duration-300" id="nav-cta-text">นัดหมายเข้าชม</span>
-          </span>
-        </a>
+
+        <div class="flex items-center gap-3">
+          <a
+            href="https://line.me/ti/p/~YOUR_LINE_ID"
+            target="_blank"
+            class="relative w-9 h-9 flex items-center justify-center rounded-full border border-white/40 hover:border-[#06C755] hover:bg-[#06C755] group/line transition-all duration-300"
+            id="nav-line"
+            aria-label="Add Line"
+          >
+            <svg class="w-4 h-4 text-white fill-current transition-transform duration-300 group-hover/line:scale-110" viewBox="0 0 24 24">
+               <path d="M12 2C6.48 2 2 5.92 2 10.76C2 15.6 6.48 19.52 12 19.52C13.09 19.52 14.15 19.36 15.14 19.08C15.42 19.29 16.83 20.26 17.08 20.43C17.39 20.64 17.83 20.57 17.67 19.99L17.22 18.07C18.9 16.78 20 15.08 20 13.19C20 13.19 20 13.19 20 13.18C22 11.3 22 8.76 22 6.76C22 6.76 17.51 2 12 2Z"/>
+            </svg>
+          </a>
+
+          <a
+            href="#contact-form"
+            class="relative px-6 py-2 rounded-full overflow-hidden border border-white/40 hover:border-accent-gold group/btn transition-all duration-300"
+            id="nav-cta"
+          >
+            <span class="absolute inset-0 bg-accent-gold scale-x-0 group-hover/btn:scale-x-100 origin-left transition-transform duration-500 ease-out"></span>
+            <span class="relative flex items-center gap-2">
+              <span class="text-xs font-medium tracking-widest uppercase text-white transition-colors duration-300" id="nav-cta-text">นัดหมายเข้าชม</span>
+            </span>
+          </a>
+        </div>
       </div>
 
       <button
         class="md:hidden relative z-50 group p-1 transition-colors duration-300 text-white"
         id="mobile-menu-btn"
       >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="24"
-          height="24"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="2"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-        >
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <path d="M4 5h16" />
           <path d="M4 12h16" />
           <path d="M4 19h16" />
@@ -68,8 +82,8 @@
     </div>
   </div>
 
-  <div 
-    id="mobile-menu-backdrop" 
+  <div
+    id="mobile-menu-backdrop"
     class="fixed inset-0 bg-black/60 backdrop-blur-sm z-30 opacity-0 pointer-events-none transition-opacity duration-500 ease-in-out"
   ></div>
 
@@ -77,32 +91,35 @@
     class="fixed inset-y-0 right-0 w-[280px] bg-premium-900 shadow-2xl z-40 transform translate-x-full transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] md:hidden flex flex-col justify-center px-8 border-l border-white/10"
     id="mobile-menu"
   >
-    <div class="flex flex-col items-start space-y-8">
-      <div class="mb-6 opacity-50">
-          <span class="font-serif text-4xl text-accent-gold italic">T</span>
+    <div class="flex flex-col items-start space-y-6">
+      <div class="mb-4 opacity-50">
+        <span class="font-serif text-4xl text-accent-gold italic">T</span>
       </div>
 
-      <a
-        href="#home"
-        class="mobile-nav-link text-lg font-light tracking-[0.2em] text-white/90 hover:text-accent-gold transition-colors duration-300 border-b border-white/5 w-full pb-4"
-        >หน้าแรก</a
-      >
-      <a
-        href="#about"
-        class="mobile-nav-link text-lg font-light tracking-[0.2em] text-white/90 hover:text-accent-gold transition-colors duration-300 border-b border-white/5 w-full pb-4"
-        >เกี่ยวกับเรา</a
-      >
-      <a
-        href="#projects"
-        class="mobile-nav-link text-lg font-light tracking-[0.2em] text-white/90 hover:text-accent-gold transition-colors duration-300 border-b border-white/5 w-full pb-4"
-        >โครงการ</a
-      >
-      
-      <a
-        href="#contact-form"
-        class="mobile-nav-link mt-4 text-sm font-medium tracking-widest text-premium-900 bg-accent-gold px-6 py-3 rounded-full hover:bg-white transition-colors duration-300 uppercase w-full text-center"
-        >นัดหมายเข้าชม</a
-      >
+      <a href="#home" class="mobile-nav-link text-lg font-light tracking-[0.2em] text-white/90 hover:text-accent-gold transition-colors duration-300 border-b border-white/5 w-full pb-4">หน้าแรก</a>
+      <a href="#about" class="mobile-nav-link text-lg font-light tracking-[0.2em] text-white/90 hover:text-accent-gold transition-colors duration-300 border-b border-white/5 w-full pb-4">เกี่ยวกับเรา</a>
+      <a href="#projects" class="mobile-nav-link text-lg font-light tracking-[0.2em] text-white/90 hover:text-accent-gold transition-colors duration-300 border-b border-white/5 w-full pb-4">โครงการ</a>
+      <a href="#contact-form" class="mobile-nav-link text-lg font-light tracking-[0.2em] text-white/90 hover:text-accent-gold transition-colors duration-300 border-b border-white/5 w-full pb-4">ติดต่อเรา</a>
+
+      <div class="w-full flex flex-col gap-3 mt-6">
+        <a
+          href="#contact-form"
+          class="mobile-nav-link text-sm font-medium tracking-widest text-premium-900 bg-accent-gold px-6 py-3 rounded-full hover:bg-white transition-colors duration-300 uppercase w-full text-center"
+        >
+          นัดหมายเข้าชม
+        </a>
+        <a
+          href="https://line.me/R/ti/p/@868amtwe"
+          target="_blank"
+          class="mobile-nav-link text-sm font-medium tracking-widest text-white border border-[#06C755] hover:bg-[#06C755] px-6 py-3 rounded-full transition-colors duration-300 uppercase w-full text-center flex items-center justify-center gap-2"
+        >
+          <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24">
+            <path d="M12 2C6.48 2 2 5.92 2 10.76C2 15.6 6.48 19.52 12 19.52C13.09 19.52 14.15 19.36 15.14 19.08C15.42 19.29 16.83 20.26 17.08 20.43C17.39 20.64 17.83 20.57 17.67 19.99L17.22 18.07C18.9 16.78 20 15.08 20 13.19C20 13.19 20 13.19 20 13.18C22 11.3 22 8.76 22 6.76C22 6.76 17.51 2 12 2Z"/>
+            <path d="M16.31 8.54H18.41V8.35H16.12V12.19H18.41V12H16.31V10.36H18.41V10.17H16.31V8.54ZM5.92 12V8.35H5.73V12.19H8.02V12H5.92ZM14.35 12.04L11.61 8.35H11.3V12.19H11.49V8.5L14.22 12.19H14.54V8.35H14.35V12.04ZM9.52 8.35V12.19H9.71V8.35H9.52Z" fill="#2d3748"/>
+          </svg>
+          Add Line
+        </a>
+      </div>
     </div>
   </div>
 </nav>
