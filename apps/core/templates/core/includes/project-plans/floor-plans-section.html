@@ -1,397 +1,348 @@
 {% load static %}
 
 <section class="py-32 bg-premium-50 relative overflow-hidden" id="floorplans">
-    <div class="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-premium-300 to-transparent opacity-50"></div>
-    <div class="absolute -left-64 top-1/3 w-96 h-96 bg-accent-gold/5 rounded-full blur-[100px] pointer-events-none"></div>
+    <div class="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
+        <div class="absolute -top-24 -right-24 w-96 h-96 bg-accent-gold/5 rounded-full blur-[120px]"></div>
+        <div class="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-slate-200 to-transparent"></div>
+    </div>
 
-    <div class="container mx-auto px-8 relative z-10">
-        <div class="flex flex-col md:flex-row md:items-end justify-between mb-24 reveal">
+    <div class="container mx-auto px-6 relative z-10">
+        <div class="flex flex-col md:flex-row md:items-end justify-between mb-20 reveal">
             <div class="max-w-2xl">
+                <span class="text-accent-gold text-xs font-bold tracking-[0.3em] uppercase block mb-3">Our Collection</span>
                 <h2 class="font-serif text-4xl md:text-5xl text-premium-900 leading-tight">
-                    รูปแบบบ้านภายในโครงการ <br>
-                    <span class="italic text-accent-gold text-2xl md:text-3xl font-normal">เลือกแบบบ้านที่ตอบโจทย์ไลฟ์สไตล์ของคุณ</span>
+                    Floor Plans <br>
+                    <span class="text-slate-400 font-light text-2xl md:text-3xl italic">Curated for your lifestyle</span>
                 </h2>
             </div>
-            <div class="hidden md:flex flex-col items-end gap-2">
-                <span class="font-serif text-6xl text-premium-200 leading-none">
+            <div class="hidden md:flex flex-col items-end">
+                <span class="font-serif text-6xl text-slate-100 leading-none font-bold">
                     {% if slug == 'the-tide-privilege-therdphra-kiat' %}02{% else %}03{% endif %}
                 </span>
-                <span class="text-[10px] uppercase tracking-[0.3em] text-premium-400">แบบบ้าน</span>
+                <span class="text-[10px] uppercase tracking-[0.3em] text-slate-400">Layouts</span>
             </div>
         </div>
 
-        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-x-10 gap-y-16">
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10">
             
             {% if slug == 'the-tide-grand-nawong' %}
-            <!-- บ้านเดี่ยว 2 ชั้น -->
-            <div class="group reveal relative">
-                <div class="relative aspect-[3/4] overflow-hidden bg-premium-100 mb-8 cursor-pointer shadow-lg shadow-premium-900/5">
-                    <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&q=80&w=800" class="absolute inset-0 w-full h-full object-cover transition-all duration-700 group-hover:scale-105" alt="บ้านเดี่ยว">
-                    <img src="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&q=80&w=800" class="absolute inset-0 w-full h-full object-cover transition-all duration-700 scale-110 opacity-0 group-hover:opacity-100 group-hover:scale-100" alt="Interior">
+            <div class="group reveal">
+                <div class="relative bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 border border-slate-100 hover:border-accent-gold/30 hover:-translate-y-2">
+                    <div class="relative aspect-[4/3] overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&q=80&w=800" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt="บ้านเดี่ยว">
+                        <div class="absolute top-4 left-4">
+                            <span class="bg-white/95 backdrop-blur px-3 py-1 text-[10px] font-bold tracking-widest uppercase text-premium-900 rounded-sm shadow-sm">Single House</span>
+                        </div>
+                        <div class="absolute bottom-0 left-0 w-full bg-gradient-to-t from-black/60 to-transparent h-20 opacity-60"></div>
+                    </div>
                     
-                    <div class="absolute top-6 left-6 z-20">
-                        <span class="bg-white/90 backdrop-blur px-4 py-2 text-[10px] font-bold tracking-[0.2em] uppercase text-premium-900">Single House</span>
-                    </div>
-                    <div class="absolute bottom-6 left-6 right-6 z-20">
-                        <span class="inline-block bg-accent-gold text-white px-3 py-1 text-[10px] font-bold">รับส่วนลดทันที 200,000.-</span>
-                    </div>
-                </div>
-                <div class="flex justify-between items-start border-b border-premium-200 pb-6 mb-6">
-                    <div>
-                        <h3 class="font-serif text-2xl text-premium-900 mb-2">บ้านเดี่ยว 2 ชั้น</h3>
-                        <p class="text-xs text-premium-500 uppercase tracking-widest">พื้นที่ใช้สอย 202 ตร.ม.</p>
-                    </div>
-                    <div class="text-right">
-                        <p class="text-2xl font-serif text-accent-gold">4.29</p>
-                        <p class="text-[9px] text-premium-400 uppercase tracking-widest">ล้านบาท*</p>
-                    </div>
-                </div>
-                <div class="grid grid-cols-4 gap-2 text-premium-600 text-xs mb-6">
-                    <div class="text-center border-r border-premium-100">
-                        <span class="block text-lg font-serif text-premium-900">4</span>
-                        <span class="text-[9px]">ห้องนอน</span>
-                    </div>
-                    <div class="text-center border-r border-premium-100">
-                        <span class="block text-lg font-serif text-premium-900">3</span>
-                        <span class="text-[9px]">ห้องน้ำ</span>
-                    </div>
-                    <div class="text-center border-r border-premium-100">
-                        <span class="block text-lg font-serif text-premium-900">1</span>
-                        <span class="text-[9px]">ห้องครัว</span>
-                    </div>
-                    <div class="text-center">
-                        <span class="block text-lg font-serif text-premium-900">2</span>
-                        <span class="text-[9px]">ที่จอดรถ</span>
+                    <div class="p-8">
+                        <div class="flex justify-between items-start mb-6">
+                            <div>
+                                <h3 class="font-serif text-2xl text-premium-900 mb-1 group-hover:text-accent-gold transition-colors">บ้านเดี่ยว 2 ชั้น</h3>
+                                <p class="text-xs text-slate-500 font-light">พื้นที่ใช้สอย 202 ตร.ม.</p>
+                            </div>
+                            <div class="text-right">
+                                <p class="text-2xl font-serif text-premium-900">4.29</p>
+                                <p class="text-[10px] text-slate-400 uppercase tracking-wider">ล้านบาท*</p>
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-4 gap-4 py-6 border-t border-slate-100">
+                            <div class="text-center group/icon">
+                                <div class="mb-2 flex justify-center text-slate-400 group-hover/icon:text-accent-gold transition-colors">
+                                    <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3v-8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"/></svg>
+                                </div>
+                                <span class="block text-sm font-medium text-premium-900">4</span>
+                                <span class="text-[9px] text-slate-400 uppercase">Bedroom</span>
+                            </div>
+                            <div class="text-center group/icon">
+                                <div class="mb-2 flex justify-center text-slate-400 group-hover/icon:text-accent-gold transition-colors">
+                                    <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 14h16c1.1 0 2 .9 2 2v2c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2v-2c0-1.1.9-2 2-2zM6 14V6c0-1.1.9-2 2-2h8c1.1 0 2 .9 2 2v8"/></svg>
+                                </div>
+                                <span class="block text-sm font-medium text-premium-900">3</span>
+                                <span class="text-[9px] text-slate-400 uppercase">Bathroom</span>
+                            </div>
+                            <div class="text-center group/icon">
+                                <div class="mb-2 flex justify-center text-slate-400 group-hover/icon:text-accent-gold transition-colors">
+                                    <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
+                                </div>
+                                <span class="block text-sm font-medium text-premium-900">1</span>
+                                <span class="text-[9px] text-slate-400 uppercase">Kitchen</span>
+                            </div>
+                            <div class="text-center group/icon">
+                                <div class="mb-2 flex justify-center text-slate-400 group-hover/icon:text-accent-gold transition-colors">
+                                    <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 14c1.49-1.08 2-3.659 2-5.323A2 2 0 0019 7H5a2 2 0 00-2 1.677C3 10.34 3.51 12.92 5 14m14 0a2 2 0 002 2v2a1 1 0 01-1 1h-1a1 1 0 01-1-1v-1H6v1a1 1 0 01-1 1H4a1 1 0 01-1-1v-2a2 2 0 002-2m14 0V9a2 2 0 00-2-2M5 14V9a2 2 0 002-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/></svg>
+                                </div>
+                                <span class="block text-sm font-medium text-premium-900">2</span>
+                                <span class="text-[9px] text-slate-400 uppercase">Parking</span>
+                            </div>
+                        </div>
+
+                        <div class="mt-4 text-center">
+                            <span class="inline-block bg-accent-gold/10 text-accent-gold px-4 py-2 text-[10px] font-bold tracking-wider uppercase rounded-full">
+                                ส่วนลดพิเศษ 200,000 บาท
+                            </span>
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <!-- บ้านแฝด 2 ชั้น (ติดกัน) -->
-            <div class="group reveal relative" style="transition-delay: 100ms">
-                <div class="relative aspect-[3/4] overflow-hidden bg-premium-100 mb-8 cursor-pointer shadow-lg shadow-premium-900/5">
-                    <img src="https://images.unsplash.com/photo-1564013799919-ab600027ffc6?auto=format&fit=crop&q=80&w=800" class="absolute inset-0 w-full h-full object-cover transition-all duration-700 group-hover:scale-105" alt="บ้านแฝด">
-                    <div class="absolute top-6 left-6 z-20">
-                        <span class="bg-white/90 backdrop-blur px-4 py-2 text-[10px] font-bold tracking-[0.2em] uppercase text-premium-900">Twin House</span>
+            <div class="group reveal" style="transition-delay: 100ms">
+                <div class="relative bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 border border-slate-100 hover:border-accent-gold/30 hover:-translate-y-2">
+                    <div class="relative aspect-[4/3] overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1564013799919-ab600027ffc6?auto=format&fit=crop&q=80&w=800" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt="บ้านแฝด">
+                        <div class="absolute top-4 left-4">
+                            <span class="bg-white/95 backdrop-blur px-3 py-1 text-[10px] font-bold tracking-widest uppercase text-premium-900 rounded-sm shadow-sm">Twin House</span>
+                        </div>
                     </div>
-                    <div class="absolute bottom-6 left-6 right-6 z-20">
-                        <span class="inline-block bg-accent-gold text-white px-3 py-1 text-[10px] font-bold">รับส่วนลดทันที 100,000.-</span>
-                    </div>
-                </div>
-                <div class="flex justify-between items-start border-b border-premium-200 pb-6 mb-6">
-                    <div>
-                        <h3 class="font-serif text-2xl text-premium-900 mb-2">บ้านแฝด 2 ชั้น</h3>
-                        <p class="text-xs text-premium-500 uppercase tracking-widest">พื้นที่ใช้สอย 141 ตร.ม.</p>
-                    </div>
-                    <div class="text-right">
-                        <p class="text-2xl font-serif text-accent-gold">2.89</p>
-                        <p class="text-[9px] text-premium-400 uppercase tracking-widest">ล้านบาท*</p>
-                    </div>
-                </div>
-                <div class="grid grid-cols-4 gap-2 text-premium-600 text-xs mb-6">
-                    <div class="text-center border-r border-premium-100">
-                        <span class="block text-lg font-serif text-premium-900">3</span>
-                        <span class="text-[9px]">ห้องนอน</span>
-                    </div>
-                    <div class="text-center border-r border-premium-100">
-                        <span class="block text-lg font-serif text-premium-900">3</span>
-                        <span class="text-[9px]">ห้องน้ำ</span>
-                    </div>
-                    <div class="text-center border-r border-premium-100">
-                        <span class="block text-lg font-serif text-premium-900">1</span>
-                        <span class="text-[9px]">ห้องครัว</span>
-                    </div>
-                    <div class="text-center">
-                        <span class="block text-lg font-serif text-premium-900">2</span>
-                        <span class="text-[9px]">ที่จอดรถ</span>
+                    
+                    <div class="p-8">
+                        <div class="flex justify-between items-start mb-6">
+                            <div>
+                                <h3 class="font-serif text-2xl text-premium-900 mb-1 group-hover:text-accent-gold transition-colors">บ้านแฝด 2 ชั้น</h3>
+                                <p class="text-xs text-slate-500 font-light">พื้นที่ใช้สอย 141 ตร.ม.</p>
+                            </div>
+                            <div class="text-right">
+                                <p class="text-2xl font-serif text-premium-900">2.89</p>
+                                <p class="text-[10px] text-slate-400 uppercase tracking-wider">ล้านบาท*</p>
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-4 gap-4 py-6 border-t border-slate-100">
+                            <div class="text-center"><span class="block text-sm font-medium text-premium-900">3</span><span class="text-[9px] text-slate-400 uppercase">Bed</span></div>
+                            <div class="text-center"><span class="block text-sm font-medium text-premium-900">3</span><span class="text-[9px] text-slate-400 uppercase">Bath</span></div>
+                            <div class="text-center"><span class="block text-sm font-medium text-premium-900">1</span><span class="text-[9px] text-slate-400 uppercase">Kitchen</span></div>
+                            <div class="text-center"><span class="block text-sm font-medium text-premium-900">2</span><span class="text-[9px] text-slate-400 uppercase">Parking</span></div>
+                        </div>
+
+                        <div class="mt-4 text-center">
+                            <span class="inline-block bg-accent-gold/10 text-accent-gold px-4 py-2 text-[10px] font-bold tracking-wider uppercase rounded-full">
+                                ส่วนลดพิเศษ 100,000 บาท
+                            </span>
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <!-- บ้านแฝด 2 ชั้น (อิสระ) -->
-            <div class="group reveal relative" style="transition-delay: 200ms">
-                <div class="relative aspect-[3/4] overflow-hidden bg-premium-100 mb-8 cursor-pointer shadow-lg shadow-premium-900/5">
-                    <img src="https://images.unsplash.com/photo-1568605114967-8130f3a36994?auto=format&fit=crop&q=80&w=800" class="absolute inset-0 w-full h-full object-cover transition-all duration-700 group-hover:scale-105" alt="บ้านแฝดอิสระ">
-                    <div class="absolute top-6 left-6 z-20">
-                        <span class="bg-white/90 backdrop-blur px-4 py-2 text-[10px] font-bold tracking-[0.2em] uppercase text-premium-900">Twin Independent</span>
+            <div class="group reveal" style="transition-delay: 200ms">
+                <div class="relative bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 border border-slate-100 hover:border-accent-gold/30 hover:-translate-y-2">
+                    <div class="relative aspect-[4/3] overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1568605114967-8130f3a36994?auto=format&fit=crop&q=80&w=800" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt="บ้านแฝดอิสระ">
+                        <div class="absolute top-4 left-4">
+                            <span class="bg-white/95 backdrop-blur px-3 py-1 text-[10px] font-bold tracking-widest uppercase text-premium-900 rounded-sm shadow-sm">Twin Independent</span>
+                        </div>
                     </div>
-                    <div class="absolute bottom-6 left-6 right-6 z-20">
-                        <span class="inline-block bg-accent-gold text-white px-3 py-1 text-[10px] font-bold">รับส่วนลดทันที 300,000.-</span>
-                    </div>
-                </div>
-                <div class="flex justify-between items-start border-b border-premium-200 pb-6 mb-6">
-                    <div>
-                        <h3 class="font-serif text-2xl text-premium-900 mb-2">บ้านแฝดอิสระ 2 ชั้น</h3>
-                        <p class="text-xs text-premium-500 uppercase tracking-widest">พื้นที่ใช้สอย 167 ตร.ม.</p>
-                    </div>
-                    <div class="text-right">
-                        <p class="text-2xl font-serif text-accent-gold">3.59</p>
-                        <p class="text-[9px] text-premium-400 uppercase tracking-widest">ล้านบาท*</p>
-                    </div>
-                </div>
-                <div class="grid grid-cols-4 gap-2 text-premium-600 text-xs mb-6">
-                    <div class="text-center border-r border-premium-100">
-                        <span class="block text-lg font-serif text-premium-900">4</span>
-                        <span class="text-[9px]">ห้องนอน</span>
-                    </div>
-                    <div class="text-center border-r border-premium-100">
-                        <span class="block text-lg font-serif text-premium-900">3</span>
-                        <span class="text-[9px]">ห้องน้ำ</span>
-                    </div>
-                    <div class="text-center border-r border-premium-100">
-                        <span class="block text-lg font-serif text-premium-900">1</span>
-                        <span class="text-[9px]">ห้องครัว</span>
-                    </div>
-                    <div class="text-center">
-                        <span class="block text-lg font-serif text-premium-900">2</span>
-                        <span class="text-[9px]">ที่จอดรถ</span>
+                    
+                    <div class="p-8">
+                        <div class="flex justify-between items-start mb-6">
+                            <div>
+                                <h3 class="font-serif text-2xl text-premium-900 mb-1 group-hover:text-accent-gold transition-colors">บ้านแฝดอิสระ 2 ชั้น</h3>
+                                <p class="text-xs text-slate-500 font-light">พื้นที่ใช้สอย 167 ตร.ม.</p>
+                            </div>
+                            <div class="text-right">
+                                <p class="text-2xl font-serif text-premium-900">3.59</p>
+                                <p class="text-[10px] text-slate-400 uppercase tracking-wider">ล้านบาท*</p>
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-4 gap-4 py-6 border-t border-slate-100">
+                            <div class="text-center"><span class="block text-sm font-medium text-premium-900">4</span><span class="text-[9px] text-slate-400 uppercase">Bed</span></div>
+                            <div class="text-center"><span class="block text-sm font-medium text-premium-900">3</span><span class="text-[9px] text-slate-400 uppercase">Bath</span></div>
+                            <div class="text-center"><span class="block text-sm font-medium text-premium-900">1</span><span class="text-[9px] text-slate-400 uppercase">Kitchen</span></div>
+                            <div class="text-center"><span class="block text-sm font-medium text-premium-900">2</span><span class="text-[9px] text-slate-400 uppercase">Parking</span></div>
+                        </div>
+
+                        <div class="mt-4 text-center">
+                            <span class="inline-block bg-accent-gold/10 text-accent-gold px-4 py-2 text-[10px] font-bold tracking-wider uppercase rounded-full">
+                                ส่วนลดพิเศษ 300,000 บาท
+                            </span>
+                        </div>
                     </div>
                 </div>
             </div>
             {% endif %}
 
             {% if slug == 'the-tide-grand-phutthaphum' %}
-            <!-- บ้านเดี่ยว - SOLD OUT -->
-            <div class="group reveal relative">
-                <div class="sold-out-overlay"><div class="sold-out-text">SOLD OUT</div></div>
-                <div class="relative aspect-[3/4] overflow-hidden bg-premium-100 mb-8 shadow-lg shadow-premium-900/5 grayscale">
-                    <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&q=80&w=800" class="absolute inset-0 w-full h-full object-cover" alt="บ้านเดี่ยว">
-                    <div class="absolute top-6 left-6 z-20">
-                        <span class="bg-white/90 backdrop-blur px-4 py-2 text-[10px] font-bold tracking-[0.2em] uppercase text-premium-900">Single House</span>
+            <div class="group reveal relative grayscale hover:grayscale-0 transition-all duration-700">
+                <div class="relative bg-white rounded-2xl overflow-hidden shadow-sm border border-slate-200">
+                    <div class="relative aspect-[4/3] overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&q=80&w=800" class="absolute inset-0 w-full h-full object-cover opacity-60">
+                        <div class="absolute inset-0 bg-slate-900/10 flex items-center justify-center">
+                            <span class="bg-premium-900/90 backdrop-blur text-white px-6 py-3 font-serif text-lg tracking-widest border border-white/20">SOLD OUT</span>
+                        </div>
                     </div>
-                </div>
-                <div class="flex justify-between items-start border-b border-premium-200 pb-6 mb-6 opacity-50">
-                    <div>
+                    <div class="p-8 opacity-60">
                         <h3 class="font-serif text-2xl text-premium-900 mb-2">บ้านเดี่ยว 2 ชั้น</h3>
-                        <p class="text-xs text-premium-500 uppercase tracking-widest">พื้นที่ใช้สอย 202 ตร.ม.</p>
-                    </div>
-                    <div class="text-right">
-                        <p class="text-2xl font-serif text-premium-400 line-through">—</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="group reveal relative" style="transition-delay: 100ms">
-                <div class="sold-out-overlay"><div class="sold-out-text">SOLD OUT</div></div>
-                <div class="relative aspect-[3/4] overflow-hidden bg-premium-100 mb-8 shadow-lg shadow-premium-900/5 grayscale">
-                    <img src="https://images.unsplash.com/photo-1564013799919-ab600027ffc6?auto=format&fit=crop&q=80&w=800" class="absolute inset-0 w-full h-full object-cover" alt="บ้านแฝด">
-                    <div class="absolute top-6 left-6 z-20">
-                        <span class="bg-white/90 backdrop-blur px-4 py-2 text-[10px] font-bold tracking-[0.2em] uppercase text-premium-900">Twin House</span>
-                    </div>
-                </div>
-                <div class="flex justify-between items-start border-b border-premium-200 pb-6 mb-6 opacity-50">
-                    <div>
-                        <h3 class="font-serif text-2xl text-premium-900 mb-2">บ้านแฝด 2 ชั้น</h3>
-                        <p class="text-xs text-premium-500 uppercase tracking-widest">พื้นที่ใช้สอย 141 ตร.ม.</p>
-                    </div>
-                    <div class="text-right">
-                        <p class="text-2xl font-serif text-premium-400 line-through">—</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="group reveal relative" style="transition-delay: 200ms">
-                <div class="sold-out-overlay"><div class="sold-out-text">SOLD OUT</div></div>
-                <div class="relative aspect-[3/4] overflow-hidden bg-premium-100 mb-8 shadow-lg shadow-premium-900/5 grayscale">
-                    <img src="https://images.unsplash.com/photo-1568605114967-8130f3a36994?auto=format&fit=crop&q=80&w=800" class="absolute inset-0 w-full h-full object-cover" alt="บ้านแฝดอิสระ">
-                    <div class="absolute top-6 left-6 z-20">
-                        <span class="bg-white/90 backdrop-blur px-4 py-2 text-[10px] font-bold tracking-[0.2em] uppercase text-premium-900">Twin Independent</span>
-                    </div>
-                </div>
-                <div class="flex justify-between items-start border-b border-premium-200 pb-6 mb-6 opacity-50">
-                    <div>
-                        <h3 class="font-serif text-2xl text-premium-900 mb-2">บ้านแฝดอิสระ 2 ชั้น</h3>
-                        <p class="text-xs text-premium-500 uppercase tracking-widest">พื้นที่ใช้สอย 167 ตร.ม.</p>
-                    </div>
-                    <div class="text-right">
-                        <p class="text-2xl font-serif text-premium-400 line-through">—</p>
+                        <p class="text-xs text-slate-500">พื้นที่ใช้สอย 202 ตร.ม.</p>
                     </div>
                 </div>
             </div>
             {% endif %}
 
             {% if slug == 'the-tide-privilege-therdphra-kiat' %}
-            <!-- TIDE HOME -->
-            <div class="md:col-span-1 lg:col-span-1 reveal">
-                <div class="bg-white border border-premium-100 overflow-hidden group h-full">
+            <div class="group reveal">
+                <div class="relative bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 border border-slate-100 hover:border-accent-gold/30">
                     <div class="relative aspect-[4/3] overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&q=80&w=800" 
-                             class="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105">
-                        <div class="absolute top-4 left-4 z-10">
-                            <span class="bg-accent-gold text-white px-3 py-1 text-[10px] font-bold tracking-widest uppercase">แบบบ้าน</span>
+                        <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&q=80&w=800" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt="TIDE HOME">
+                        <div class="absolute top-4 right-4">
+                            <span class="bg-premium-900 text-white px-3 py-1 text-[10px] font-bold tracking-widest uppercase rounded-sm">Signature</span>
                         </div>
                     </div>
                     <div class="p-8">
-                        <h4 class="text-xs font-bold text-accent-gold uppercase tracking-[0.3em] mb-2">TIDE HOME</h4>
-                        <h3 class="font-serif text-2xl mb-4 text-premium-900">บ้านเดี่ยว 2 ชั้น</h3>
-                        <p class="text-premium-500 font-light text-sm mb-6">พื้นที่ใช้สอย 234 ตร.ม.</p>
-                        <div class="grid grid-cols-3 gap-4 border-t border-premium-100 pt-6 mb-6">
-                            <div><span class="block text-xl font-serif">4</span><span class="text-[10px] uppercase text-premium-400">ห้องนอน</span></div>
-                            <div><span class="block text-xl font-serif">3</span><span class="text-[10px] uppercase text-premium-400">ห้องน้ำ</span></div>
-                            <div><span class="block text-xl font-serif">2</span><span class="text-[10px] uppercase text-premium-400">ที่จอดรถ</span></div>
+                        <div class="mb-6">
+                            <h4 class="text-[10px] font-bold text-accent-gold uppercase tracking-[0.2em] mb-1">Modern Luxury</h4>
+                            <h3 class="font-serif text-3xl text-premium-900">TIDE HOME</h3>
+                            <p class="text-slate-500 text-xs mt-2">พื้นที่ใช้สอย 234 ตร.ม.</p>
                         </div>
-                        <div class="flex items-baseline gap-2">
-                            <span class="text-premium-900 font-serif text-3xl">5.9</span>
-                            <span class="text-xs font-sans text-premium-500 uppercase tracking-wide">ล้านบาท*</span>
+                        <div class="flex justify-between items-center border-t border-slate-100 pt-6">
+                            <div class="flex gap-4 text-slate-600">
+                                <span class="flex items-center gap-1 text-xs"><i class="text-accent-gold">•</i> 4 Bed</span>
+                                <span class="flex items-center gap-1 text-xs"><i class="text-accent-gold">•</i> 3 Bath</span>
+                                <span class="flex items-center gap-1 text-xs"><i class="text-accent-gold">•</i> 2 Park</span>
+                            </div>
+                            <p class="font-serif text-xl text-premium-900">5.9 MB*</p>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- TICHA HOME -->
-            <div class="md:col-span-1 lg:col-span-1 reveal" style="transition-delay: 100ms">
-                <div class="bg-white border border-premium-100 overflow-hidden group h-full">
+            <div class="group reveal" style="transition-delay: 100ms">
+                <div class="relative bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 border border-slate-100 hover:border-accent-gold/30">
                     <div class="relative aspect-[4/3] overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1600566752355-35792bedcfea?auto=format&fit=crop&q=80&w=800" 
-                             class="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105">
-                        <div class="absolute top-4 left-4 z-10">
-                            <span class="bg-accent-gold text-white px-3 py-1 text-[10px] font-bold tracking-widest uppercase">แบบบ้าน</span>
-                        </div>
+                        <img src="https://images.unsplash.com/photo-1600566752355-35792bedcfea?auto=format&fit=crop&q=80&w=800" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt="TICHA HOME">
                     </div>
                     <div class="p-8">
-                        <h4 class="text-xs font-bold text-accent-gold uppercase tracking-[0.3em] mb-2">TICHA HOME</h4>
-                        <h3 class="font-serif text-2xl mb-4 text-premium-900">บ้านแฝดอิสระ 2 ชั้น</h3>
-                        <p class="text-premium-500 font-light text-sm mb-6">พื้นที่ใช้สอย 192 ตร.ม.</p>
-                        <div class="grid grid-cols-3 gap-4 border-t border-premium-100 pt-6 mb-6">
-                            <div><span class="block text-xl font-serif">4</span><span class="text-[10px] uppercase text-premium-400">ห้องนอน</span></div>
-                            <div><span class="block text-xl font-serif">3</span><span class="text-[10px] uppercase text-premium-400">ห้องน้ำ</span></div>
-                            <div><span class="block text-xl font-serif">2</span><span class="text-[10px] uppercase text-premium-400">ที่จอดรถ</span></div>
+                        <div class="mb-6">
+                            <h4 class="text-[10px] font-bold text-accent-gold uppercase tracking-[0.2em] mb-1">Modern Classic</h4>
+                            <h3 class="font-serif text-3xl text-premium-900">TICHA HOME</h3>
+                            <p class="text-slate-500 text-xs mt-2">พื้นที่ใช้สอย 192 ตร.ม.</p>
                         </div>
-                        <div class="flex items-baseline gap-2">
-                            <span class="text-premium-900 font-serif text-3xl">4.7</span>
-                            <span class="text-xs font-sans text-premium-500 uppercase tracking-wide">ล้านบาท*</span>
+                        <div class="flex justify-between items-center border-t border-slate-100 pt-6">
+                            <div class="flex gap-4 text-slate-600">
+                                <span class="flex items-center gap-1 text-xs"><i class="text-accent-gold">•</i> 4 Bed</span>
+                                <span class="flex items-center gap-1 text-xs"><i class="text-accent-gold">•</i> 3 Bath</span>
+                                <span class="flex items-center gap-1 text-xs"><i class="text-accent-gold">•</i> 2 Park</span>
+                            </div>
+                            <p class="font-serif text-xl text-premium-900">4.7 MB*</p>
                         </div>
                     </div>
-                </div>
-            </div>
-
-            <!-- Info Card -->
-            <div class="md:col-span-1 lg:col-span-1 reveal" style="transition-delay: 200ms">
-                <div class="bg-premium-900 text-white p-8 h-full flex flex-col justify-center">
-                    <h4 class="text-accent-gold text-xs font-bold tracking-[0.3em] uppercase mb-4">เพราะ "ความเป็นส่วนตัว"</h4>
-                    <p class="font-serif text-2xl mb-6">คือ "สิทธิพิเศษ" สำหรับคุณ</p>
-                    <ul class="text-sm text-premium-300 space-y-3 mb-8">
-                        <li class="flex items-start gap-2">
-                            <span class="text-accent-gold mt-1">✦</span>
-                            <span>อิสระจากความวุ่นวาย</span>
-                        </li>
-                        <li class="flex items-start gap-2">
-                            <span class="text-accent-gold mt-1">✦</span>
-                            <span>คุณภาพการก่อสร้างได้มาตรฐาน</span>
-                        </li>
-                        <li class="flex items-start gap-2">
-                            <span class="text-accent-gold mt-1">✦</span>
-                            <span>ระบบรักษาความปลอดภัย</span>
-                        </li>
-                    </ul>
-                    <a href="{% url 'core:home' %}#contact-form" class="bg-accent-gold px-6 py-3 text-[10px] text-center font-bold tracking-widest uppercase hover:bg-accent-gold_hover transition-colors">
-                        นัดเยี่ยมชม
-                    </a>
                 </div>
             </div>
             {% endif %}
 
         </div>
-
-        <!-- Disclaimer -->
-        <div class="mt-16 text-center reveal">
-            <p class="text-[10px] text-premium-400">*ราคาและเงื่อนไขพิเศษอาจมีการเปลี่ยนแปลง กรุณาติดต่อฝ่ายขายเพื่อข้อมูลล่าสุด</p>
-        </div>
     </div>
 </section>
 
 {% if slug == 'the-tide-grand-nawong' %}
-<!-- Benefits Section -->
-<section class="py-20 bg-white border-b border-premium-100">
-    <div class="container mx-auto px-8">
+<section class="py-24 bg-slate-50 border-t border-slate-100">
+    <div class="container mx-auto px-6">
         <div class="text-center mb-16 reveal">
-            <h3 class="font-serif text-3xl text-premium-900 mb-4">สิทธิพิเศษภายในโครงการ</h3>
-            <p class="text-accent-gold font-medium">ของแถมรวม 7 รายการ</p>
+            <h3 class="font-serif text-3xl text-premium-900 mb-2">Exclusive Privileges</h3>
+            <p class="text-xs text-slate-500 uppercase tracking-[0.2em]">ของแถมและสิทธิพิเศษ 7 รายการ</p>
         </div>
-        <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-6">
-            <div class="text-center reveal">
-                <div class="w-16 h-16 mx-auto mb-3 bg-accent-gold/10 rounded-full flex items-center justify-center">
-                    <span class="text-accent-gold text-lg">✓</span>
+        
+        <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-4 lg:gap-6">
+            <div class="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-all duration-300 text-center group border border-slate-100">
+                <div class="w-10 h-10 mx-auto mb-4 bg-accent-gold/10 rounded-full flex items-center justify-center group-hover:bg-accent-gold transition-colors">
+                    <svg class="w-5 h-5 text-accent-gold group-hover:text-white transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
                 </div>
-                <p class="text-xs text-premium-700">ค่าส่วนกลาง 1 ปี</p>
+                <p class="text-[10px] md:text-xs font-medium text-premium-900">ฟรีค่าส่วนกลาง<br>1 ปี</p>
             </div>
-            <div class="text-center reveal" style="transition-delay: 50ms">
-                <div class="w-16 h-16 mx-auto mb-3 bg-accent-gold/10 rounded-full flex items-center justify-center">
-                    <span class="text-accent-gold text-lg">✓</span>
+            <div class="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-all duration-300 text-center group border border-slate-100">
+                <div class="w-10 h-10 mx-auto mb-4 bg-accent-gold/10 rounded-full flex items-center justify-center group-hover:bg-accent-gold transition-colors">
+                    <svg class="w-5 h-5 text-accent-gold group-hover:text-white transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
                 </div>
-                <p class="text-xs text-premium-700">ปั๊มน้ำ</p>
+                <p class="text-[10px] md:text-xs font-medium text-premium-900">ปั๊มน้ำ<br>มาตรฐาน</p>
             </div>
-            <div class="text-center reveal" style="transition-delay: 100ms">
-                <div class="w-16 h-16 mx-auto mb-3 bg-accent-gold/10 rounded-full flex items-center justify-center">
-                    <span class="text-accent-gold text-lg">✓</span>
+            <div class="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-all duration-300 text-center group border border-slate-100">
+                <div class="w-10 h-10 mx-auto mb-4 bg-accent-gold/10 rounded-full flex items-center justify-center group-hover:bg-accent-gold transition-colors">
+                    <span class="text-accent-gold group-hover:text-white font-serif font-bold">2k</span>
                 </div>
-                <p class="text-xs text-premium-700">ถังเก็บน้ำ 2,000 ลิตร</p>
+                <p class="text-[10px] md:text-xs font-medium text-premium-900">ถังน้ำ<br>2,000 ลิตร</p>
             </div>
-            <div class="text-center reveal" style="transition-delay: 150ms">
-                <div class="w-16 h-16 mx-auto mb-3 bg-accent-gold/10 rounded-full flex items-center justify-center">
-                    <span class="text-accent-gold text-lg">✓</span>
+            <div class="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-all duration-300 text-center group border border-slate-100">
+                <div class="w-10 h-10 mx-auto mb-4 bg-accent-gold/10 rounded-full flex items-center justify-center group-hover:bg-accent-gold transition-colors">
+                    <svg class="w-5 h-5 text-accent-gold group-hover:text-white transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
                 </div>
-                <p class="text-xs text-premium-700">ระบบกำจัดปลวก 1 ปี</p>
+                <p class="text-[10px] md:text-xs font-medium text-premium-900">กำจัดปลวก<br>1 ปี</p>
             </div>
-            <div class="text-center reveal" style="transition-delay: 200ms">
-                <div class="w-16 h-16 mx-auto mb-3 bg-accent-gold/10 rounded-full flex items-center justify-center">
-                    <span class="text-accent-gold text-lg">✓</span>
+             <div class="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-all duration-300 text-center group border border-slate-100">
+                <div class="w-10 h-10 mx-auto mb-4 bg-accent-gold/10 rounded-full flex items-center justify-center group-hover:bg-accent-gold transition-colors">
+                    <svg class="w-5 h-5 text-accent-gold group-hover:text-white transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/></svg>
                 </div>
-                <p class="text-xs text-premium-700">ถังขยะหน้าบ้าน</p>
+                <p class="text-[10px] md:text-xs font-medium text-premium-900">ถังขยะ<br>หน้าบ้าน</p>
             </div>
-            <div class="text-center reveal" style="transition-delay: 250ms">
-                <div class="w-16 h-16 mx-auto mb-3 bg-accent-gold/10 rounded-full flex items-center justify-center">
-                    <span class="text-accent-gold text-lg">✓</span>
+             <div class="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-all duration-300 text-center group border border-slate-100">
+                <div class="w-10 h-10 mx-auto mb-4 bg-accent-gold/10 rounded-full flex items-center justify-center group-hover:bg-accent-gold transition-colors">
+                    <svg class="w-5 h-5 text-accent-gold group-hover:text-white transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
                 </div>
-                <p class="text-xs text-premium-700">ประตูรั้วไฟฟ้า</p>
+                <p class="text-[10px] md:text-xs font-medium text-premium-900">ประตูรั้ว<br>ไฟฟ้า</p>
             </div>
-            <div class="text-center reveal" style="transition-delay: 300ms">
-                <div class="w-16 h-16 mx-auto mb-3 bg-accent-gold/10 rounded-full flex items-center justify-center">
-                    <span class="text-accent-gold text-lg">✓</span>
+             <div class="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-all duration-300 text-center group border border-slate-100">
+                <div class="w-10 h-10 mx-auto mb-4 bg-accent-gold/10 rounded-full flex items-center justify-center group-hover:bg-accent-gold transition-colors">
+                    <svg class="w-5 h-5 text-accent-gold group-hover:text-white transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg>
                 </div>
-                <p class="text-xs text-premium-700">จัดสวนมาตรฐาน</p>
+                <p class="text-[10px] md:text-xs font-medium text-premium-900">จัดสวน<br>มาตรฐาน</p>
             </div>
         </div>
     </div>
 </section>
 
-<!-- Amenities Section -->
-<section class="py-20 bg-premium-50">
-    <div class="container mx-auto px-8">
-        <div class="grid md:grid-cols-2 gap-16 items-center">
-            <div class="reveal">
-                <h3 class="font-serif text-3xl text-premium-900 mb-8">สิ่งอำนวยความสะดวก</h3>
-                <div class="grid grid-cols-2 gap-6">
-                    <div class="flex items-center gap-3 text-sm text-premium-700">
-                        <span class="text-accent-gold">●</span> คลับเฮ้าส์ ฟิตเนส
-                    </div>
-                    <div class="flex items-center gap-3 text-sm text-premium-700">
-                        <span class="text-accent-gold">●</span> สระว่ายน้ำ
-                    </div>
-                    <div class="flex items-center gap-3 text-sm text-premium-700">
-                        <span class="text-accent-gold">●</span> สวนสาธารณะ
-                    </div>
-                    <div class="flex items-center gap-3 text-sm text-premium-700">
-                        <span class="text-accent-gold">●</span> รปภ. 24 ชม.
-                    </div>
+<section class="py-24 bg-white">
+    <div class="container mx-auto px-6">
+        <div class="bg-premium-900 rounded-3xl p-10 md:p-16 relative overflow-hidden reveal">
+            <div class="absolute top-0 right-0 w-96 h-96 bg-accent-gold/10 rounded-full blur-[100px] pointer-events-none"></div>
+            
+            <div class="flex flex-col md:flex-row gap-16 relative z-10">
+                <div class="md:w-1/3">
+                    <h3 class="font-serif text-3xl md:text-4xl text-white mb-6">World Class<br><span class="text-accent-gold italic">Facilities</span></h3>
+                    <p class="text-slate-400 text-sm font-light leading-relaxed mb-8">
+                        ยกระดับคุณภาพชีวิตด้วยสิ่งอำนวยความสะดวกที่ครบครัน ท่ามกลางบรรยากาศที่เป็นส่วนตัวและปลอดภัยตลอด 24 ชั่วโมง
+                    </p>
+                    <a href="/#contact-form" class="inline-flex items-center gap-2 text-xs font-bold tracking-widest text-white uppercase hover:text-accent-gold transition-colors">
+                        นัดหมายเข้าชม
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+                    </a>
                 </div>
-            </div>
-            <div class="reveal" style="transition-delay: 100ms">
-                <h3 class="font-serif text-3xl text-premium-900 mb-8">ทำเลศักยภาพ</h3>
-                <div class="space-y-3">
-                    <div class="flex items-center gap-3 text-sm text-premium-700">
-                        <span class="text-accent-gold">●</span> ทำเลใกล้ตัวเมือง น้ำไม่ท่วม
+                
+                <div class="md:w-2/3 grid grid-cols-1 sm:grid-cols-2 gap-8">
+                    <div class="flex items-start gap-4">
+                        <div class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center shrink-0">
+                            <svg class="w-5 h-5 text-accent-gold" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>
+                        </div>
+                        <div>
+                            <h4 class="text-white font-serif text-lg mb-1">Clubhouse</h4>
+                            <p class="text-slate-400 text-xs">คลับเฮ้าส์และฟิตเนสครบวงจร</p>
+                        </div>
                     </div>
-                    <div class="flex items-center gap-3 text-sm text-premium-700">
-                        <span class="text-accent-gold">●</span> เชื่อมต่อการเดินทางหลายเส้นทาง
+                    <div class="flex items-start gap-4">
+                        <div class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center shrink-0">
+                            <svg class="w-5 h-5 text-accent-gold" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+                        </div>
+                        <div>
+                            <h4 class="text-white font-serif text-lg mb-1">Swimming Pool</h4>
+                            <p class="text-slate-400 text-xs">สระว่ายน้ำระบบเกลือ</p>
+                        </div>
                     </div>
-                    <div class="flex items-center gap-3 text-sm text-premium-700">
-                        <span class="text-accent-gold">●</span> ใกล้หน่วยงานราชการ
+                    <div class="flex items-start gap-4">
+                        <div class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center shrink-0">
+                            <svg class="w-5 h-5 text-accent-gold" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"/></svg>
+                        </div>
+                        <div>
+                            <h4 class="text-white font-serif text-lg mb-1">Green Park</h4>
+                            <p class="text-slate-400 text-xs">สวนสาธารณะขนาดใหญ่</p>
+                        </div>
                     </div>
-                    <div class="flex items-center gap-3 text-sm text-premium-700">
-                        <span class="text-accent-gold">●</span> ใกล้สถานศึกษาและโรงพยาบาล
-                    </div>
-                    <div class="flex items-center gap-3 text-sm text-premium-700">
-                        <span class="text-accent-gold">●</span> ใกล้ศูนย์การค้าครบครัน
+                    <div class="flex items-start gap-4">
+                        <div class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center shrink-0">
+                            <svg class="w-5 h-5 text-accent-gold" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+                        </div>
+                        <div>
+                            <h4 class="text-white font-serif text-lg mb-1">24h Security</h4>
+                            <p class="text-slate-400 text-xs">ระบบรักษาความปลอดภัย 24 ชม.</p>
+                        </div>
                     </div>
                 </div>
             </div>
