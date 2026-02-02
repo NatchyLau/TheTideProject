@@ -1,5 +1,8 @@
 # forms.py
+import re
+
 from django import forms
+from django.core.exceptions import ValidationError
 from django.urls import reverse_lazy
 from apps.locations.models import Province, District
 from .models import CustomerInquiry
@@ -33,6 +36,25 @@ class CustomerInquiryForm(forms.ModelForm):
                 except (TypeError, ValueError):
                     # Keep empty queryset if province_id is invalid
                     pass
+
+    def clean_phone(self):
+        phone = self.cleaned_data.get('phone', '')
+        normalized = re.sub(r'\D', '', phone)
+
+        if len(normalized) != 10 or not normalized.startswith('0'):
+            raise ValidationError('กรุณากรอกเบอร์โทรศัพทให้ถูกต้อง')
+
+        return normalized
+
+    def clean(self):
+        cleaned_data = super().clean()
+        province = cleaned_data.get('province')
+        district = cleaned_data.get('district')
+
+        if province and district and district.province_id != province.id:
+            self.add_error('district', 'กรุณาเลือกอำเภอ/เขตให้ตรงกับจังหวัด')
+
+        return cleaned_data
 
     class Meta:
         model = CustomerInquiry
