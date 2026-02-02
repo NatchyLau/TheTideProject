@@ -1,6 +1,6 @@
 {% load static %}
 
-<section class="relative min-h-[85vh] flex items-center bg-premium-50 overflow-hidden">
+<section class="relative min-h-[85vh] flex items-center bg-premium-50 overflow-hidden pt-20">
     <div class="absolute inset-0 bg-texture opacity-20"></div>
     <div class="absolute top-0 right-0 w-1/2 h-full bg-premium-100/50 hidden lg:block"></div>
     
@@ -10,50 +10,86 @@
         <div class="flex flex-col lg:flex-row items-center gap-16 lg:gap-24">
             
             <div class="w-full lg:w-1/2 reveal">
-                <a href="{% url 'core:home' %}#projects" class="inline-flex items-center gap-4 mb-12 text-premium-500 hover:text-accent-gold transition-all duration-500 group">
-                    <span class="w-8 h-[1px] bg-premium-300 group-hover:w-12 group-hover:bg-accent-gold transition-all"></span>
-                    <span class="text-[10px] font-bold tracking-[0.3em] uppercase">Return to Collection</span>
-                </a>
-                
-                <div class="flex items-center gap-4 mb-8">
-                    <span class="text-accent-gold text-[10px] font-bold tracking-[0.4em] uppercase">Luxury Residence</span>
-                    <div class="flex-1 h-[1px] bg-accent-gold/20"></div>
-                </div>
                 
                 {% if slug == 'the-tide-grand-nawong' %}
-                <h1 class="font-serif text-5xl md:text-7xl lg:text-8xl text-premium-900 mb-10 leading-[1.1]">
-                    GRAND <br><span class="italic font-normal text-accent-gold">Nawong</span>
+                <div class="flex items-center gap-4 mb-8">
+                    <span class="text-accent-gold text-[10px] font-bold tracking-[0.4em] uppercase">นครศรีธรรมราช</span>
+                    <div class="flex-1 h-[1px] bg-accent-gold/20"></div>
+                </div>
+                <h1 class="font-serif text-5xl md:text-6xl lg:text-7xl text-premium-900 mb-6 leading-[1.1]">
+                    THE TIDE GRAND <br><span class="italic font-normal text-accent-gold">นาวง</span>
                 </h1>
-                <p class="text-lg text-premium-500 font-light max-w-md leading-relaxed mb-12 border-l-2 border-accent-gold/20 pl-6">
-                    นิยามใหม่ของการใช้ชีวิตที่เรียบง่ายแต่เปี่ยมด้วยรสนิยม ผสมผสานดีไซน์ Modern กับฟังก์ชันที่คิดมาเพื่อคุณ
+                <p class="text-base md:text-lg text-premium-600 font-medium max-w-lg leading-relaxed mb-4">
+                    โครงการที่มุ่งมั่นในการสร้าง <span class="text-accent-gold font-semibold">"บ้านที่น่าอยู่"</span> เพื่อ <span class="text-accent-gold font-semibold">"ชาวนครศรีธรรมราช"</span> อย่างแท้จริง
                 </p>
+                <p class="text-sm text-premium-500 font-light max-w-md leading-relaxed mb-10 border-l-2 border-accent-gold/30 pl-6">
+                    เพื่อการใช้ชีวิตที่ลงตัวสำหรับคุณและครอบครัวในทุกช่วงเวลา
+                </p>
+                
                 {% elif slug == 'the-tide-grand-phutthaphum' %}
-                <h1 class="font-serif text-5xl md:text-7xl lg:text-8xl text-premium-900 mb-10 leading-[1.1]">
-                    GRAND <br><span class="italic font-normal text-accent-gold">Phutthaphum</span>
+                <div class="flex items-center gap-4 mb-8">
+                    <span class="bg-premium-900 text-white px-4 py-1 text-[10px] font-bold tracking-[0.2em] uppercase">SOLD OUT</span>
+                    <div class="flex-1 h-[1px] bg-premium-300"></div>
+                </div>
+                <h1 class="font-serif text-5xl md:text-6xl lg:text-7xl text-premium-900 mb-6 leading-[1.1]">
+                    THE TIDE GRAND <br><span class="italic font-normal text-accent-gold">พุทธภูมิ</span>
                 </h1>
-                <p class="text-lg text-premium-500 font-light max-w-md leading-relaxed mb-12 border-l-2 border-accent-gold/20 pl-6">
-                    ทำเลแห่งอนาคตบนถนนพุทธภูมิ ที่ซึ่งความสงบและการเดินทางที่สะดวกสบายมาบรรจบกันอย่างลงตัว
+                <p class="text-base md:text-lg text-premium-600 font-medium max-w-lg leading-relaxed mb-4">
+                    โครงการที่มุ่งมั่นในการสร้าง <span class="text-accent-gold font-semibold">"บ้านที่น่าอยู่"</span> เพื่อ <span class="text-accent-gold font-semibold">"ชาวนครศรีธรรมราช"</span> อย่างแท้จริง
                 </p>
+                <div class="text-sm text-premium-500 font-light max-w-md leading-relaxed mb-10 border-l-2 border-accent-gold/30 pl-6">
+                    <p class="mb-2"><strong class="text-premium-700">จุดเด่นของโครงการ:</strong></p>
+                    <ul class="list-disc list-inside space-y-1 text-xs">
+                        <li>ทำเลดี การเดินทางสะดวก ใกล้ถนนพุทธภูมิ</li>
+                        <li>ใกล้โรงเรียนพระมหาธาตุมูลนิธิมัธยม</li>
+                        <li>ใกล้วัดพระมหาธาตุวรมหาวิหาร</li>
+                        <li>ใกล้สวนสาธารณะเฉลิมพระเกียรติ ร.9</li>
+                    </ul>
+                </div>
+                
                 {% elif slug == 'the-tide-privilege-therdphra-kiat' %}
-                <h1 class="font-serif text-5xl md:text-7xl lg:text-8xl text-premium-900 mb-10 leading-[1.1]">
-                    TIDE <br><span class="italic font-normal text-accent-gold">Privilege</span>
+                <div class="flex items-center gap-4 mb-8">
+                    <span class="text-accent-gold text-[10px] font-bold tracking-[0.4em] uppercase">Modern Contemporary</span>
+                    <div class="flex-1 h-[1px] bg-accent-gold/20"></div>
+                </div>
+                <h1 class="font-serif text-5xl md:text-6xl lg:text-7xl text-premium-900 mb-6 leading-[1.1]">
+                    THE TIDE <br><span class="italic font-normal text-accent-gold">PRIVILEGE</span>
                 </h1>
-                <p class="text-lg text-premium-500 font-light max-w-md leading-relaxed mb-12 border-l-2 border-accent-gold/20 pl-6">
-                    เอกสิทธิ์สูงสุดของการพักผ่อน เพียง 22 ครอบครัวเท่านั้น บนทำเลศักยภาพที่ออกแบบเพื่อความเป็นส่วนตัว
+                <p class="text-base md:text-lg text-premium-600 font-medium max-w-lg leading-relaxed mb-4">
+                    เพราะความสุขของการอยู่อาศัย เริ่มต้นจากการได้ใช้ชีวิตอย่าง <span class="text-accent-gold font-semibold">"อิสระ"</span>
                 </p>
+                <div class="text-sm text-premium-500 font-light max-w-md leading-relaxed mb-10 border-l-2 border-accent-gold/30 pl-6">
+                    <p class="mb-2">โครงการบ้านที่มอบความเป็นส่วนตัวสูงสุด</p>
+                    <p class="text-accent-gold font-semibold">เพียง 22 ครอบครัว</p>
+                    <p class="mt-2 text-xs">ตั้งอยู่บนทำเลศักยภาพ ถนนเทิดพระเกียรติ<br>ใกล้ศูนย์การค้า โรงพยาบาล</p>
+                </div>
                 {% endif %}
 
-                <div class="flex items-center gap-8">
-                    <a href="#floorplans" class="bg-premium-900 text-white px-10 py-5 text-[11px] font-bold tracking-[0.2em] uppercase hover:bg-accent-gold transition-all duration-500 shadow-xl shadow-premium-900/10">
-                        Explore House Plans
+                <div class="flex flex-col sm:flex-row items-start gap-4">
+                    {% if slug != 'the-tide-grand-phutthaphum' %}
+                    <a href="#floorplans" class="bg-premium-900 text-white px-8 py-4 text-[11px] font-bold tracking-[0.2em] uppercase hover:bg-accent-gold transition-all duration-500 shadow-xl shadow-premium-900/10">
+                        ดูแบบบ้าน
                     </a>
-                    <button class="text-premium-900 text-[10px] font-bold tracking-[0.2em] uppercase border-b border-premium-900 py-1 hover:text-accent-gold hover:border-accent-gold transition-all">
-                        Brochure
-                    </button>
+                    <a href="{% url 'core:home' %}#contact-form" class="border border-premium-900 text-premium-900 px-8 py-4 text-[11px] font-bold tracking-[0.2em] uppercase hover:bg-premium-900 hover:text-white transition-all duration-500">
+                        นัดเยี่ยมชม
+                    </a>
+                    {% else %}
+                    <a href="{% url 'core:home' %}#projects" class="bg-premium-900 text-white px-8 py-4 text-[11px] font-bold tracking-[0.2em] uppercase hover:bg-accent-gold transition-all duration-500 shadow-xl shadow-premium-900/10">
+                        ดูโครงการอื่น
+                    </a>
+                    {% endif %}
                 </div>
             </div>
 
             <div class="w-full lg:w-1/2 relative reveal" style="transition-delay: 200ms">
+                {% if slug == 'the-tide-grand-phutthaphum' %}
+                <div class="absolute inset-0 z-30 bg-premium-900/40 backdrop-blur-[2px] flex items-center justify-center">
+                    <div class="border-2 border-accent-gold px-8 py-4 transform -rotate-12">
+                        <span class="text-accent-gold font-serif text-3xl tracking-widest">SOLD OUT</span>
+                    </div>
+                </div>
+                {% endif %}
+                
                 <div class="relative z-10 aspect-[4/5] overflow-hidden shadow-2xl">
                     <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&q=80&w=1200" 
                          class="w-full h-full object-cover grayscale-[20%] hover:grayscale-0 transition-all duration-1000 scale-105 hover:scale-100" 
@@ -65,35 +101,99 @@
                          class="w-full h-full object-cover" 
                          alt="Interior Detail">
                 </div>
-
-                <div class="absolute top-1/2 -right-8 transform rotate-90 origin-right">
-                    <span class="text-premium-300 text-[60px] font-serif opacity-30 select-none">ARCHITECTURE</span>
-                </div>
             </div>
 
         </div>
     </div>
 </section>
 
-<section class="py-24 bg-white border-b border-premium-100">
+<!-- Features Section - Dynamic per project -->
+<section class="py-16 bg-white border-b border-premium-100">
     <div class="container mx-auto px-8">
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-12 text-center">
+        {% if slug == 'the-tide-grand-nawong' %}
+        <!-- 5 Key Features for GRAND Nawong -->
+        <div class="text-center mb-12 reveal">
+            <h3 class="font-serif text-2xl text-premium-900 mb-2">5 จุดเด่นที่ทำให้ THE TIDE GRAND โดดเด่นที่สุดในย่านนาวง</h3>
+        </div>
+        <div class="grid grid-cols-2 md:grid-cols-5 gap-8 text-center">
+            <div class="reveal">
+                <div class="w-12 h-12 mx-auto mb-4 bg-accent-gold/10 rounded-full flex items-center justify-center">
+                    <svg class="w-6 h-6 text-accent-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>
+                </div>
+                <span class="block text-sm font-medium text-premium-900">ก่อสร้างด้วยอิฐมอญ</span>
+                <span class="text-[10px] text-premium-500">แข็งแรง ทนทาน</span>
+            </div>
             <div class="reveal" style="transition-delay: 100ms">
-                <span class="block text-2xl font-serif text-premium-900">Premium</span>
-                <span class="text-[10px] uppercase tracking-widest text-accent-gold font-bold">Materials</span>
+                <div class="w-12 h-12 mx-auto mb-4 bg-accent-gold/10 rounded-full flex items-center justify-center">
+                    <svg class="w-6 h-6 text-accent-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+                </div>
+                <span class="block text-sm font-medium text-premium-900">วัสดุแบรนด์ชั้นนำ</span>
+                <span class="text-[10px] text-premium-500">ประตู หน้าต่างคุณภาพ</span>
             </div>
             <div class="reveal" style="transition-delay: 200ms">
-                <span class="block text-2xl font-serif text-premium-900">Modern</span>
-                <span class="text-[10px] uppercase tracking-widest text-accent-gold font-bold">Engineering</span>
+                <div class="w-12 h-12 mx-auto mb-4 bg-accent-gold/10 rounded-full flex items-center justify-center">
+                    <svg class="w-6 h-6 text-accent-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
+                </div>
+                <span class="block text-sm font-medium text-premium-900">รปภ. 24 ชม.</span>
+                <span class="text-[10px] text-premium-500">ปลอดภัยตลอดเวลา</span>
             </div>
             <div class="reveal" style="transition-delay: 300ms">
-                <span class="block text-2xl font-serif text-premium-900">Smart</span>
-                <span class="text-[10px] uppercase tracking-widest text-accent-gold font-bold">Home System</span>
+                <div class="w-12 h-12 mx-auto mb-4 bg-accent-gold/10 rounded-full flex items-center justify-center">
+                    <svg class="w-6 h-6 text-accent-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l5.447 2.724A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"/></svg>
+                </div>
+                <span class="block text-sm font-medium text-premium-900">ถนนกว้าง 14 ม.</span>
+                <span class="text-[10px] text-premium-500">เพิ่มความเป็นส่วนตัว</span>
             </div>
             <div class="reveal" style="transition-delay: 400ms">
-                <span class="block text-2xl font-serif text-premium-900">Prime</span>
-                <span class="text-[10px] uppercase tracking-widest text-accent-gold font-bold">Location</span>
+                <div class="w-12 h-12 mx-auto mb-4 bg-accent-gold/10 rounded-full flex items-center justify-center">
+                    <svg class="w-6 h-6 text-accent-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/></svg>
+                </div>
+                <span class="block text-sm font-medium text-premium-900">พื้นที่ส่วนกลาง</span>
+                <span class="text-[10px] text-premium-500">คลับเฮ้าส์ สระว่ายน้ำ</span>
             </div>
         </div>
+        
+        {% elif slug == 'the-tide-privilege-therdphra-kiat' %}
+        <!-- Features for Privilege -->
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-12 text-center">
+            <div class="reveal">
+                <span class="block text-3xl font-serif text-premium-900 mb-1">22</span>
+                <span class="text-[10px] uppercase tracking-widest text-accent-gold font-bold">ครอบครัว</span>
+            </div>
+            <div class="reveal" style="transition-delay: 100ms">
+                <span class="block text-3xl font-serif text-premium-900 mb-1">2</span>
+                <span class="text-[10px] uppercase tracking-widest text-accent-gold font-bold">แบบสไตล์</span>
+            </div>
+            <div class="reveal" style="transition-delay: 200ms">
+                <span class="block text-3xl font-serif text-premium-900 mb-1">192-234</span>
+                <span class="text-[10px] uppercase tracking-widest text-accent-gold font-bold">ตร.ม.</span>
+            </div>
+            <div class="reveal" style="transition-delay: 300ms">
+                <span class="block text-lg font-serif text-premium-900 mb-1">Modern</span>
+                <span class="text-[10px] uppercase tracking-widest text-accent-gold font-bold">Contemporary</span>
+            </div>
+        </div>
+        
+        {% else %}
+        <!-- Default for Phutthaphum (Sold Out) -->
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-12 text-center opacity-50">
+            <div class="reveal">
+                <span class="block text-2xl font-serif text-premium-900">Premium</span>
+                <span class="text-[10px] uppercase tracking-widest text-premium-500 font-bold">Materials</span>
+            </div>
+            <div class="reveal" style="transition-delay: 100ms">
+                <span class="block text-2xl font-serif text-premium-900">24/7</span>
+                <span class="text-[10px] uppercase tracking-widest text-premium-500 font-bold">Security</span>
+            </div>
+            <div class="reveal" style="transition-delay: 200ms">
+                <span class="block text-2xl font-serif text-premium-900">Prime</span>
+                <span class="text-[10px] uppercase tracking-widest text-premium-500 font-bold">Location</span>
+            </div>
+            <div class="reveal" style="transition-delay: 300ms">
+                <span class="block text-2xl font-serif text-premium-900">Sold</span>
+                <span class="text-[10px] uppercase tracking-widest text-premium-500 font-bold">Out</span>
+            </div>
+        </div>
+        {% endif %}
     </div>
 </section>

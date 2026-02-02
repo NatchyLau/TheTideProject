@@ -5,15 +5,15 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>
-        {% if slug == 'the-tide-grand-nawong' %} The Tide Grand Nawong - House Plans
-        {% elif slug == 'the-tide-grand-phutthaphum' %} The Tide Grand Phutthaphum - House Plans
-        {% elif slug == 'the-tide-privilege-therdphra-kiat' %} THE TIDE PRIVILEGE - House Plans
+        {% if slug == 'the-tide-grand-nawong' %} The Tide Grand Nawong
+        {% elif slug == 'the-tide-grand-phutthaphum' %} The Tide Grand Phutthaphum (Sold Out)
+        {% elif slug == 'the-tide-privilege-therdphra-kiat' %} THE TIDE PRIVILEGE
         {% else %} House Plans | THE TIDE {% endif %}
     </title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&family=Prompt:wght@200;300;400;500&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&family=Prompt:wght@200;300;400;500;600&display=swap" rel="stylesheet" />
 
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -26,32 +26,41 @@
                     },
                     colors: {
                         premium: {
-                            50: "#FAFAF9",
+                            50: "#FAFAF9",  /* Stone White */
                             100: "#F5F5F4",
+                            200: "#E7E5E4",
                             300: "#D6D3D1",
-                            500: "#78716C",
+                            500: "#78716C", /* Warm Grey */
                             800: "#292524",
-                            900: "#1C1917",
+                            900: "#1C1917", /* Deep Charcoal */
                         },
                         accent: {
-                            gold: "#C6A87C",
-                            gold_hover: "#B09265",
+                            gold: "#BFA07A", /* Muted Gold */
+                            gold_hover: "#A88B68",
                         },
                     },
+                    letterSpacing: {
+                        widest: '.15em',
+                        mega: '.25em',
+                    }
                 },
             },
         };
     </script>
-    <link rel="stylesheet" href="{% static 'core/css/global.css' %}" />
-
     <style>
-        /* Override reveal to show content initially */
+        /* Base Reveal State */
         .reveal {
-            opacity: 1 !important;
-            transform: translateY(0) !important;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        /* Active State (Triggered by JS) */
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
         }
         
-        /* Page-specific styles */
+        /* Luxury Button Hover Effect */
         .btn-luxury {
             position: relative;
             overflow: hidden;
@@ -61,25 +70,34 @@
             content: '';
             position: absolute;
             bottom: 0; left: 0; width: 0%; height: 1px;
-            background-color: var(--color-accent-gold);
+            background-color: #BFA07A; /* accent-gold */
             transition: width 0.4s ease;
         }
         .btn-luxury:hover::after { width: 100%; }
 
-        /* Card hover effect */
-        .house-card {
-            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+        /* Sold Out Ribbon */
+        .sold-out-overlay {
+            position: absolute; inset: 0; background: rgba(28, 25, 23, 0.6); backdrop-filter: blur(2px);
+            display: flex; align-items: center; justify-content: center; z-index: 20; pointer-events: none;
         }
-        .house-card:hover {
-            transform: translateY(-8px);
-        }
-        .house-card:hover .card-image {
-            filter: grayscale(0%);
-            transform: scale(1.05);
+        .sold-out-text {
+            border: 2px solid #BFA07A; padding: 10px 30px; color: #BFA07A; font-family: 'Playfair Display', serif;
+            font-size: 1.5rem; letter-spacing: 0.2em; transform: rotate(-10deg); font-weight: 700;
         }
     </style>
   </head>
-  <body class="bg-premium-50 text-premium-800 font-sans antialiased selection:bg-accent-gold selection:text-white">
+  <body class="bg-premium-50 text-premium-900 font-sans antialiased selection:bg-accent-gold selection:text-white">
+
+    <nav class="fixed w-full top-0 z-50 bg-premium-50/90 backdrop-blur-md border-b border-premium-200/50 transition-all duration-300">
+        <div class="container mx-auto px-6 py-4 flex items-center justify-between">
+            <a href="{% url 'core:home' %}" class="font-serif text-xl font-bold tracking-widest text-premium-900 flex items-center gap-2">
+                <span class="text-accent-gold">✦</span> THE TIDE
+            </a>
+            <a href="{% url 'core:home' %}#projects" class="text-[10px] font-bold uppercase tracking-mega text-premium-500 hover:text-accent-gold transition-colors">
+                Back to Projects
+            </a>
+        </div>
+    </nav>
 
     <main>
         {% include "core/includes/project-plans/hero-section.html" %}
@@ -89,6 +107,20 @@
 
     {% include "core/includes/footer.html" %}
 
-    <script src="{% static 'core/js/main.js' %}"></script>
+    <script>
+        function reveal() {
+            var reveals = document.querySelectorAll(".reveal");
+            for (var i = 0; i < reveals.length; i++) {
+                var windowHeight = window.innerHeight;
+                var elementTop = reveals[i].getBoundingClientRect().top;
+                var elementVisible = 100;
+                if (elementTop < windowHeight - elementVisible) {
+                    reveals[i].classList.add("active");
+                }
+            }
+        }
+        window.addEventListener("scroll", reveal);
+        window.onload = reveal;
+    </script>
   </body>
 </html>
