@@ -1,0 +1,32 @@
+{% load static %}
+
+<!-- CTA Section -->
+<section class="py-24 md:py-32 bg-slate-900 text-white overflow-hidden relative">
+    <!-- Background effects -->
+    <div class="absolute inset-0 pointer-events-none">
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-accent-gold/5 rounded-full blur-[200px]"></div>
+    </div>
+    
+    <div class="container mx-auto px-6 text-center relative z-10 reveal">
+        <div class="inline-flex items-center gap-3 mb-6 opacity-80">
+            <span class="w-12 h-[1px] bg-gradient-to-r from-transparent via-accent-gold to-transparent"></span>
+            <span class="text-accent-gold font-medium tracking-[0.3em] uppercase text-[10px] md:text-xs">
+                Private Viewing
+            </span>
+            <span class="w-12 h-[1px] bg-gradient-to-r from-transparent via-accent-gold to-transparent"></span>
+        </div>
+        
+        <h3 class="font-serif text-3xl md:text-4xl lg:text-5xl mb-8 italic text-white">Experience the Luxury of Living</h3>
+        <p class="text-slate-400 font-light max-w-xl mx-auto mb-12 leading-relaxed">
+            เริ่มต้นชีวิตใหม่ในแบบที่คุณต้องการ พร้อมรับคำปรึกษาจากผู้เชี่ยวชาญด้านอสังหาริมทรัพย์ของเรา
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+            <a href="{% url 'core:home' %}#contact-form" class="btn btn-primary px-10 py-4 rounded-full text-[10px] font-bold tracking-[0.2em] uppercase shadow-lg shadow-accent-gold/20 hover:shadow-accent-gold/40 transition-all duration-300">
+                Book a Private Viewing
+            </a>
+            <a href="{% url 'core:home' %}#projects" class="btn btn-glass px-10 py-4 rounded-full text-[10px] font-medium tracking-[0.2em] uppercase">
+                View All Projects
+            </a>
+        </div>
+    </div>
+</section>
