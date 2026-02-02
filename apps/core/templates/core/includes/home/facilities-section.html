@@ -1,88 +1,154 @@
 {% load static %}
 
-<section id="facilities" class="py-24 md:py-32 bg-white border-t border-slate-100 overflow-hidden">
-  
+<section
+  id="facilities"
+  class="py-24 md:py-32 bg-white border-t border-slate-100 overflow-hidden"
+>
   <div class="container mx-auto px-6 mb-16 md:mb-20">
-    <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 reveal">
+    <div
+      class="flex flex-col md:flex-row md:items-end justify-between gap-6 reveal"
+    >
       <div class="max-w-2xl">
-        <span class="inline-block py-1 px-3 border border-premium-200 rounded-full text-[10px] font-bold tracking-[0.2em] uppercase text-premium-500 mb-4 bg-premium-50">
+        <span
+          class="inline-block py-1 px-3 border border-premium-200 rounded-full text-[10px] font-bold tracking-[0.2em] uppercase text-premium-500 mb-4 bg-premium-50"
+        >
           Exclusive Living
         </span>
-        <h2 class="font-serif text-4xl md:text-5xl lg:text-6xl text-premium-900 leading-tight">
+        <h2
+          class="font-serif text-4xl md:text-5xl lg:text-6xl text-premium-900 leading-tight"
+        >
           World Class <span class="italic text-accent-gold">Facilities</span>
         </h2>
       </div>
-      <p class="text-premium-400 font-light text-base md:text-lg max-w-sm leading-relaxed text-left md:text-right">
-        ยกระดับคุณภาพชีวิต...<br/>ด้วยพื้นที่ส่วนกลางที่คิดมาเพื่อคุณ
+      <p
+        class="text-premium-400 font-light text-base md:text-lg max-w-sm leading-relaxed text-left md:text-right"
+      >
+        ยกระดับคุณภาพชีวิต...<br />ด้วยพื้นที่ส่วนกลางที่คิดมาเพื่อคุณ
       </p>
     </div>
   </div>
 
   <div class="container mx-auto px-4 md:px-6">
-    <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6 h-auto md:h-[600px]">
-      
-      <div class="group relative md:col-span-2 md:row-span-2 rounded-2xl overflow-hidden cursor-pointer reveal shadow-sm hover:shadow-2xl transition-all duration-700">
+    <div
+      class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6 h-auto md:h-[600px]"
+    >
+      <div
+        class="group relative md:col-span-2 md:row-span-2 rounded-2xl overflow-hidden reveal shadow-sm hover:shadow-2xl transition-all duration-700"
+      >
         <img
-          src="{% static 'core/images/example-inside.png' %}"
+          src="{% static 'core/images/pool.png' %}"
           alt="Infinity Pool"
           class="w-full h-full object-cover transition-transform duration-[1.5s] ease-[cubic-bezier(0.25,1,0.5,1)] group-hover:scale-110"
         />
-        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-80 transition-opacity duration-500"></div>
-        
-        <div class="absolute bottom-0 left-0 p-8 w-full transform translate-y-2 group-hover:translate-y-0 transition-transform duration-500">
-          <div class="flex items-center justify-between border-t border-white/20 pt-4">
-             <div>
-                <h3 class="font-serif text-3xl md:text-4xl text-white italic mb-1">Infinity Pool</h3>
-                <p class="text-sm font-light text-white/80 tracking-wide">สระว่ายน้ำระบบเกลือวิวพาโนรามา</p>
-             </div>
-             <div class="w-10 h-10 rounded-full bg-white/10 backdrop-blur-md flex items-center justify-center border border-white/20 group-hover:bg-white group-hover:text-premium-900 text-white transition-all duration-500">
-                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
-             </div>
+        <div
+          class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-80 transition-opacity duration-500"
+        ></div>
+
+        <div
+          class="absolute bottom-0 left-0 p-8 w-full transform translate-y-2 group-hover:translate-y-0 transition-transform duration-500"
+        >
+          <div
+            class="flex items-center justify-between border-t border-white/20 pt-4"
+          >
+            <div>
+              <h3
+                class="font-serif text-3xl md:text-4xl text-white italic mb-1"
+              >
+                Infinity Pool
+              </h3>
+              <p class="text-sm font-light text-white/80 tracking-wide">
+                สระว่ายน้ำระบบเกลือวิวพาโนรามา
+              </p>
+            </div>
+            <div
+              class="w-10 h-10 rounded-full bg-white/10 backdrop-blur-md flex items-center justify-center border border-white/20 group-hover:bg-white group-hover:text-premium-900 text-white transition-all duration-500"
+            >
+              <svg
+                class="w-4 h-4"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="1.5"
+                  d="M17 8l4 4m0 0l-4 4m4-4H3"
+                ></path>
+              </svg>
+            </div>
           </div>
         </div>
       </div>
 
-      <div class="group relative md:col-span-1 md:row-span-2 rounded-2xl overflow-hidden cursor-pointer reveal shadow-sm hover:shadow-2xl transition-all duration-700 delay-100 min-h-[300px]">
+      <div
+        class="group relative md:col-span-1 md:row-span-2 rounded-2xl overflow-hidden reveal shadow-sm hover:shadow-2xl transition-all duration-700 delay-100 min-h-[300px]"
+      >
         <img
-          src="{% static 'core/images/fitness.png' %}"
+          src="{% static 'core/images/fitness-3.png' %}"
           alt="Sky Fitness"
           class="w-full h-full object-cover transition-transform duration-[1.5s] ease-[cubic-bezier(0.25,1,0.5,1)] group-hover:scale-110"
         />
-        <div class="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-colors duration-500"></div>
-        
+        <div
+          class="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-colors duration-500"
+        ></div>
+
         <div class="absolute bottom-6 left-6 right-6">
-           <div class="bg-white/10 backdrop-blur-md border border-white/10 p-4 rounded-xl transform translate-y-0 group-hover:-translate-y-2 transition-transform duration-500">
-              <h3 class="font-serif text-xl text-white mb-1">Sky Fitness</h3>
-              <p class="text-xs text-white/70 overflow-hidden h-0 group-hover:h-auto transition-all duration-300 opacity-0 group-hover:opacity-100">
-                  อุปกรณ์ครบครัน 360 องศา
-              </p>
-           </div>
+          <div
+            class="bg-white/10 backdrop-blur-md border border-white/10 p-4 rounded-xl transform translate-y-0 group-hover:-translate-y-2 transition-transform duration-500"
+          >
+            <h3 class="font-serif text-xl text-white mb-1">Sky Fitness</h3>
+            <p
+              class="text-xs text-white/70 overflow-hidden h-0 group-hover:h-auto transition-all duration-300 opacity-0 group-hover:opacity-100"
+            >
+              อุปกรณ์ครบครัน 360 องศา
+            </p>
+          </div>
         </div>
       </div>
 
-      <div class="group relative md:col-span-1 md:row-span-1 rounded-2xl overflow-hidden cursor-pointer reveal shadow-sm hover:shadow-2xl transition-all duration-700 delay-200 min-h-[280px]">
+      <div
+        class="group relative md:col-span-1 md:row-span-1 rounded-2xl overflow-hidden reveal shadow-sm hover:shadow-2xl transition-all duration-700 delay-200 min-h-[280px]"
+      >
         <img
-          src="https://images.unsplash.com/photo-1604328703693-18313fe20f3a?q=80&w=2070&auto=format&fit=crop"
+          src="{% static 'core/images/co-working.png' %}"
           alt="Co-Working Space"
           class="w-full h-full object-cover transition-transform duration-[1.5s] ease-[cubic-bezier(0.25,1,0.5,1)] group-hover:scale-110"
         />
-        <div class="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-colors duration-500"></div>
+        <div
+          class="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-colors duration-500"
+        ></div>
         <div class="absolute bottom-6 left-6 text-white">
           <h3 class="font-serif text-xl mb-1">Co-Working</h3>
-          <div class="w-8 h-[1px] bg-white/50 group-hover:w-full group-hover:bg-accent-gold transition-all duration-500"></div>
+          <div
+            class="w-8 h-[1px] bg-white/50 group-hover:w-full group-hover:bg-accent-gold transition-all duration-500"
+          ></div>
         </div>
       </div>
 
-      <div class="group relative md:col-span-1 md:row-span-1 bg-premium-50 rounded-2xl overflow-hidden cursor-pointer reveal shadow-sm hover:shadow-lg transition-all duration-700 delay-300 flex items-center justify-center border border-premium-100 min-h-[280px]">
-         <div class="text-center p-6">
-            <div class="w-16 h-16 mx-auto bg-white rounded-full flex items-center justify-center mb-4 text-premium-300 group-hover:text-accent-gold group-hover:scale-110 transition-all duration-500 shadow-sm">
-                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg>
-            </div>
-            <h3 class="font-serif text-xl text-premium-900">More Facilities</h3>
-            <p class="text-xs text-premium-400 mt-2 font-light">พื้นที่สีเขียวและสวนพักผ่อน</p>
-         </div>
+      <div
+        class="group relative md:col-span-1 md:row-span-1 rounded-2xl overflow-hidden reveal shadow-sm hover:shadow-2xl transition-all duration-700 delay-300 min-h-[280px]"
+      >
+        <img
+          src="{% static 'core/images/public.png' %}"
+          alt="Public Park"
+          class="w-full h-full object-cover transition-transform duration-[1.5s] ease-[cubic-bezier(0.25,1,0.5,1)] group-hover:scale-110"
+        />
+        <div
+          class="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-colors duration-500"
+        ></div>
+        <div class="absolute bottom-6 left-6 text-white">
+          <h3 class="font-serif text-xl mb-1">Public Park</h3>
+          <div
+            class="w-8 h-[1px] bg-white/50 group-hover:w-full group-hover:bg-accent-gold transition-all duration-500"
+          ></div>
+          <p
+            class="text-xs text-white/80 mt-2 font-light opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100"
+          >
+            พื้นที่สีเขียวและสวนพักผ่อน
+          </p>
+        </div>
       </div>
-
     </div>
   </div>
 </section>
