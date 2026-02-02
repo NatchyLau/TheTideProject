@@ -1,36 +1,41 @@
-<a href="{{ url }}" class="group relative block reveal {{ delay|default:'' }}">
-  <div
-    class="relative aspect-[3/4] overflow-hidden rounded-sm bg-slate-900 border border-white/5 group-hover:border-accent-gold/30 transition-colors duration-500"
-  >
-    <img
-      src="{{ image }}"
-      class="w-full h-full object-cover transition-transform duration-1000 ease-[cubic-bezier(0.25,1,0.5,1)] group-hover:scale-110 opacity-80 group-hover:opacity-100 grayscale-[20%] group-hover:grayscale-0"
-      alt="{{ title }}"
-    />
-    <div
-      class="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent opacity-80 group-hover:opacity-40 transition-opacity duration-500"
-    ></div>
+<a href="{{ url }}" class="group relative block h-full overflow-hidden rounded-sm bg-slate-800 transition-transform duration-500 hover:-translate-y-2 reveal {{ delay }}">
+  
+  <div class="relative aspect-[4/5] overflow-hidden">
+    
+    <img src="{{ image }}" alt="{{ title }}" 
+         class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110 
+         {% if sold_out %}grayscale opacity-60{% endif %}">
+    
+    {% if sold_out %}
+    <div class="absolute inset-0 z-20 flex items-center justify-center bg-slate-900/60 backdrop-blur-[2px]">
+        <div class="relative transform -rotate-12 border-y-2 border-slate-400/30 bg-slate-900/80 py-4 px-10 shadow-2xl backdrop-blur-md">
+            <span class="font-serif text-3xl font-medium tracking-[0.25em] text-slate-300 uppercase opacity-90">
+                Sold Out
+            </span>
+        </div>
+    </div>
+    {% endif %}
 
-    <div
-      class="absolute bottom-6 left-6 right-6 border-b border-white/20 pb-4 group-hover:border-accent-gold/50 transition-colors duration-500"
-    >
-      <h3
-        class="font-serif text-2xl text-white mb-1 group-hover:text-accent-gold transition-colors duration-300"
-      >
-        {{ title|safe }}
-      </h3>
-      <div class="flex justify-between items-end mt-2">
-        <p
-          class="text-slate-400 text-xs font-light {% if not coming_soon %}group-hover:text-white{% endif %} transition-colors duration-500"
-        >
-          {{ description }}
-        </p>
-        <p
-          class="text-lg text-white tracking-widest text-lg text-white group-hover:text-accent-gold transition-colors duration-500"
-        >
-          {{ price }}
-        </p>
-      </div>
+    <div class="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/20 to-transparent opacity-90 transition-opacity duration-500 group-hover:opacity-80"></div>
+  </div>
+
+  <div class="absolute bottom-0 left-0 w-full p-8 {% if sold_out %}opacity-50{% endif %}">
+    <h3 class="font-serif text-2xl text-white mb-2 leading-tight">{{ title|safe }}</h3>
+    <p class="text-xs font-light text-slate-400 mb-6 line-clamp-2">{{ description|safe }}</p>
+    
+    <div class="flex items-center justify-between border-t border-white/10 pt-4">
+      <span class="text-accent-gold font-serif text-lg italic">{{ price }}</span>
+      
+      {% if not sold_out %}
+      <span class="text-[10px] uppercase tracking-widest text-white group-hover:text-accent-gold transition-colors">
+        View Details
+      </span>
+      {% else %}
+      <span class="text-[10px] uppercase tracking-widest text-slate-500 cursor-not-allowed">
+        Closed
+      </span>
+      {% endif %}
     </div>
   </div>
+
 </a>
