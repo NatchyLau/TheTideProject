@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
-  // 1. Navbar Elements
+  // 1. Navbar Elements (with null checks for pages without navbar)
   const navbar = document.getElementById("navbar");
-  const navContainer = navbar.querySelector(".container");
+  const navContainer = navbar ? navbar.querySelector(".container") : null;
   const navBg = document.getElementById("nav-bg");
   const navTexts = document.querySelectorAll(".nav-text");
   const navCta = document.getElementById("nav-cta");
@@ -19,6 +19,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const mobileNavLinks = document.querySelectorAll(".mobile-nav-link");
 
   const updateNavbar = () => {
+    // Skip if navbar doesn't exist on this page
+    if (!navbar || !navBg) return;
     const isScrolled = window.scrollY > 50;
     const isMenuOpen =
       mobileMenu && !mobileMenu.classList.contains("translate-x-full");

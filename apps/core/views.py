@@ -12,6 +12,7 @@ def index(request):
 def project_plans(request, slug):
     allowed_slugs = {
         'the-tide-grand-nawong',
+        'the-tide-grand-phutthaphum',
         'the-tide-privilege-therdphra-kiat',
     }
 

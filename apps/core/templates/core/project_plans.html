@@ -1,411 +1,354 @@
-<!DOCTYPE html>
+{% load static %}
+<!doctype html>
 <html lang="th" class="scroll-smooth">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>
-        {% if slug == 'the-tide-grand-nawong' %}
-            The Tide Grand Nawong - House Plans
-        {% elif slug == 'the-tide-privilege-therdphra-kiat' %}
-            THE TIDE PRIVILEGE - House Plans
-        {% else %}
-            The Tide Project - House Plans
-        {% endif %}
+        {% if slug == 'the-tide-grand-nawong' %} The Tide Grand Nawong - House Plans
+        {% elif slug == 'the-tide-grand-phutthaphum' %} The Tide Grand Phutthaphum - House Plans
+        {% elif slug == 'the-tide-privilege-therdphra-kiat' %} THE TIDE PRIVILEGE - House Plans
+        {% else %} House Plans | THE TIDE {% endif %}
     </title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Prompt:wght@300;400;500;600&display=swap');
-    </style>
 
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&family=Prompt:wght@200;300;400;500&display=swap" rel="stylesheet" />
+
+    <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     fontFamily: {
-                        sans: ['Prompt', 'sans-serif'],
-                        serif: ['Playfair Display', 'serif'],
+                        sans: ["Prompt", "sans-serif"],
+                        serif: ["Playfair Display", "Prompt", "serif"],
                     },
                     colors: {
-                        ocean: {
-                            50: '#f0f9ff',
-                            100: '#e0f2fe',
-                            800: '#075985',
-                            900: '#0c4a6e',
-                            950: '#082f49',
+                        premium: {
+                            50: "#FAFAF9",
+                            100: "#F5F5F4",
+                            300: "#D6D3D1",
+                            500: "#78716C",
+                            800: "#292524",
+                            900: "#1C1917",
                         },
-                        sand: {
-                            100: '#fdf6e3',
-                            200: '#fceeac',
-                            500: '#d4af37',
-                            600: '#b59326',
+                        accent: {
+                            gold: "#C6A87C",
+                            gold_hover: "#B09265",
                         },
                     },
-                    backgroundImage: {
-                        'texture': "url('https://www.transparenttextures.com/patterns/cubes.png')",
-                    }
-                }
-            }
-        }
+                },
+            },
+        };
     </script>
+    <link rel="stylesheet" href="{% static 'core/css/global.css' %}" />
+
     <style>
-        /* Smooth Reveal Animation */
+        /* Override reveal to show content initially, JS will handle animation */
         .reveal {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-        .reveal.active {
-            opacity: 1;
-            transform: translateY(0);
+            opacity: 1 !important;
+            transform: translateY(0) !important;
         }
         
-        /* Custom Scrollbar */
-        ::-webkit-scrollbar { width: 8px; }
-        ::-webkit-scrollbar-track { background: #0f172a; }
-        ::-webkit-scrollbar-thumb { background: #d4af37; border-radius: 4px; }
-    </style>
-</head>
-<body class="bg-gray-50 text-slate-800 font-sans antialiased selection:bg-sand-500 selection:text-white">
-
-    <nav class="fixed w-full top-0 z-50 transition-all duration-300 bg-white/90 backdrop-blur-md border-b border-white/20 shadow-sm" id="navbar">
-        <div class="container mx-auto px-6 py-4 flex items-center justify-between">
-            <a href="{% url 'core:home' %}" class="text-xl font-serif font-bold text-ocean-950 tracking-widest flex items-center gap-2 hover:opacity-80 transition">
-                <span class="text-sand-500 text-2xl">✦</span> THE TIDE
-            </a>
-            <a href="{% url 'core:home' %}#projects" class="group flex items-center gap-2 text-sm font-medium text-ocean-900 hover:text-sand-500 transition">
-                <svg class="w-4 h-4 transform group-hover:-translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
-                กลับไปหน้าโครงการ
-            </a>
-        </div>
-    </nav>
-
-    <header class="relative pt-40 pb-24 bg-ocean-950 text-white overflow-hidden">
-        <div class="absolute inset-0 opacity-10 bg-texture"></div>
-        <div class="absolute top-0 right-0 w-96 h-96 bg-ocean-800 rounded-full blur-3xl opacity-30"></div>
-        <div class="absolute bottom-0 left-0 w-80 h-80 bg-sand-600 rounded-full blur-3xl opacity-20"></div>
-
-        <div class="container mx-auto px-6 relative z-10 text-center reveal">
-            <span class="inline-block py-1 px-4 border border-sand-500/50 rounded-full text-xs font-serif italic tracking-widest text-sand-200 mb-6">
-                Exclusive Collection
-            </span>
-
-            {% if slug == 'the-tide-grand-nawong' %}
-                <h1 class="font-serif text-4xl md:text-6xl font-bold mb-4 leading-tight">
-                    THE TIDE GRAND <span class="text-sand-500 italic">“นาวง”</span>
-                </h1>
-                <p class="text-xl text-ocean-100 font-light mb-2">บ้าน 3 แบบ 3 สไตล์ ในราคาที่เอื้อมถึง</p>
-                <div class="w-20 h-0.5 bg-sand-500 mx-auto my-6"></div>
-                <p class="text-ocean-200 max-w-2xl mx-auto font-light leading-relaxed">
-                    เลือกบ้านที่ถูกใจในโครงการ THE TIDE GRAND “นาวง” พร้อมดีไซน์ทันสมัย ฟังก์ชันครบ และความเป็นส่วนตัวสูง
-                </p>
-                <div class="mt-8 inline-flex items-center gap-2 text-sm text-sand-100 border border-white/10 px-4 py-2 rounded-full bg-white/5 backdrop-blur-sm">
-                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
-                    นาวง, นครศรีธรรมราช
-                </div>
-
-            {% elif slug == 'the-tide-privilege-therdphra-kiat' %}
-                <h1 class="font-serif text-4xl md:text-6xl font-bold mb-4 leading-tight">
-                    THE TIDE PRIVILEGE <span class="text-sand-500 italic">“เทิดพระเกียรติ”</span>
-                </h1>
-                <p class="text-xl text-ocean-100 font-light mb-2">ที่สุดแห่งความเป็นส่วนตัวเพียง 22 ครอบครัว</p>
-                <div class="w-20 h-0.5 bg-sand-500 mx-auto my-6"></div>
-                <p class="text-ocean-200 max-w-2xl mx-auto font-light leading-relaxed">
-                    เพราะความสุขเริ่มต้นจากการได้ใช้ชีวิตอย่างอิสระ บ้านคุณภาพบนทำเลศักยภาพ ถ.เทิดพระเกียรติ ใกล้ห้างสรรพสินค้า โรงพยาบาล และแหล่งธุรกิจ
-                </p>
-                <div class="mt-8 inline-flex items-center gap-2 text-sm text-sand-100 border border-white/10 px-4 py-2 rounded-full bg-white/5 backdrop-blur-sm">
-                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
-                    ถ.เทิดพระเกียรติ, นครศรีธรรมราช
-                </div>
-
-            {% else %}
-                <h1 class="font-serif text-4xl md:text-6xl font-bold">House Plans</h1>
-            {% endif %}
-        </div>
-    </header>
-
-    <section class="py-24 bg-gray-50 relative">
-        <div class="container mx-auto px-6">
-            <div class="flex items-end justify-between mb-12 border-b border-gray-200 pb-4 reveal">
-                <div>
-                    <h2 class="text-3xl font-serif font-bold text-ocean-950">Floor Plans</h2>
-                    <p class="text-slate-500 mt-2 font-light">รูปแบบบ้านที่ออกแบบมาเพื่อการใช้ชีวิตที่สมบูรณ์แบบ</p>
-                </div>
-                {% if slug == 'the-tide-grand-nawong' %}
-                    <span class="text-sm font-bold text-sand-500 uppercase tracking-widest hidden md:block">3 Designs Available</span>
-                {% elif slug == 'the-tide-privilege-therdphra-kiat' %}
-                    <span class="text-sm font-bold text-sand-500 uppercase tracking-widest hidden md:block">2 Designs Available</span>
-                {% endif %}
-            </div>
-
-            {% if slug == 'the-tide-grand-nawong' %}
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
-                
-                <div class="group bg-white border border-sand-100 rounded-sm shadow-xl hover:shadow-2xl hover:shadow-ocean-900/10 transition-all duration-500 transform hover:-translate-y-2 overflow-hidden reveal">
-                    <div class="h-64 overflow-hidden relative">
-                        <div class="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-all z-10"></div>
-                        <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?q=80&w=1974&auto=format&fit=crop" alt="บ้านเดี่ยว 2 ชั้น" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
-                        <div class="absolute top-4 left-4 z-20 bg-white/95 backdrop-blur px-3 py-1 text-xs font-bold uppercase tracking-wider text-ocean-900 border border-ocean-100">Single House</div>
-                    </div>
-                    <div class="p-8 bg-gradient-to-b from-white to-gray-50/80">
-                        <h3 class="text-2xl font-serif font-bold text-ocean-900 mb-2">บ้านเดี่ยว 2 ชั้น</h3>
-                        <p class="text-slate-500 text-sm mb-6 border-b border-gray-200 pb-4">พื้นที่ใช้สอย 202 ตร.ม.</p>
-                        
-                        <div class="grid grid-cols-2 gap-y-5 gap-x-2 text-sm text-slate-700 mb-8">
-                            <div class="flex items-center gap-3">
-                                <svg class="w-5 h-5 text-ocean-900 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3v-8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"/></svg>
-                                <span>4 ห้องนอน</span>
-                            </div>
-                            <div class="flex items-center gap-3">
-                                <svg class="w-5 h-5 text-ocean-900 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 14h16c1.1 0 2 .9 2 2v2c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2v-2c0-1.1.9-2 2-2zM6 14V6c0-1.1.9-2 2-2h8c1.1 0 2 .9 2 2v8"/></svg>
-                                <span>3 ห้องน้ำ</span>
-                            </div>
-                            <div class="flex items-center gap-3">
-                                <svg class="w-5 h-5 text-ocean-900 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
-                                <span>1 ห้องครัว</span>
-                            </div>
-                            <div class="flex items-center gap-3">
-                                <svg class="w-5 h-5 text-ocean-900 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
-                                <span>1 ห้องนั่งเล่น</span>
-                            </div>
-                            <div class="flex items-center gap-3 col-span-2">
-                                <svg class="w-5 h-5 text-ocean-900 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 14c1.49-1.08 2-3.659 2-5.323A2 2 0 0019 7H5a2 2 0 00-2 1.677C3 10.34 3.51 12.92 5 14m14 0a2 2 0 002 2v2a1 1 0 01-1 1h-1a1 1 0 01-1-1v-1H6v1a1 1 0 01-1 1H4a1 1 0 01-1-1v-2a2 2 0 002-2m14 0V9a2 2 0 00-2-2M5 14V9a2 2 0 002-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/></svg>
-                                <span>2 ที่จอดรถ</span>
-                            </div>
-                        </div>
-
-                        <div class="flex items-center justify-between pt-4 border-t border-gray-200">
-                            <div>
-                                <p class="text-[10px] uppercase tracking-wider text-slate-400 mb-1">ราคาเริ่มต้น</p>
-                                <p class="text-sand-600 font-serif font-bold text-2xl">3.89 ลบ.</p>
-                            </div>
-                            <button class="px-5 py-2 border border-ocean-900 text-ocean-900 text-xs font-bold hover:bg-ocean-900 hover:text-white transition uppercase tracking-wider rounded-sm">
-                                ดูรายละเอียด
-                            </button>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="group bg-white border border-sand-100 rounded-sm shadow-xl hover:shadow-2xl hover:shadow-ocean-900/10 transition-all duration-500 transform hover:-translate-y-2 overflow-hidden reveal" style="transition-delay: 100ms">
-                    <div class="h-64 overflow-hidden relative">
-                        <div class="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-all z-10"></div>
-                        <img src="https://images.unsplash.com/photo-1564013799919-ab600027ffc6?q=80&w=2070&auto=format&fit=crop" alt="บ้านแฝด 2 ชั้นติดกัน" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
-                        <div class="absolute top-4 left-4 z-20 bg-white/95 backdrop-blur px-3 py-1 text-xs font-bold uppercase tracking-wider text-ocean-900 border border-ocean-100">Twin House</div>
-                    </div>
-                    <div class="p-8 bg-gradient-to-b from-white to-gray-50/80">
-                        <h3 class="text-2xl font-serif font-bold text-ocean-900 mb-2">บ้านแฝด 2 ชั้นติดกัน</h3>
-                        <p class="text-slate-500 text-sm mb-6 border-b border-gray-200 pb-4">พื้นที่ใช้สอย 141 ตร.ม.</p>
-                        
-                        <div class="grid grid-cols-2 gap-y-5 gap-x-2 text-sm text-slate-700 mb-8">
-                             <div class="flex items-center gap-3">
-                                <svg class="w-5 h-5 text-ocean-900 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3v-8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"/></svg>
-                                <span>3 ห้องนอน</span>
-                            </div>
-                            <div class="flex items-center gap-3">
-                                <svg class="w-5 h-5 text-ocean-900 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 14h16c1.1 0 2 .9 2 2v2c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2v-2c0-1.1.9-2 2-2zM6 14V6c0-1.1.9-2 2-2h8c1.1 0 2 .9 2 2v8"/></svg>
-                                <span>3 ห้องน้ำ</span>
-                            </div>
-                            <div class="flex items-center gap-3">
-                                <svg class="w-5 h-5 text-ocean-900 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
-                                <span>1 ห้องครัว</span>
-                            </div>
-                            <div class="flex items-center gap-3">
-                                <svg class="w-5 h-5 text-ocean-900 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
-                                <span>1 ห้องนั่งเล่น</span>
-                            </div>
-                            <div class="flex items-center gap-3 col-span-2">
-                                <svg class="w-5 h-5 text-ocean-900 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 14c1.49-1.08 2-3.659 2-5.323A2 2 0 0019 7H5a2 2 0 00-2 1.677C3 10.34 3.51 12.92 5 14m14 0a2 2 0 002 2v2a1 1 0 01-1 1h-1a1 1 0 01-1-1v-1H6v1a1 1 0 01-1 1H4a1 1 0 01-1-1v-2a2 2 0 002-2m14 0V9a2 2 0 00-2-2M5 14V9a2 2 0 002-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/></svg>
-                                <span>2 ที่จอดรถ</span>
-                            </div>
-                        </div>
-
-                        <div class="flex items-center justify-between pt-4 border-t border-gray-200">
-                            <div>
-                                <p class="text-[10px] uppercase tracking-wider text-slate-400 mb-1">ราคาเริ่มต้น</p>
-                                <p class="text-sand-600 font-serif font-bold text-2xl">2.59 ลบ.</p>
-                            </div>
-                            <button class="px-5 py-2 border border-ocean-900 text-ocean-900 text-xs font-bold hover:bg-ocean-900 hover:text-white transition uppercase tracking-wider rounded-sm">
-                                ดูรายละเอียด
-                            </button>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="group bg-white border border-sand-100 rounded-sm shadow-xl hover:shadow-2xl hover:shadow-ocean-900/10 transition-all duration-500 transform hover:-translate-y-2 overflow-hidden reveal" style="transition-delay: 200ms">
-                    <div class="h-64 overflow-hidden relative">
-                        <div class="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-all z-10"></div>
-                        <img src="https://images.unsplash.com/photo-1568605114967-8130f3a36994?q=80&w=2070&auto=format&fit=crop" alt="บ้านแฝด 2 ชั้นอิสระ" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
-                        <div class="absolute top-4 left-4 z-20 bg-white/95 backdrop-blur px-3 py-1 text-xs font-bold uppercase tracking-wider text-ocean-900 border border-ocean-100">Twin Independent</div>
-                    </div>
-                    <div class="p-8 bg-gradient-to-b from-white to-gray-50/80">
-                        <h3 class="text-2xl font-serif font-bold text-ocean-900 mb-2">บ้านแฝด 2 ชั้นอิสระ</h3>
-                        <p class="text-slate-500 text-sm mb-6 border-b border-gray-200 pb-4">พื้นที่ใช้สอย 167 ตร.ม.</p>
-                        
-                        <div class="grid grid-cols-2 gap-y-5 gap-x-2 text-sm text-slate-700 mb-8">
-                             <div class="flex items-center gap-3">
-                                <svg class="w-5 h-5 text-ocean-900 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3v-8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"/></svg>
-                                <span>4 ห้องนอน</span>
-                            </div>
-                            <div class="flex items-center gap-3">
-                                <svg class="w-5 h-5 text-ocean-900 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 14h16c1.1 0 2 .9 2 2v2c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2v-2c0-1.1.9-2 2-2zM6 14V6c0-1.1.9-2 2-2h8c1.1 0 2 .9 2 2v8"/></svg>
-                                <span>3 ห้องน้ำ</span>
-                            </div>
-                            <div class="flex items-center gap-3">
-                                <svg class="w-5 h-5 text-ocean-900 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
-                                <span>1 ห้องครัว</span>
-                            </div>
-                            <div class="flex items-center gap-3">
-                                <svg class="w-5 h-5 text-ocean-900 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
-                                <span>1 ห้องนั่งเล่น</span>
-                            </div>
-                            <div class="flex items-center gap-3 col-span-2">
-                                <svg class="w-5 h-5 text-ocean-900 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 14c1.49-1.08 2-3.659 2-5.323A2 2 0 0019 7H5a2 2 0 00-2 1.677C3 10.34 3.51 12.92 5 14m14 0a2 2 0 002 2v2a1 1 0 01-1 1h-1a1 1 0 01-1-1v-1H6v1a1 1 0 01-1 1H4a1 1 0 01-1-1v-2a2 2 0 002-2m14 0V9a2 2 0 00-2-2M5 14V9a2 2 0 002-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/></svg>
-                                <span>2 ที่จอดรถ</span>
-                            </div>
-                        </div>
-
-                        <div class="flex items-center justify-between pt-4 border-t border-gray-200">
-                            <div>
-                                <p class="text-[10px] uppercase tracking-wider text-slate-400 mb-1">ราคาเริ่มต้น</p>
-                                <p class="text-sand-600 font-serif font-bold text-2xl">3.59 ลบ.</p>
-                                <p class="text-[10px] text-ocean-900 bg-sand-100 px-2 py-0.5 rounded inline-block mt-1">ส่วนลด 300,000 บาท*</p>
-                            </div>
-                            <button class="px-5 py-2 border border-ocean-900 text-ocean-900 text-xs font-bold hover:bg-ocean-900 hover:text-white transition uppercase tracking-wider rounded-sm">
-                                ดูรายละเอียด
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            {% elif slug == 'the-tide-privilege-therdphra-kiat' %}
-            <div class="grid md:grid-cols-2 gap-10 max-w-5xl mx-auto">
-                <div class="group bg-white border border-sand-100 rounded-sm shadow-xl hover:shadow-2xl hover:shadow-ocean-900/10 transition-all duration-500 transform hover:-translate-y-2 overflow-hidden reveal">
-                    <div class="h-80 overflow-hidden relative">
-                        <div class="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-all z-10"></div>
-                        <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=2070&auto=format&fit=crop" alt="TIDE HOME" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
-                        <div class="absolute top-4 left-4 z-20 bg-ocean-900 text-white px-4 py-1 text-xs font-bold uppercase tracking-wider">Signature Series</div>
-                    </div>
-                    <div class="p-10 bg-gradient-to-b from-white to-gray-50/80">
-                        <div class="flex justify-between items-start mb-4">
-                            <h3 class="text-3xl font-serif font-bold text-ocean-900">TIDE HOME</h3>
-                            <span class="bg-ocean-50 text-ocean-800 text-xs font-semibold px-2 py-1 rounded">234 ตร.ม.</span>
-                        </div>
-                        <p class="text-slate-500 font-light mb-8">บ้านเดี่ยว 2 ชั้น ที่สุดของความกว้างขวางและโอ่อ่า</p>
-                        
-                        <div class="flex items-center text-sm text-slate-600 mb-8 border-t border-b border-gray-200 py-6">
-                            <div class="text-center flex-1">
-                                <svg class="w-6 h-6 text-ocean-900 mx-auto mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3v-8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"/></svg>
-                                <span class="block font-serif text-xl text-sand-600">4</span>
-                                <span class="text-[10px] uppercase tracking-wide">ห้องนอน</span>
-                            </div>
-                            <div class="w-px bg-slate-200 h-12"></div>
-                            <div class="text-center flex-1">
-                                <svg class="w-6 h-6 text-ocean-900 mx-auto mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.2" d="M4 14h16c1.1 0 2 .9 2 2v2c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2v-2c0-1.1.9-2 2-2zM6 14V6c0-1.1.9-2 2-2h8c1.1 0 2 .9 2 2v8"/></svg>
-                                <span class="block font-serif text-xl text-sand-600">3</span>
-                                <span class="text-[10px] uppercase tracking-wide">ห้องน้ำ</span>
-                            </div>
-                            <div class="w-px bg-slate-200 h-12"></div>
-                            <div class="text-center flex-1">
-                                <svg class="w-6 h-6 text-ocean-900 mx-auto mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.2" d="M19 14c1.49-1.08 2-3.659 2-5.323A2 2 0 0019 7H5a2 2 0 00-2 1.677C3 10.34 3.51 12.92 5 14m14 0a2 2 0 002 2v2a1 1 0 01-1 1h-1a1 1 0 01-1-1v-1H6v1a1 1 0 01-1 1H4a1 1 0 01-1-1v-2a2 2 0 002-2m14 0V9a2 2 0 00-2-2M5 14V9a2 2 0 002-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/></svg>
-                                <span class="block font-serif text-xl text-sand-600">2</span>
-                                <span class="text-[10px] uppercase tracking-wide">ที่จอดรถ</span>
-                            </div>
-                        </div>
-
-                        <div class="flex items-center justify-between">
-                            <div>
-                                <p class="text-[10px] uppercase tracking-wider text-slate-400 mb-1">ราคาเริ่มต้น</p>
-                                <p class="text-sand-600 font-serif font-bold text-3xl">5.9 ลบ.</p>
-                            </div>
-                            <button class="px-6 py-3 bg-ocean-900 text-white text-sm font-bold tracking-widest hover:bg-sand-500 transition shadow-lg rounded-sm">
-                                ดูรายละเอียด
-                            </button>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="group bg-white border border-sand-100 rounded-sm shadow-xl hover:shadow-2xl hover:shadow-ocean-900/10 transition-all duration-500 transform hover:-translate-y-2 overflow-hidden reveal" style="transition-delay: 100ms">
-                    <div class="h-80 overflow-hidden relative">
-                        <div class="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-all z-10"></div>
-                        <img src="https://images.unsplash.com/photo-1502005097973-6a7082348e28?q=80&w=2070&auto=format&fit=crop" alt="TICHA HOME" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
-                        <div class="absolute top-4 left-4 z-20 bg-sand-500 text-white px-4 py-1 text-xs font-bold uppercase tracking-wider">Modern Series</div>
-                    </div>
-                    <div class="p-10 bg-gradient-to-b from-white to-gray-50/80">
-                        <div class="flex justify-between items-start mb-4">
-                            <h3 class="text-3xl font-serif font-bold text-ocean-900">TICHA HOME</h3>
-                            <span class="bg-ocean-50 text-ocean-800 text-xs font-semibold px-2 py-1 rounded">192 ตร.ม.</span>
-                        </div>
-                        <p class="text-slate-500 font-light mb-8">บ้านแฝดอิสระ 2 ชั้น ดีไซน์เพื่อคนรุ่นใหม่</p>
-                        
-                         <div class="flex items-center text-sm text-slate-600 mb-8 border-t border-b border-gray-200 py-6">
-                            <div class="text-center flex-1">
-                                <svg class="w-6 h-6 text-ocean-900 mx-auto mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3v-8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"/></svg>
-                                <span class="block font-serif text-xl text-sand-600">4</span>
-                                <span class="text-[10px] uppercase tracking-wide">ห้องนอน</span>
-                            </div>
-                            <div class="w-px bg-slate-200 h-12"></div>
-                            <div class="text-center flex-1">
-                                <svg class="w-6 h-6 text-ocean-900 mx-auto mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.2" d="M4 14h16c1.1 0 2 .9 2 2v2c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2v-2c0-1.1.9-2 2-2zM6 14V6c0-1.1.9-2 2-2h8c1.1 0 2 .9 2 2v8"/></svg>
-                                <span class="block font-serif text-xl text-sand-600">3</span>
-                                <span class="text-[10px] uppercase tracking-wide">ห้องน้ำ</span>
-                            </div>
-                            <div class="w-px bg-slate-200 h-12"></div>
-                            <div class="text-center flex-1">
-                                <svg class="w-6 h-6 text-ocean-900 mx-auto mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.2" d="M19 14c1.49-1.08 2-3.659 2-5.323A2 2 0 0019 7H5a2 2 0 00-2 1.677C3 10.34 3.51 12.92 5 14m14 0a2 2 0 002 2v2a1 1 0 01-1 1h-1a1 1 0 01-1-1v-1H6v1a1 1 0 01-1 1H4a1 1 0 01-1-1v-2a2 2 0 002-2m14 0V9a2 2 0 00-2-2M5 14V9a2 2 0 002-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/></svg>
-                                <span class="block font-serif text-xl text-sand-600">2</span>
-                                <span class="text-[10px] uppercase tracking-wide">ที่จอดรถ</span>
-                            </div>
-                        </div>
-
-                        <div class="flex items-center justify-between">
-                            <div>
-                                <p class="text-[10px] uppercase tracking-wider text-slate-400 mb-1">ราคาเริ่มต้น</p>
-                                <p class="text-sand-600 font-serif font-bold text-3xl">4.7 ลบ.</p>
-                            </div>
-                            <button class="px-6 py-3 bg-ocean-900 text-white text-sm font-bold tracking-widest hover:bg-sand-500 transition shadow-lg rounded-sm">
-                                ดูรายละเอียด
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            {% endif %}
-        </div>
-    </section>
-
-    <section class="py-20 bg-white border-t border-gray-100">
-        <div class="container mx-auto px-6 text-center reveal">
-            <h3 class="text-3xl font-serif font-bold text-ocean-950 mb-4">ต้องการนัดหมายเข้าชมโครงการ?</h3>
-            <p class="text-slate-500 mb-8 font-light max-w-xl mx-auto">กรอกข้อมูลเพื่อรับคำแนะนำแบบบ้านที่เหมาะกับคุณ หรือสอบถามรายละเอียดเพิ่มเติม ทีมงานของเราพร้อมให้บริการ</p>
-            <a href="{% url 'core:home' %}#contact-form" class="inline-flex items-center justify-center px-10 py-4 bg-ocean-900 text-white text-sm font-bold tracking-widest hover:bg-sand-500 transition shadow-xl hover:-translate-y-1 transform duration-300 rounded-sm">
-                ไปยังแบบฟอร์มนัดหมาย
-            </a>
-        </div>
-    </section>
-
-    <footer class="bg-ocean-950 text-white py-12 border-t border-white/5">
-        <div class="container mx-auto px-6 text-center">
-            <h2 class="font-serif text-2xl italic mb-2">The Tide</h2>
-            <p class="text-xs text-ocean-200 tracking-widest">© 2026 THE TIDE PROJECT</p>
-        </div>
-    </footer>
-
-    <script>
-        // Scroll Reveal Animation
-        function reveal() {
-            var reveals = document.querySelectorAll(".reveal");
-            for (var i = 0; i < reveals.length; i++) {
-                var windowHeight = window.innerHeight;
-                var elementTop = reveals[i].getBoundingClientRect().top;
-                var elementVisible = 100;
-                if (elementTop < windowHeight - elementVisible) {
-                    reveals[i].classList.add("active");
-                }
-            }
+        /* Page-specific styles */
+        .btn-luxury {
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s ease;
         }
-        window.addEventListener("scroll", reveal);
-        reveal(); // Trigger on load
-    </script>
-</body>
+        .btn-luxury::after {
+            content: '';
+            position: absolute;
+            bottom: 0; left: 0; width: 0%; height: 1px;
+            background-color: var(--color-accent-gold);
+            transition: width 0.4s ease;
+        }
+        .btn-luxury:hover::after { width: 100%; }
+
+        /* Card hover effect */
+        .house-card {
+            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .house-card:hover {
+            transform: translateY(-8px);
+        }
+        .house-card:hover .card-image {
+            filter: grayscale(0%);
+            transform: scale(1.05);
+        }
+    </style>
+  </head>
+  <body class="bg-premium-50 text-premium-800 font-sans antialiased selection:bg-accent-gold selection:text-white">
+
+    <main>
+        <!-- Hero Header Section -->
+        <section class="relative pt-24 pb-24 md:pt-32 md:pb-32 bg-slate-900 overflow-hidden">
+            <!-- Background decorations -->
+            <div class="absolute inset-0 pointer-events-none overflow-hidden">
+                <svg class="absolute w-full h-full" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 800" preserveAspectRatio="none">
+                    <defs>
+                        <linearGradient id="fade-gold" x1="0%" y1="0%" x2="100%" y2="0%">
+                            <stop offset="0%" style="stop-color:#D4AF37;stop-opacity:0.7" />
+                            <stop offset="50%" style="stop-color:#D4AF37;stop-opacity:1" />
+                            <stop offset="100%" style="stop-color:#D4AF37;stop-opacity:0.7" />
+                        </linearGradient>
+                    </defs>
+                    <path class="opacity-[0.08]" fill="none" stroke="url(#fade-gold)" stroke-width="1.5"
+                          d="M-100,550 C300,350 600,750 1000,500 S1500,300 1900,550" />
+                    <path class="opacity-[0.07]" fill="none" stroke="#D4AF37" stroke-width="0.8"
+                          d="M-100,300 C350,150 750,450 1150,250 S1550,100 1950,300" />
+                </svg>
+            </div>
+            
+            <!-- Gradient blurs -->
+            <div class="absolute top-0 left-0 w-[600px] h-[600px] bg-accent-gold/5 rounded-full blur-[150px] pointer-events-none mix-blend-screen"></div>
+            <div class="absolute bottom-0 right-0 w-[600px] h-[600px] bg-slate-700/10 rounded-full blur-[150px] pointer-events-none mix-blend-screen"></div>
+            
+            <div class="container mx-auto px-6 relative z-10">
+                <div class="max-w-4xl reveal">
+                    <!-- Back link -->
+                    <a href="{% url 'core:home' %}#projects" class="inline-flex items-center gap-3 mb-8 text-slate-500 hover:text-accent-gold transition-colors duration-300 group">
+                        <svg class="w-5 h-5 transform group-hover:-translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 19l-7-7 7-7"/>
+                        </svg>
+                        <span class="text-xs font-medium tracking-[0.2em] uppercase">Back to Projects</span>
+                    </a>
+                    
+                    <!-- Subtitle -->
+                    <div class="inline-flex items-center gap-3 mb-6 opacity-80">
+                        <span class="w-12 h-[1px] bg-gradient-to-r from-transparent via-accent-gold to-transparent"></span>
+                        <span class="text-accent-gold font-medium tracking-[0.3em] uppercase text-[10px] md:text-xs">
+                            The Architecture of Living
+                        </span>
+                        <span class="w-12 h-[1px] bg-gradient-to-r from-transparent via-accent-gold to-transparent"></span>
+                    </div>
+                    
+                    {% if slug == 'the-tide-grand-nawong' %}
+                    <h1 class="font-serif text-4xl md:text-6xl lg:text-7xl text-white mb-8 leading-tight">
+                        THE TIDE GRAND <br><span class="italic font-light text-accent-gold">Nawong</span>
+                    </h1>
+                    <p class="text-base md:text-lg text-slate-400 font-light max-w-xl leading-relaxed">
+                        การผสมผสานดีไซน์ที่ทันสมัยกับฟังก์ชันที่ตอบโจทย์การใช้ชีวิต ในราคาที่เริ่มต้นอย่างเหมาะสม
+                    </p>
+                    {% elif slug == 'the-tide-grand-phutthaphum' %}
+                    <h1 class="font-serif text-4xl md:text-6xl lg:text-7xl text-white mb-8 leading-tight">
+                        THE TIDE GRAND <br><span class="italic font-light text-accent-gold">Phutthaphum</span>
+                    </h1>
+                    <p class="text-base md:text-lg text-slate-400 font-light max-w-xl leading-relaxed">
+                        โครงการตั้งอยู่ทำเลดีการเดินทางสะดวกใกล้ถนนพุทธภูมิ ออกแบบมาเพื่อการใช้ชีวิตที่ลงตัว
+                    </p>
+                    {% elif slug == 'the-tide-privilege-therdphra-kiat' %}
+                    <h1 class="font-serif text-4xl md:text-6xl lg:text-7xl text-white mb-8 leading-tight">
+                        THE TIDE <br><span class="italic font-light text-accent-gold">Privilege</span>
+                    </h1>
+                    <p class="text-base md:text-lg text-slate-400 font-light max-w-xl leading-relaxed">
+                        ที่สุดแห่งเอกสิทธิ์การพักผ่อนเพียง 22 ครอบครัว บนทำเลศักยภาพที่ออกแบบมาเพื่อความเป็นส่วนตัวสูงสุด
+                    </p>
+                    {% endif %}
+                </div>
+            </div>
+            
+            <!-- Decorative elements -->
+            <div class="absolute top-12 right-12 w-32 h-32 border border-accent-gold/10 rotate-45 pointer-events-none hidden lg:block"></div>
+            <div class="absolute bottom-12 left-12 w-24 h-24 border border-accent-gold/10 rotate-12 pointer-events-none hidden lg:block"></div>
+        </section>
+
+        <!-- Floor Plans Section -->
+        <section class="py-24 md:py-32 bg-premium-50 relative">
+            <div class="container mx-auto px-6">
+                <div class="flex flex-col md:flex-row md:items-end justify-between mb-16 md:mb-20 gap-6 reveal">
+                    <div class="max-w-xl">
+                        <span class="section-subtitle">Floor Plans</span>
+                        <h2 class="section-title">ค้นพบแบบบ้านที่ใช่ <br>ในสไตล์ที่คุณต้องการ</h2>
+                    </div>
+                    <div class="text-premium-400 font-serif italic text-lg border-l border-premium-300 pl-6 hidden md:block">
+                        {% if slug == 'the-tide-grand-nawong' %} 03 Unique Designs {% else %} 02 Signature Styles {% endif %}
+                    </div>
+                </div>
+
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10">
+                    
+                    {% if slug == 'the-tide-grand-nawong' or slug == 'the-tide-grand-phutthaphum' %}
+                    <!-- Single House Card -->
+                    <div class="house-card group reveal bg-white rounded-lg overflow-hidden shadow-lg shadow-premium-900/5 border border-premium-100">
+                        <div class="relative overflow-hidden aspect-[4/5]">
+                            <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&q=80&w=1200" 
+                                 class="card-image w-full h-full object-cover grayscale-[30%] transition-all duration-1000" alt="Single House">
+                            <div class="absolute inset-0 bg-gradient-to-t from-premium-900/60 via-transparent to-transparent"></div>
+                            <div class="absolute top-6 left-6">
+                                <span class="bg-white/95 backdrop-blur-sm px-4 py-1.5 rounded-full text-[10px] font-bold tracking-[0.2em] uppercase text-premium-900 shadow-sm">Single House</span>
+                            </div>
+                        </div>
+                        <div class="p-6 md:p-8">
+                            <h4 class="font-serif text-xl md:text-2xl text-premium-900 mb-3">บ้านเดี่ยว 2 ชั้น</h4>
+                            <div class="flex items-center gap-4 text-[11px] text-premium-500 uppercase tracking-widest mb-6">
+                                <span>202 SQ.M.</span>
+                                <span class="w-1 h-1 rounded-full bg-accent-gold"></span>
+                                <span>Modern Luxury</span>
+                            </div>
+                            <div class="grid grid-cols-2 gap-y-3 mb-8 text-sm text-premium-800">
+                                <div class="flex items-center gap-3">
+                                    <svg class="w-4 h-4 text-accent-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
+                                    4 Bedrooms
+                                </div>
+                                <div class="flex items-center gap-3">
+                                    <svg class="w-4 h-4 text-accent-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+                                    3 Bathrooms
+                                </div>
+                            </div>
+                            <div class="flex items-center justify-between pt-6 border-t border-premium-100">
+                                <p class="text-xl md:text-2xl font-serif text-premium-900">3.89 <span class="text-xs uppercase tracking-widest text-premium-500 ml-1">MB.</span></p>
+                                <a href="#" class="btn-luxury text-[10px] font-bold uppercase tracking-[0.2em] text-premium-900 hover:text-accent-gold">View Details</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Twin House Card -->
+                    <div class="house-card group reveal bg-white rounded-lg overflow-hidden shadow-lg shadow-premium-900/5 border border-premium-100" style="transition-delay: 150ms">
+                        <div class="relative overflow-hidden aspect-[4/5]">
+                            <img src="https://images.unsplash.com/photo-1564013799919-ab600027ffc6?auto=format&fit=crop&q=80&w=1200" 
+                                 class="card-image w-full h-full object-cover grayscale-[30%] transition-all duration-1000" alt="Twin House">
+                            <div class="absolute inset-0 bg-gradient-to-t from-premium-900/60 via-transparent to-transparent"></div>
+                            <div class="absolute top-6 left-6">
+                                <span class="bg-white/95 backdrop-blur-sm px-4 py-1.5 rounded-full text-[10px] font-bold tracking-[0.2em] uppercase text-premium-900 shadow-sm">Twin House</span>
+                            </div>
+                        </div>
+                        <div class="p-6 md:p-8">
+                            <h4 class="font-serif text-xl md:text-2xl text-premium-900 mb-3">บ้านแฝด 2 ชั้น</h4>
+                            <div class="flex items-center gap-4 text-[11px] text-premium-500 uppercase tracking-widest mb-6">
+                                <span>141 SQ.M.</span>
+                                <span class="w-1 h-1 rounded-full bg-accent-gold"></span>
+                                <span>Cozy Minimal</span>
+                            </div>
+                            <div class="grid grid-cols-2 gap-y-3 mb-8 text-sm text-premium-800">
+                                <div class="flex items-center gap-3">
+                                    <svg class="w-4 h-4 text-accent-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
+                                    3 Bedrooms
+                                </div>
+                                <div class="flex items-center gap-3">
+                                    <svg class="w-4 h-4 text-accent-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+                                    2 Bathrooms
+                                </div>
+                            </div>
+                            <div class="flex items-center justify-between pt-6 border-t border-premium-100">
+                                <p class="text-xl md:text-2xl font-serif text-premium-900">2.59 <span class="text-xs uppercase tracking-widest text-premium-500 ml-1">MB.</span></p>
+                                <a href="#" class="btn-luxury text-[10px] font-bold uppercase tracking-[0.2em] text-premium-900 hover:text-accent-gold">View Details</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Townhouse Card -->
+                    <div class="house-card group reveal bg-white rounded-lg overflow-hidden shadow-lg shadow-premium-900/5 border border-premium-100" style="transition-delay: 300ms">
+                        <div class="relative overflow-hidden aspect-[4/5]">
+                            <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&q=80&w=1200" 
+                                 class="card-image w-full h-full object-cover grayscale-[30%] transition-all duration-1000" alt="Townhouse">
+                            <div class="absolute inset-0 bg-gradient-to-t from-premium-900/60 via-transparent to-transparent"></div>
+                            <div class="absolute top-6 left-6">
+                                <span class="bg-white/95 backdrop-blur-sm px-4 py-1.5 rounded-full text-[10px] font-bold tracking-[0.2em] uppercase text-premium-900 shadow-sm">Townhouse</span>
+                            </div>
+                        </div>
+                        <div class="p-6 md:p-8">
+                            <h4 class="font-serif text-xl md:text-2xl text-premium-900 mb-3">ทาวน์โฮม 2 ชั้น</h4>
+                            <div class="flex items-center gap-4 text-[11px] text-premium-500 uppercase tracking-widest mb-6">
+                                <span>120 SQ.M.</span>
+                                <span class="w-1 h-1 rounded-full bg-accent-gold"></span>
+                                <span>Urban Style</span>
+                            </div>
+                            <div class="grid grid-cols-2 gap-y-3 mb-8 text-sm text-premium-800">
+                                <div class="flex items-center gap-3">
+                                    <svg class="w-4 h-4 text-accent-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
+                                    2 Bedrooms
+                                </div>
+                                <div class="flex items-center gap-3">
+                                    <svg class="w-4 h-4 text-accent-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+                                    2 Bathrooms
+                                </div>
+                            </div>
+                            <div class="flex items-center justify-between pt-6 border-t border-premium-100">
+                                <p class="text-xl md:text-2xl font-serif text-premium-900">1.99 <span class="text-xs uppercase tracking-widest text-premium-500 ml-1">MB.</span></p>
+                                <a href="#" class="btn-luxury text-[10px] font-bold uppercase tracking-[0.2em] text-premium-900 hover:text-accent-gold">View Details</a>
+                            </div>
+                        </div>
+                    </div>
+                    {% endif %}
+
+                    {% if slug == 'the-tide-privilege-therdphra-kiat' %}
+                    <!-- Privilege - Featured House Card -->
+                    <div class="md:col-span-2 lg:col-span-3">
+                        <div class="house-card group reveal bg-white rounded-lg overflow-hidden shadow-lg shadow-premium-900/5 border border-premium-100">
+                            <div class="grid md:grid-cols-2 gap-0">
+                                <div class="relative overflow-hidden aspect-video md:aspect-auto">
+                                    <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&q=80&w=1200" 
+                                         class="card-image w-full h-full object-cover transition-all duration-1000" alt="TIDE HOME">
+                                    <div class="absolute inset-0 bg-gradient-to-r from-premium-900/30 via-transparent to-transparent"></div>
+                                </div>
+                                <div class="p-8 md:p-12 flex flex-col justify-center">
+                                    <h4 class="font-serif text-3xl md:text-4xl text-premium-900 mb-4">TIDE HOME</h4>
+                                    <p class="text-premium-500 font-light mb-8 leading-relaxed">
+                                        สัมผัสความโปร่งสบายด้วยเพดานสูงและการจัดวางพื้นที่แบบ Open Plan ออกแบบมาเพื่อการใช้ชีวิตที่ลงตัว
+                                    </p>
+                                    <div class="flex gap-8 md:gap-12 border-y border-premium-100 py-6 mb-8">
+                                        <div class="text-center">
+                                            <span class="block text-2xl md:text-3xl font-serif text-premium-900">4</span>
+                                            <span class="text-[10px] uppercase tracking-widest text-premium-400">Bedroom</span>
+                                        </div>
+                                        <div class="text-center">
+                                            <span class="block text-2xl md:text-3xl font-serif text-premium-900">3</span>
+                                            <span class="text-[10px] uppercase tracking-widest text-premium-400">Bathroom</span>
+                                        </div>
+                                        <div class="text-center">
+                                            <span class="block text-2xl md:text-3xl font-serif text-premium-900">234</span>
+                                            <span class="text-[10px] uppercase tracking-widest text-premium-400">Sq.m.</span>
+                                        </div>
+                                    </div>
+                                    <a href="#" class="btn btn-premium px-8 py-4 rounded-full text-[10px] uppercase tracking-[0.2em] self-start">
+                                        Request Catalog
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endif %}
+
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="py-24 md:py-32 bg-slate-900 text-white overflow-hidden relative">
+            <!-- Background effects -->
+            <div class="absolute inset-0 pointer-events-none">
+                <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-accent-gold/5 rounded-full blur-[200px]"></div>
+            </div>
+            
+            <div class="container mx-auto px-6 text-center relative z-10 reveal">
+                <div class="inline-flex items-center gap-3 mb-6 opacity-80">
+                    <span class="w-12 h-[1px] bg-gradient-to-r from-transparent via-accent-gold to-transparent"></span>
+                    <span class="text-accent-gold font-medium tracking-[0.3em] uppercase text-[10px] md:text-xs">
+                        Private Viewing
+                    </span>
+                    <span class="w-12 h-[1px] bg-gradient-to-r from-transparent via-accent-gold to-transparent"></span>
+                </div>
+                
+                <h3 class="font-serif text-3xl md:text-4xl lg:text-5xl mb-8 italic text-white">Experience the Luxury of Living</h3>
+                <p class="text-slate-400 font-light max-w-xl mx-auto mb-12 leading-relaxed">
+                    เริ่มต้นชีวิตใหม่ในแบบที่คุณต้องการ พร้อมรับคำปรึกษาจากผู้เชี่ยวชาญด้านอสังหาริมทรัพย์ของเรา
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <a href="{% url 'core:home' %}#contact-form" class="btn btn-primary px-10 py-4 rounded-full text-[10px] font-bold tracking-[0.2em] uppercase shadow-lg shadow-accent-gold/20 hover:shadow-accent-gold/40 transition-all duration-300">
+                        Book a Private Viewing
+                    </a>
+                    <a href="{% url 'core:home' %}#projects" class="btn btn-glass px-10 py-4 rounded-full text-[10px] font-medium tracking-[0.2em] uppercase">
+                        View All Projects
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    {% include "core/includes/footer.html" %}
+
+    <script src="{% static 'core/js/main.js' %}"></script>
+  </body>
 </html>
