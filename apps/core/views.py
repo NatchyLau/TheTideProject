@@ -39,6 +39,35 @@ FLOOR_PLAN_DATA = {
                 'core/images/nawong_type1_2.jpg',
                 'core/images/nawong_type1_3.jpg',
             ],
+            # Room-based images for filtering
+            'room_images': {
+                'all': [
+                    {'src': 'core/images/nawong_type1.jpg', 'label': 'ภาพรวมบ้าน'},
+                    {'src': 'core/images/nawong_type1_2.jpg', 'label': 'มุมมองด้านหน้า'},
+                    {'src': 'core/images/nawong_type1_3.jpg', 'label': 'มุมมองด้านข้าง'},
+                ],
+                'exterior': [
+                    {'src': 'core/images/nawong_type1.jpg', 'label': 'ภาพรวมด้านหน้า'},
+                    {'src': 'core/images/nawong_type1_2.jpg', 'label': 'มุมมองด้านหน้า'},
+                ],
+                'living': [
+                    {'src': 'core/images/nawong_living1.jpg', 'label': 'ห้องนั่งเล่น'},
+                    {'src': 'core/images/nawong_living2.jpg', 'label': 'โซนรับแขก'},
+                ],
+                'bedroom': [
+                    {'src': 'core/images/nawong_bedroom1.jpg', 'label': 'ห้องนอนใหญ่'},
+                    {'src': 'core/images/nawong_bedroom2.jpg', 'label': 'ห้องนอนที่ 2'},
+                    {'src': 'core/images/nawong_bedroom3.jpg', 'label': 'ห้องนอนที่ 3'},
+                ],
+                'kitchen': [
+                    {'src': 'core/images/nawong_kitchen1.jpg', 'label': 'ครัวฝรั่ง'},
+                    {'src': 'core/images/nawong_kitchen2.jpg', 'label': 'ครัวไทย'},
+                ],
+                'bathroom': [
+                    {'src': 'core/images/nawong_bathroom1.jpg', 'label': 'ห้องน้ำ Master'},
+                    {'src': 'core/images/nawong_bathroom2.jpg', 'label': 'ห้องน้ำรวม'},
+                ],
+            },
             'highlights': [
                 'ดีไซน์โมเดิร์นร่วมสมัย',
                 'พื้นที่กว้างขวาง เหมาะสำหรับครอบครัว',
