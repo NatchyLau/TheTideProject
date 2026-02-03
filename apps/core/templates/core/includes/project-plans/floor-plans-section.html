@@ -26,7 +26,7 @@
         <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10">
             
             {% if slug == 'the-tide-grand-nawong' %}
-            <div class="group reveal">
+            <a href="{% url 'core:floor_plan_detail' project_slug='the-tide-grand-nawong' plan_slug='single-house' %}" class="group reveal block">
                 <div class="relative bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 border border-slate-100 hover:border-accent-gold/30 hover:-translate-y-2">
                     <div class="relative aspect-[4/3] overflow-hidden">
                         <img src="{% static 'core/images/nawong_type1.jpg' %}" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt="บ้านเดี่ยว">
@@ -72,23 +72,17 @@
                             </div>
                             <div class="text-center group/icon">
                                 <div class="mb-2 flex justify-center text-slate-400 group-hover/icon:text-accent-gold transition-colors">
-                                    <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 14c1.49-1.08 2-3.659 2-5.323A2 2 0 0019 7H5a2 2 0 00-2 1.677C3 10.34 3.51 12.92 5 14m14 0a2 2 0 002 2v2a1 1 0 01-1 1h-1a1 1 0 01-1-1v-1H6v1a1 1 0 01-1 1H4a1 1 0 01-1-1v-2a2 2 0 002-2m14 0V9a2 2 0 00-2-2M5 14V9a2 2 0 002-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/></svg>
+                                    <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 14c1.49-1.08 2-3.659 2-5.323A2 2 0 0019 7H5a2 2 0 00-2 1.677C3 10.34 3.51 12.92 5 14m14 0a2 2 0 002 2v2a1 1 0 01-1 1h-1a1 1 0 01-1-1v-1H6v1a1 1 0 01-1 1H4a1 1 0 01-1-1v-2a2 2 0 002-2m14 0V9a2 2 0 00-2-2M5 14V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/></svg>
                                 </div>
                                 <span class="block text-sm font-medium text-premium-900">2</span>
                                 <span class="text-[9px] text-slate-400 uppercase">Parking</span>
                             </div>
                         </div>
-
-                        {% comment %} <div class="mt-4 text-center">
-                            <span class="inline-block bg-accent-gold/10 text-accent-gold px-4 py-2 text-[10px] font-bold tracking-wider uppercase rounded-full">
-                                ส่วนลดพิเศษ 200,000 บาท
-                            </span>
-                        </div> {% endcomment %}
                     </div>
                 </div>
-            </div>
+            </a>
 
-            <div class="group reveal" style="transition-delay: 100ms">
+            <a href="{% url 'core:floor_plan_detail' project_slug='the-tide-grand-nawong' plan_slug='twin-house' %}" class="group reveal block" style="transition-delay: 100ms">
                 <div class="relative bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 border border-slate-100 hover:border-accent-gold/30 hover:-translate-y-2">
                     <div class="relative aspect-[4/3] overflow-hidden">
                         <img src="{% static 'core/images/nawong_type2.jpg' %}" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt="บ้านแฝด">
@@ -115,17 +109,11 @@
                             <div class="text-center"><span class="block text-sm font-medium text-premium-900">1</span><span class="text-[9px] text-slate-400 uppercase">Kitchen</span></div>
                             <div class="text-center"><span class="block text-sm font-medium text-premium-900">2</span><span class="text-[9px] text-slate-400 uppercase">Parking</span></div>
                         </div>
-
-                        {% comment %} <div class="mt-4 text-center">
-                            <span class="inline-block bg-accent-gold/10 text-accent-gold px-4 py-2 text-[10px] font-bold tracking-wider uppercase rounded-full">
-                                ส่วนลดพิเศษ 100,000 บาท
-                            </span>
-                        </div> {% endcomment %}
                     </div>
                 </div>
-            </div>
+            </a>
 
-            <div class="group reveal" style="transition-delay: 200ms">
+            <a href="{% url 'core:floor_plan_detail' project_slug='the-tide-grand-nawong' plan_slug='twin-independent' %}" class="group reveal block" style="transition-delay: 200ms">
                 <div class="relative bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 border border-slate-100 hover:border-accent-gold/30 hover:-translate-y-2">
                     <div class="relative aspect-[4/3] overflow-hidden">
                         <img src="{% static 'core/images/nawong_type3.jpg' %}" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt="บ้านแฝดอิสระ">
@@ -152,15 +140,9 @@
                             <div class="text-center"><span class="block text-sm font-medium text-premium-900">1</span><span class="text-[9px] text-slate-400 uppercase">Kitchen</span></div>
                             <div class="text-center"><span class="block text-sm font-medium text-premium-900">2</span><span class="text-[9px] text-slate-400 uppercase">Parking</span></div>
                         </div>
-{% comment %} 
-                        <div class="mt-4 text-center">
-                            <span class="inline-block bg-accent-gold/10 text-accent-gold px-4 py-2 text-[10px] font-bold tracking-wider uppercase rounded-full">
-                                ส่วนลดพิเศษ 300,000 บาท
-                            </span>
-                        </div> {% endcomment %}
                     </div>
                 </div>
-            </div>
+            </a>
             {% endif %}
 
             {% if slug == 'the-tide-grand-phutthaphum' %}
@@ -181,7 +163,7 @@
             {% endif %}
 
             {% if slug == 'the-tide-privilege-therdphra-kiat' %}
-            <div class="group reveal">
+            <a href="{% url 'core:floor_plan_detail' project_slug='the-tide-privilege-therdphra-kiat' plan_slug='single-house' %}" class="group reveal block">
                 <div class="relative bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 border border-slate-100 hover:border-accent-gold/30 hover:-translate-y-2">
                     <div class="relative aspect-[4/3] overflow-hidden">
                         <img src="{% static 'core/images/terdprakiat_type1.jpg' %}" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt="TIDE HOME">
@@ -235,9 +217,9 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </a>
 
-            <div class="group reveal" style="transition-delay: 100ms">
+            <a href="{% url 'core:floor_plan_detail' project_slug='the-tide-privilege-therdphra-kiat' plan_slug='twin-independent' %}" class="group reveal block" style="transition-delay: 100ms">
                 <div class="relative bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 border border-slate-100 hover:border-accent-gold/30 hover:-translate-y-2">
                     <div class="relative aspect-[4/3] overflow-hidden">
                         <img src="{% static 'core/images/terdprakiat_type2.jpg' %}" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt="TICHA HOME">
@@ -291,7 +273,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </a>
             {% endif %}
 
         </div>

@@ -30,5 +30,6 @@ urlpatterns = [
         },
     ),
     #If someone visits /googlededb6a5009a9aea1.html, go to the static folder and return that verification HTML file.
+    path('projects/<slug:project_slug>/plans/<slug:plan_slug>/', views.floor_plan_detail, name='floor_plan_detail'),
 ]
 
