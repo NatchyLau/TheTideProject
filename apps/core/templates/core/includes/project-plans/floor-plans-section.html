@@ -29,7 +29,7 @@
             <div class="group reveal">
                 <div class="relative bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 border border-slate-100 hover:border-accent-gold/30 hover:-translate-y-2">
                     <div class="relative aspect-[4/3] overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&q=80&w=800" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt="บ้านเดี่ยว">
+                        <img src="{% static 'core/images/nawong_type1.jpg' %}" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt="บ้านเดี่ยว">
                         <div class="absolute top-4 left-4">
                             <span class="bg-white/95 backdrop-blur px-3 py-1 text-[10px] font-bold tracking-widest uppercase text-premium-900 rounded-sm shadow-sm">Single House</span>
                         </div>
@@ -91,7 +91,7 @@
             <div class="group reveal" style="transition-delay: 100ms">
                 <div class="relative bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 border border-slate-100 hover:border-accent-gold/30 hover:-translate-y-2">
                     <div class="relative aspect-[4/3] overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1564013799919-ab600027ffc6?auto=format&fit=crop&q=80&w=800" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt="บ้านแฝด">
+                        <img src="{% static 'core/images/nawong_type2.jpg' %}" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt="บ้านแฝด">
                         <div class="absolute top-4 left-4">
                             <span class="bg-white/95 backdrop-blur px-3 py-1 text-[10px] font-bold tracking-widest uppercase text-premium-900 rounded-sm shadow-sm">Twin House</span>
                         </div>
@@ -128,7 +128,7 @@
             <div class="group reveal" style="transition-delay: 200ms">
                 <div class="relative bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 border border-slate-100 hover:border-accent-gold/30 hover:-translate-y-2">
                     <div class="relative aspect-[4/3] overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1568605114967-8130f3a36994?auto=format&fit=crop&q=80&w=800" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt="บ้านแฝดอิสระ">
+                        <img src="{% static 'core/images/nawong_type3.jpg' %}" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt="บ้านแฝดอิสระ">
                         <div class="absolute top-4 left-4">
                             <span class="bg-white/95 backdrop-blur px-3 py-1 text-[10px] font-bold tracking-widest uppercase text-premium-900 rounded-sm shadow-sm">Twin Independent</span>
                         </div>
@@ -182,49 +182,112 @@
 
             {% if slug == 'the-tide-privilege-therdphra-kiat' %}
             <div class="group reveal">
-                <div class="relative bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 border border-slate-100 hover:border-accent-gold/30">
+                <div class="relative bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 border border-slate-100 hover:border-accent-gold/30 hover:-translate-y-2">
                     <div class="relative aspect-[4/3] overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&q=80&w=800" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt="TIDE HOME">
-                        <div class="absolute top-4 right-4">
-                            <span class="bg-premium-900 text-white px-3 py-1 text-[10px] font-bold tracking-widest uppercase rounded-sm">Signature</span>
+                        <img src="{% static 'core/images/terdprakiat_type1.jpg' %}" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt="TIDE HOME">
+                        <div class="absolute top-4 left-4">
+                            <span class="bg-white/95 backdrop-blur px-3 py-1 text-[10px] font-bold tracking-widest uppercase text-premium-900 rounded-sm shadow-sm">Single House</span>
                         </div>
+                        <div class="absolute bottom-0 left-0 w-full bg-gradient-to-t from-black/60 to-transparent h-20 opacity-60"></div>
                     </div>
+                    
                     <div class="p-8">
-                        <div class="mb-6">
-                            <h4 class="text-[10px] font-bold text-accent-gold uppercase tracking-[0.2em] mb-1">Modern Luxury</h4>
-                            <h3 class="font-serif text-3xl text-premium-900">TIDE HOME</h3>
-                            <p class="text-slate-500 text-xs mt-2">พื้นที่ใช้สอย 234 ตร.ม.</p>
-                        </div>
-                        <div class="flex justify-between items-center border-t border-slate-100 pt-6">
-                            <div class="flex gap-4 text-slate-600">
-                                <span class="flex items-center gap-1 text-xs"><i class="text-accent-gold">•</i> 4 Bed</span>
-                                <span class="flex items-center gap-1 text-xs"><i class="text-accent-gold">•</i> 3 Bath</span>
-                                <span class="flex items-center gap-1 text-xs"><i class="text-accent-gold">•</i> 2 Park</span>
+                        <div class="flex justify-between items-start mb-6">
+                            <div>
+                                <h3 class="font-serif text-2xl text-premium-900 mb-1 group-hover:text-accent-gold transition-colors">บ้านเดี่ยว 2 ชั้น</h3>
+                                <p class="text-xs text-slate-500 font-light">พื้นที่ใช้สอย 234 ตร.ม.</p>
                             </div>
-                            <p class="font-serif text-xl text-premium-900">5.9 MB*</p>
+                            <div class="text-right">
+                                <p class="text-2xl font-serif text-premium-900">5.9</p>
+                                <p class="text-[10px] text-slate-400 uppercase tracking-wider">ล้านบาท*</p>
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-4 gap-4 py-6 border-t border-slate-100">
+                            <div class="text-center group/icon">
+                                <div class="mb-2 flex justify-center text-slate-400 group-hover/icon:text-accent-gold transition-colors">
+                                    <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3v-8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"/></svg>
+                                </div>
+                                <span class="block text-sm font-medium text-premium-900">4</span>
+                                <span class="text-[9px] text-slate-400 uppercase">Bedroom</span>
+                            </div>
+                            <div class="text-center group/icon">
+                                <div class="mb-2 flex justify-center text-slate-400 group-hover/icon:text-accent-gold transition-colors">
+                                    <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 14h16c1.1 0 2 .9 2 2v2c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2v-2c0-1.1.9-2 2-2zM6 14V6c0-1.1.9-2 2-2h8c1.1 0 2 .9 2 2v8"/></svg>
+                                </div>
+                                <span class="block text-sm font-medium text-premium-900">3</span>
+                                <span class="text-[9px] text-slate-400 uppercase">Bathroom</span>
+                            </div>
+                            <div class="text-center group/icon">
+                                <div class="mb-2 flex justify-center text-slate-400 group-hover/icon:text-accent-gold transition-colors">
+                                    <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 7h16M4 12h16M4 17h16"/></svg>
+                                </div>
+                                <span class="block text-sm font-medium text-premium-900">2</span>
+                                <span class="text-[9px] text-slate-400 uppercase">Floor</span>
+                            </div>
+                            <div class="text-center group/icon">
+                                <div class="mb-2 flex justify-center text-slate-400 group-hover/icon:text-accent-gold transition-colors">
+                                    <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 4h16v16H4z"/></svg>
+                                </div>
+                                <span class="block text-sm font-medium text-premium-900">234</span>
+                                <span class="text-[9px] text-slate-400 uppercase">Sq.m.</span>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
 
             <div class="group reveal" style="transition-delay: 100ms">
-                <div class="relative bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 border border-slate-100 hover:border-accent-gold/30">
+                <div class="relative bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 border border-slate-100 hover:border-accent-gold/30 hover:-translate-y-2">
                     <div class="relative aspect-[4/3] overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1600566752355-35792bedcfea?auto=format&fit=crop&q=80&w=800" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt="TICHA HOME">
-                    </div>
-                    <div class="p-8">
-                        <div class="mb-6">
-                            <h4 class="text-[10px] font-bold text-accent-gold uppercase tracking-[0.2em] mb-1">Modern Classic</h4>
-                            <h3 class="font-serif text-3xl text-premium-900">TICHA HOME</h3>
-                            <p class="text-slate-500 text-xs mt-2">พื้นที่ใช้สอย 192 ตร.ม.</p>
+                        <img src="{% static 'core/images/terdprakiat_type2.jpg' %}" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt="TICHA HOME">
+                        <div class="absolute top-4 left-4">
+                            <span class="bg-white/95 backdrop-blur px-3 py-1 text-[10px] font-bold tracking-widest uppercase text-premium-900 rounded-sm shadow-sm">Twin Independent</span>
                         </div>
-                        <div class="flex justify-between items-center border-t border-slate-100 pt-6">
-                            <div class="flex gap-4 text-slate-600">
-                                <span class="flex items-center gap-1 text-xs"><i class="text-accent-gold">•</i> 4 Bed</span>
-                                <span class="flex items-center gap-1 text-xs"><i class="text-accent-gold">•</i> 3 Bath</span>
-                                <span class="flex items-center gap-1 text-xs"><i class="text-accent-gold">•</i> 2 Park</span>
+                        <div class="absolute bottom-0 left-0 w-full bg-gradient-to-t from-black/60 to-transparent h-20 opacity-60"></div>
+                    </div>
+                    
+                    <div class="p-8">
+                        <div class="flex justify-between items-start mb-6">
+                            <div>
+                                <h3 class="font-serif text-2xl text-premium-900 mb-1 group-hover:text-accent-gold transition-colors">บ้านแฝดอิสระ 2 ชั้น</h3>
+                                <p class="text-xs text-slate-500 font-light">พื้นที่ใช้สอย 192 ตร.ม.</p>
                             </div>
-                            <p class="font-serif text-xl text-premium-900">4.7 MB*</p>
+                            <div class="text-right">
+                                <p class="text-2xl font-serif text-premium-900">4.7</p>
+                                <p class="text-[10px] text-slate-400 uppercase tracking-wider">ล้านบาท*</p>
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-4 gap-4 py-6 border-t border-slate-100">
+                            <div class="text-center group/icon">
+                                <div class="mb-2 flex justify-center text-slate-400 group-hover/icon:text-accent-gold transition-colors">
+                                    <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3v-8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"/></svg>
+                                </div>
+                                <span class="block text-sm font-medium text-premium-900">4</span>
+                                <span class="text-[9px] text-slate-400 uppercase">Bedroom</span>
+                            </div>
+                            <div class="text-center group/icon">
+                                <div class="mb-2 flex justify-center text-slate-400 group-hover/icon:text-accent-gold transition-colors">
+                                    <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 14h16c1.1 0 2 .9 2 2v2c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2v-2c0-1.1.9-2 2-2zM6 14V6c0-1.1.9-2 2-2h8c1.1 0 2 .9 2 2v8"/></svg>
+                                </div>
+                                <span class="block text-sm font-medium text-premium-900">3</span>
+                                <span class="text-[9px] text-slate-400 uppercase">Bathroom</span>
+                            </div>
+                            <div class="text-center group/icon">
+                                <div class="mb-2 flex justify-center text-slate-400 group-hover/icon:text-accent-gold transition-colors">
+                                    <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 7h16M4 12h16M4 17h16"/></svg>
+                                </div>
+                                <span class="block text-sm font-medium text-premium-900">2</span>
+                                <span class="text-[9px] text-slate-400 uppercase">Floor</span>
+                            </div>
+                            <div class="text-center group/icon">
+                                <div class="mb-2 flex justify-center text-slate-400 group-hover/icon:text-accent-gold transition-colors">
+                                    <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 4h16v16H4z"/></svg>
+                                </div>
+                                <span class="block text-sm font-medium text-premium-900">192</span>
+                                <span class="text-[9px] text-slate-400 uppercase">Sq.m.</span>
+                            </div>
                         </div>
                     </div>
                 </div>
