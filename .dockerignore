@@ -1,0 +1,9 @@
+**/*.pyc
+**/*.pyo
+**/__pycache__
+.git
+.github
+.vscode
+.venv
+venv
+db.sqlite3
