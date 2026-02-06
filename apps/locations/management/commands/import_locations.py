@@ -7,6 +7,11 @@ class Command(BaseCommand):
     help = 'Import provinces, districts, and sub-districts from JSON file'
 
     def handle(self, *args, **options):
+
+        if Province.objects.exists():
+            self.stdout.write(self.style.WARNING('Data already exists. Skipping import.'))
+            return
+    
         json_file = 'province_with_district_and_sub_district.json'
         
         self.stdout.write('Starting import...')
