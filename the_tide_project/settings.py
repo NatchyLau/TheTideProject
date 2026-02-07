@@ -33,8 +33,14 @@ SECRET_KEY = env("SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = env("DEBUG")
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'properties.thetidegroupnst.com']
 
+CSRF_TRUSTED_ORIGINS = [
+    'https://properties.thetidegroupnst.com',
+    'https://www.properties.thetidegroupnst.com'
+]
+
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
 # Application definition
 

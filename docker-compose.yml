@@ -1,6 +1,6 @@
 services:
   web:
-    build: .
+    image: ghcr.io/yootapichai/thetide-app:latest
     command: gunicorn --bind 0.0.0.0:8000 --worker-class gthread --workers 2 --threads 2 the_tide_project.wsgi:application
     expose:
       - 8000
