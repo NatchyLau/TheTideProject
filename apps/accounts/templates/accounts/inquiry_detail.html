@@ -128,10 +128,11 @@
     </div>
 
     <!-- Actions -->
-    <div class="mt-8 pt-6 border-t border-slate-200 flex gap-4">
+    <div class="mt-8 pt-6 border-t border-slate-200 flex gap-4 sticky bottom-0 bg-white z-10">
         <button 
             hx-post="{% url 'accounts:update_inquiry_status' inquiry.id %}"
             hx-target="#inquiry-{{ inquiry.id }}"
+            hx-select="#inquiry-{{ inquiry.id }}"
             hx-swap="outerHTML"
             onclick="closeModal()"
             class="flex-1 px-6 py-3 rounded-lg font-semibold transition

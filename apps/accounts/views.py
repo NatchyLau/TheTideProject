@@ -1,3 +1,4 @@
+import json
 import requests
 
 from django.conf import settings
@@ -131,16 +132,33 @@ def inquiry_dashboard(request):
 
 
 @staff_member_required
+@require_http_methods(["GET"])
+def dashboard_stats(request):
+    """ดึงสถิติสำหรับ Dashboard (HTMX)"""
+    total_count = CustomerInquiry.objects.count()
+    new_count = CustomerInquiry.objects.filter(is_contacted=False).count()
+    contacted_count = CustomerInquiry.objects.filter(is_contacted=True).count()
+
+    return render(request, 'accounts/partials/dashboard_stats.html', {
+        'total_count': total_count,
+        'new_count': new_count,
+        'contacted_count': contacted_count,
+    })
+
+
+@staff_member_required
 @require_http_methods(["POST"])
 def update_inquiry_status(request, inquiry_id):
     """อัพเดทสถานะการติดต่อ (HTMX)"""
     inquiry = get_object_or_404(CustomerInquiry, id=inquiry_id)
     inquiry.is_contacted = not inquiry.is_contacted
     inquiry.save()
-    
-    return render(request, 'accounts/partials/inquiry_row.html', {
+
+    response = render(request, 'accounts/partials/inquiry_row.html', {
         'inquiry': inquiry
     })
+    response['HX-Trigger'] = json.dumps({"refresh-stats": {"target": "body"}})
+    return response
 
 
 @staff_member_required
