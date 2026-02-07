@@ -259,6 +259,10 @@
               </div>
             </div>
           </div>
+          
+          <div id="turnstile-wrapper">
+            <div class="cf-turnstile" data-sitekey="0x4AAAAAACY73gNeUChQGhIK"></div>
+          </div>
 
           <div class="pt-4">
             <button
@@ -279,3 +283,15 @@
     </div>
   </div>
 </section>
+
+<script>
+  // Reset Turnstile widget after every HTMX request on the inquiry form
+  // so a fresh token is generated for subsequent submissions.
+  document.addEventListener("htmx:afterRequest", function (evt) {
+    if (evt.detail.elt && evt.detail.elt.id === "inquiry-form") {
+      if (typeof turnstile !== "undefined") {
+        turnstile.reset();
+      }
+    }
+  });
+</script>

@@ -1,3 +1,6 @@
+import requests
+
+from django.conf import settings
 from django.shortcuts import render, get_object_or_404
 from django.http import JsonResponse, HttpResponse
 from django.views.decorators.http import require_http_methods
@@ -6,6 +9,8 @@ from django.db.models import Q
 from apps.locations.models import Province, District
 from .models import CustomerInquiry
 from .forms import CustomerInquiryForm
+
+TURNSTILE_VERIFY_URL = "https://challenges.cloudflare.com/turnstile/v0/siteverify"
 
 
 def contact_form_view(request):
@@ -38,6 +43,26 @@ def get_districts(request):
 @require_http_methods(["POST"])
 def submit_inquiry(request):
     """รับข้อมูลจากฟอร์ม (HTMX)"""
+    # ---- Cloudflare Turnstile verification ----
+    cf_token = request.POST.get("cf-turnstile-response", "")
+    cf_payload = {
+        "secret": settings.CLOUDFLARE_TURNSTILE_SECRET_KEY,
+        "response": cf_token,
+        "remoteip": request.META.get("HTTP_X_FORWARDED_FOR", request.META.get("REMOTE_ADDR", "")),
+    }
+
+    try:
+        cf_result = requests.post(TURNSTILE_VERIFY_URL, data=cf_payload, timeout=5)
+        cf_data = cf_result.json()
+    except (requests.RequestException, ValueError):
+        cf_data = {"success": False}
+
+    if not cf_data.get("success"):
+        return render(request, "accounts/partials/error_message.html", {
+            "turnstile_error": True,
+        })
+    # ---- End Turnstile verification ----
+
     form = CustomerInquiryForm(request.POST)
     
     if form.is_valid():

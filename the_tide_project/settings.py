@@ -35,12 +35,14 @@ DEBUG = env("DEBUG")
 
 ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'properties.thetidegroupnst.com']
 
-CSRF_TRUSTED_ORIGINS = [
-    'https://properties.thetidegroupnst.com',
-    'https://www.properties.thetidegroupnst.com'
-]
+if not DEBUG:
+    CSRF_TRUSTED_ORIGINS = [
+        'https://properties.thetidegroupnst.com',
+        'https://www.properties.thetidegroupnst.com'
+        'localhost'
+    ]
 
-SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+    SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
 # Application definition
 
@@ -139,3 +141,6 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/6.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# Cloudflare Turnstile
+CLOUDFLARE_TURNSTILE_SECRET_KEY = env("CLOUDFLARE_TURNSTILE_SECRET_KEY")

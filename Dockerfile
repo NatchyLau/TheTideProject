@@ -29,7 +29,7 @@ COPY . /app
 RUN adduser -D appuser && chown -R appuser /app && chmod +x /app/entrypoint.sh
 USER appuser
 
-RUN SECRET_KEY=dummy_value_for_build DATABASE_URL=sqlite:///dummy.db python manage.py collectstatic --noinput
+RUN SECRET_KEY=dummy_value_for_build DATABASE_URL=sqlite:///dummy.db CLOUDFLARE_TURNSTILE_SECRET_KEY=fuckyou  python manage.py collectstatic --noinput
 
 ENTRYPOINT ["/app/entrypoint.sh"]
 
