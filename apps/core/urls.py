@@ -14,12 +14,13 @@ urlpatterns = [
 
     # Google verification - serve from static
     #an ID card that proves you own the domain. -> bot visit -> we get verified
+    # Google verification - serve from static
     path(
-        'googlededb6a5009a9aea1.html',
+        'googledebd6a5009a9aea1.html',  # Changed: bd not db
         serve,
         {
             'document_root': os.path.join(settings.BASE_DIR, 'apps/core/static'),
-            'path': 'googlededb6a5009a9aea1.html',
+            'path': 'googledebd6a5009a9aea1.html',  # Changed: bd not db
         },
     ),
     #If someone visits /googlededb6a5009a9aea1.html, go to the static folder and return that verification HTML file.
