@@ -18,10 +18,8 @@ from django.contrib import admin
 from django.urls import path, include
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path('backend-portal/', admin.site.urls),
     path('accounts/', include('apps.accounts.urls')),
     path('', include('apps.core.urls'))
 ]
 
-from django.contrib.staticfiles.urls import staticfiles_urlpatterns
-urlpatterns += staticfiles_urlpatterns()
