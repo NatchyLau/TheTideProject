@@ -1,0 +1,175 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ข้อกำหนดและเงื่อนไข - The Tide</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap');
+        
+        body {
+            font-family: 'Noto Sans Thai', sans-serif;
+        }
+        
+        .font-serif {
+            font-family: 'Playfair Display', serif;
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .fade-in-up {
+            animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+        
+        .accent-gold {
+            color: #D4AF37;
+        }
+        
+        .bg-accent-gold {
+            background-color: #D4AF37;
+        }
+        
+        .border-accent-gold {
+            border-color: #D4AF37;
+        }
+        
+        .hover\:text-accent-gold:hover {
+            color: #D4AF37;
+        }
+    </style>
+</head>
+<body class="bg-slate-900 text-slate-100">
+    
+    <!-- Back to Home Button -->
+    <div class="fixed top-6 left-6 z-50">
+        <a href="/" class="text-white/70 hover:text-white transition-colors">
+            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+            </svg>
+        </a>
+    </div>
+
+    <!-- Main Content -->
+    <div class="min-h-screen py-20 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-4xl mx-auto">
+            
+            <!-- Header -->
+            <div class="text-center mb-16 fade-in-up">
+                <h1 class="font-serif text-4xl sm:text-5xl md:text-6xl text-white mb-4 italic">
+                    ข้อกำหนด<span class="accent-gold">และเงื่อนไข</span>
+                </h1>
+                <div class="w-24 h-[2px] bg-gradient-to-r from-transparent via-accent-gold to-transparent mx-auto mt-6"></div>
+            </div>
+
+            <!-- Content Card -->
+            <div class="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-8 sm:p-12 shadow-2xl fade-in-up" style="animation-delay: 200ms">
+                
+                <!-- Terms of Use Content -->
+                <div class="prose prose-invert prose-slate max-w-none space-y-8">
+                    
+                    <!-- Introduction -->
+                    <div>
+                        <p class="text-slate-300 leading-relaxed">
+                            ยินดีต้อนรับสู่เว็บไซต์ของ <span class="text-white font-medium">ห้างหุ้นส่วนจำกัด ทริปเปิ้ล ที 2017</span> การเข้าใช้งานเว็บไซต์นี้ถือว่าท่านได้อ่านและยอมรับข้อกำหนดและเงื่อนไขการใช้งานดังต่อไปนี้
+                        </p>
+                    </div>
+
+                    <!-- Section 1 -->
+                    <div class="bg-white/5 border border-white/10 rounded-xl p-6">
+                        <h3 class="text-xl font-semibold text-white mb-3">1. การใช้งานเว็บไซต์</h3>
+                        <p class="text-slate-300 leading-relaxed">
+                            เว็บไซต์นี้มีวัตถุประสงค์เพื่อให้ข้อมูลเกี่ยวกับโครงการบ้านจัดสรร The Tide และบริการของบริษัท ผู้ใช้งานต้องใช้เว็บไซต์อย่างถูกต้องตามกฎหมายและไม่กระทำการใดๆ ที่อาจก่อให้เกิดความเสียหายต่อเว็บไซต์หรือบุคคลอื่น
+                        </p>
+                    </div>
+
+                    <!-- Section 2 -->
+                    <div class="bg-white/5 border border-white/10 rounded-xl p-6">
+                        <h3 class="text-xl font-semibold text-white mb-3">2. ทรัพย์สินทางปัญญา</h3>
+                        <p class="text-slate-300 leading-relaxed mb-3">
+                            เนื้อหา รูปภาพ โลโก้ ข้อความ และสื่อต่างๆ บนเว็บไซต์นี้เป็นทรัพย์สินทางปัญญาของบริษัท การคัดลอก ทำซ้ำ หรือเผยแพร่เนื้อหาใดๆ โดยไม่ได้รับอนุญาตเป็นลายลักษณ์อักษรจากบริษัทถือเป็นการละเมิดลิขสิทธิ์
+                        </p>
+                        <p class="text-slate-300 leading-relaxed">
+                            ผู้ใช้งานสามารถดูและดาวน์โหลดข้อมูลเพื่อการใช้งานส่วนบุคคลเท่านั้น ห้ามนำไปใช้เพื่อการค้าหรือเผยแพร่ต่อสาธารณะ
+                        </p>
+                    </div>
+
+                    <!-- Section 3 -->
+                    <div class="bg-white/5 border border-white/10 rounded-xl p-6">
+                        <h3 class="text-xl font-semibold text-white mb-3">3. ข้อมูลและราคา</h3>
+                        <p class="text-slate-300 leading-relaxed">
+                            บริษัทพยายามให้ข้อมูลที่ถูกต้องและเป็นปัจจุบัน อย่างไรก็ตาม ข้อมูล ราคา และโปรโมชั่นที่แสดงบนเว็บไซต์อาจมีการเปลี่ยนแปลงโดยไม่ต้องแจ้งให้ทราบล่วงหน้า กรุณาติดต่อเจ้าหน้าที่เพื่อยืนยันข้อมูลก่อนตัดสินใจ
+                        </p>
+                    </div>
+
+                    <!-- Section 4 -->
+                    <div class="bg-white/5 border border-white/10 rounded-xl p-6">
+                        <h3 class="text-xl font-semibold text-white mb-3">4. การจำกัดความรับผิด</h3>
+                        <p class="text-slate-300 leading-relaxed">
+                            บริษัทไม่รับผิดชอบต่อความเสียหายใดๆ ที่เกิดจากการใช้งานเว็บไซต์ รวมถึงความเสียหายทางตรงหรือทางอ้อม การสูญเสียข้อมูล หรือการหยุดชะงักของการให้บริการ บริษัทจะพยายามอย่างเต็มที่ในการรักษาความปลอดภัยของข้อมูล แต่ไม่สามารถรับประกันได้ว่าเว็บไซต์จะปลอดจากไวรัสหรือโปรแกรมที่เป็นอันตราย
+                        </p>
+                    </div>
+
+                    <!-- Section 5 -->
+                    <div class="bg-white/5 border border-white/10 rounded-xl p-6">
+                        <h3 class="text-xl font-semibold text-white mb-3">5. ลิงก์ไปยังเว็บไซต์อื่น</h3>
+                        <p class="text-slate-300 leading-relaxed">
+                            เว็บไซต์นี้อาจมีลิงก์ไปยังเว็บไซต์ของบุคคลที่สาม บริษัทไม่มีส่วนเกี่ยวข้องและไม่รับผิดชอบต่อเนื้อหา นโยบาย หรือการดำเนินงานของเว็บไซต์เหล่านั้น
+                        </p>
+                    </div>
+
+                    <!-- Section 6 -->
+                    <div class="bg-white/5 border border-white/10 rounded-xl p-6">
+                        <h3 class="text-xl font-semibold text-white mb-3">6. การเปลี่ยนแปลงข้อกำหนด</h3>
+                        <p class="text-slate-300 leading-relaxed">
+                            บริษัทขอสงวนสิทธิ์ในการแก้ไขหรือเปลี่ยนแปลงข้อกำหนดและเงื่อนไขนี้ได้ทุกเมื่อโดยไม่ต้องแจ้งให้ทราบล่วงหน้า การใช้งานเว็บไซต์ต่อไปถือว่าท่านยอมรับข้อกำหนดที่มีการเปลี่ยนแปลง
+                        </p>
+                    </div>
+
+                    <!-- Section 7 -->
+                    <div class="bg-white/5 border border-white/10 rounded-xl p-6">
+                        <h3 class="text-xl font-semibold text-white mb-3">7. กฎหมายที่ใช้บังคับ</h3>
+                        <p class="text-slate-300 leading-relaxed">
+                            ข้อกำหนดและเงื่อนไขนี้อยู่ภายใต้กฎหมายของประเทศไทย ข้อพิพาทใดๆ ที่เกิดขึ้นจากการใช้งานเว็บไซต์จะอยู่ภายใต้เขตอำนาจศาลไทย
+                        </p>
+                    </div>
+
+                    <!-- Contact Section -->
+                    <div class="bg-accent-gold/10 border border-accent-gold/30 rounded-xl p-6">
+                        <h3 class="text-xl font-semibold text-white mb-4">ติดต่อสอบถาม</h3>
+                        <p class="text-slate-300 leading-relaxed mb-4">
+                            หากท่านมีข้อสงสัยเกี่ยวกับข้อกำหนดและเงื่อนไขการใช้งาน กรุณาติดต่อ:
+                        </p>
+                        <div class="space-y-2 text-slate-300">
+                            <p><span class="text-white font-medium">บริษัท:</span> ห้างหุ้นส่วนจำกัด ทริปเปิ้ล ที 2017 (สำนักงานใหญ่)</p>
+                            <p><span class="text-white font-medium">ที่อยู่:</span> 98/45 หมู่ที่5 ตำบลปากนคร อำเภอเมือง จ.นครศรีธรรมราช</p>
+                            <p><span class="text-white font-medium">โทร:</span> 084-234-1777</p>
+                            <p><span class="text-white font-medium">Facebook:</span> The Tide Properties</p>
+                        </div>
+                    </div>
+
+                    <!-- Acceptance Notice -->
+                    <div class="bg-white/5 border border-white/10 rounded-xl p-6">
+                        <p class="text-slate-200 leading-relaxed">
+                            <span class="text-accent-gold font-medium">หมายเหตุ:</span> การใช้งานเว็บไซต์นี้ถือว่าท่านได้อ่านและยอมรับข้อกำหนดและเงื่อนไขทั้งหมด
+                        </p>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</body>
+</html>

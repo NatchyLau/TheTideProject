@@ -20,3 +20,4 @@ def project_plans(request, slug):
         raise Http404("Project not found")
 
     return render(request, 'core/project_plans.html', {'slug': slug})
+

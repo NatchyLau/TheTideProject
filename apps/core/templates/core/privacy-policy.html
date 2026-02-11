@@ -1,0 +1,135 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>นโยบายความเป็นส่วนตัว - The Tide</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap');
+        
+        body {
+            font-family: 'Noto Sans Thai', sans-serif;
+        }
+        
+        .font-serif {
+            font-family: 'Playfair Display', serif;
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .fade-in-up {
+            animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+        
+        .accent-gold {
+            color: #D4AF37;
+        }
+        
+        .bg-accent-gold {
+            background-color: #D4AF37;
+        }
+        
+        .border-accent-gold {
+            border-color: #D4AF37;
+        }
+        
+        .hover\:text-accent-gold:hover {
+            color: #D4AF37;
+        }
+    </style>
+</head>
+<body class="bg-slate-900 text-slate-100">
+    
+    <!-- Back to Home Button -->
+    <div class="fixed top-6 left-6 z-50">
+        <a href="/" class="text-white/70 hover:text-white transition-colors">
+            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+            </svg>
+        </a>
+    </div>
+
+    <!-- Main Content -->
+    <div class="min-h-screen py-20 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-4xl mx-auto">
+            
+            <!-- Header -->
+            <div class="text-center mb-16 fade-in-up">
+                <h1 class="font-serif text-4xl sm:text-5xl md:text-6xl text-white mb-4 italic">
+                    นโยบาย<span class="accent-gold">ความเป็นส่วนตัว</span>
+                </h1>
+                <div class="w-24 h-[2px] bg-gradient-to-r from-transparent via-accent-gold to-transparent mx-auto mt-6"></div>
+            </div>
+
+            <!-- Content Card -->
+            <div class="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-8 sm:p-12 shadow-2xl fade-in-up" style="animation-delay: 200ms">
+                
+                <!-- Privacy Policy Content -->
+                <div class="prose prose-invert prose-slate max-w-none">
+                    
+                    <div class="mb-8">
+                    
+                        <p class="text-slate-300 leading-relaxed mb-6">
+                            บริษัท <span class="text-white font-medium">ห้างหุ้นส่วนจำกัด ทริปเปิ้ล ที 2017</span> ให้ความสำคัญกับการคุ้มครองข้อมูลส่วนบุคคลของลูกค้าและผู้เข้าชมเว็บไซต์ ข้อมูลที่ท่านให้ไว้ผ่านแบบฟอร์ม เช่น ชื่อ เบอร์โทรศัพท์ อีเมล หรือข้อมูลติดต่ออื่น ๆ จะถูกนำไปใช้เพื่อวัตถุประสงค์ดังต่อไปนี้:
+                        </p>
+                    </div>
+
+                    <!-- Purpose Section -->
+                    <div class="mb-8 pl-6 border-l-2 border-accent-gold/30">
+                        <ol class="space-y-3 text-slate-300 leading-relaxed list-decimal list-inside">
+                            <li>เพื่อติดต่อกลับให้ข้อมูลเกี่ยวกับโครงการบ้านจัดสรรในเครือ The Tide</li>
+                            <li>เพื่อนำเสนอโปรโมชั่น ข่าวสาร และข้อเสนอพิเศษ</li>
+                            <li>เพื่อปรับปรุงการให้บริการและประสบการณ์ของลูกค้า</li>
+                        </ol>
+                    </div>
+
+                    <!-- Data Protection -->
+                    <div class="mb-8">
+                        <p class="text-slate-300 leading-relaxed mb-4">
+                            บริษัทจะไม่เปิดเผย หรือจำหน่ายข้อมูลส่วนบุคคลของท่านให้กับบุคคลภายนอก เว้นแต่ได้รับความยินยอมจากท่าน หรือเป็นไปตามที่กฎหมายกำหนด
+                        </p>
+                        <p class="text-slate-300 leading-relaxed">
+                            ข้อมูลของท่านจะถูกจัดเก็บอย่างปลอดภัย และเข้าถึงได้เฉพาะเจ้าหน้าที่ที่เกี่ยวข้องเท่านั้น
+                        </p>
+                    </div>
+
+                    <!-- Contact Information -->
+                    <div class="bg-white/5 border border-white/10 rounded-xl p-6 mb-8">
+                        <h3 class="text-xl font-semibold text-white mb-4">ติดต่อเรา</h3>
+                        <p class="text-slate-300 leading-relaxed mb-4">
+                            หากท่านต้องการสอบถาม แก้ไข หรือขอลบข้อมูลส่วนบุคคล กรุณาติดต่อ:
+                        </p>
+                        <div class="space-y-2 text-slate-300">
+                            <p><span class="text-white font-medium">บริษัท:</span> ห้างหุ้นส่วนจำกัด ทริปเปิ้ล ที 2017 (สำนักงานใหญ่)</p>
+                            <p><span class="text-white font-medium">ที่อยู่:</span> 98/45 หมู่ที่5 ตำบลปากนคร อำเภอเมือง จ.นครศรีธรรมราช</p>
+                            <p><span class="text-white font-medium">โทร:</span> 084-234-1777</p>
+                            <p><span class="text-white font-medium">Facebook:</span> The Tide Properties</p>
+                        </div>
+                    </div>
+
+                    <!-- Consent Notice -->
+                    <div class="bg-accent-gold/10 border border-accent-gold/30 rounded-xl p-6">
+                        <p class="text-slate-200 leading-relaxed">
+                            <span class="text-accent-gold font-medium">หมายเหตุ:</span> การส่งข้อมูลผ่านแบบฟอร์มถือว่าท่านยินยอมให้บริษัทใช้ข้อมูลตามนโยบายนี้
+                        </p>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</body>
+</html>
