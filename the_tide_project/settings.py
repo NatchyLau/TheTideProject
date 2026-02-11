@@ -56,6 +56,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sitemaps',  # For sitemap generation
     'apps.locations',  # Location data (Province, District, SubDistrict)
     'apps.accounts',   # Customer inquiries
     'apps.core',
