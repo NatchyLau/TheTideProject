@@ -41,6 +41,13 @@
     </main>
 
     <script>
+        // Build image list from Django template data
+        const currentImages = [
+            {% for image in plan.images %}
+            { src: "{% static image %}", label: "Image {{ forloop.counter }}" },
+            {% endfor %}
+        ];
+
         // Image gallery functionality
         function changeImage(index) {
             const mainImage = document.getElementById('main-image');
