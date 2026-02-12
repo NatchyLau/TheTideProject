@@ -1,0 +1,14 @@
+{% load static %}
+
+<nav class="fixed w-full top-0 z-50 glass-nav border-b border-premium-200/30 transition-all duration-500">
+    <div class="container mx-auto px-8 h-24 flex items-center justify-between">
+        <a href="{% url 'core:home' %}" class="transition-opacity hover:opacity-70">
+            <img src="{% static 'core/images/svg/logo-the-tide-grande.svg' %}" alt="Logo" class="h-16 w-auto">
+        </a>
+
+        <a href="{% url 'core:project_plans' slug=project_slug %}" 
+           class="group flex items-center gap-4 text-[10px] font-medium tracking-[0.3em] uppercase text-premium-500 hover:text-premium-900 transition-all">
+            <span>Back to Plans</span>
+        </a>
+    </div>
+</nav>

@@ -1,0 +1,14 @@
+<div class="mb-12">
+    <h3 class="text-[11px] font-bold uppercase tracking-[0.2em] mb-6 text-premium-900">The Concept</h3>
+    <p class="text-premium-500 font-light leading-relaxed text-sm mb-8">
+        {{ plan.description }}
+    </p>
+    <ul class="space-y-4">
+        {% for highlight in plan.highlights %}
+        <li class="flex items-center gap-4 text-[13px] text-premium-600">
+            <div class="w-1 h-1 bg-accent-gold rounded-full"></div>
+            {{ highlight }}
+        </li>
+        {% endfor %}
+    </ul>
+</div>
