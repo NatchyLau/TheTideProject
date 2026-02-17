@@ -1,0 +1,82 @@
+{% load static %}
+<!doctype html>
+<html lang="th" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{{ plan.title }} | {{ project_name }}</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&family=Prompt:wght@200;300;400;500&display=swap" rel="stylesheet" />
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="{% static 'core/js/tailwind-config.js' %}"></script>
+    <link rel="stylesheet" href="{% static 'core/css/global.css' %}" />
+  </head>
+  <body class="bg-premium-50 text-premium-900 font-sans antialiased">
+
+    {% include "core/includes/floor-plan-detail/navbar.html" %}
+
+    <main class="pt-40 pb-32">
+        <div class="container mx-auto px-8">
+            <div class="flex flex-col lg:flex-row gap-20">
+                
+                <!-- Left Column: Gallery -->
+                <div class="lg:w-7/12 reveal">
+                    {% include "core/includes/floor-plan-detail/image-gallery.html" %}
+                </div>
+
+                <!-- Right Column: Details -->
+                <div class="lg:w-5/12">
+                    <div class="lg:sticky lg:top-40 reveal" style="transition-delay: 200ms">
+                        {% include "core/includes/floor-plan-detail/plan-header.html" %}
+                        {% include "core/includes/floor-plan-detail/specs-grid.html" %}
+                        {% include "core/includes/floor-plan-detail/description-section.html" %}
+                        {% include "core/includes/floor-plan-detail/cta-buttons.html" %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // Build image list from Django template data
+        const currentImages = [
+            {% for image in plan.images %}
+            { src: "{% static image %}", label: "Image {{ forloop.counter }}" },
+            {% endfor %}
+        ];
+
+        // Image gallery functionality
+        function changeImage(index) {
+            const mainImage = document.getElementById('main-image');
+            const thumbs = document.querySelectorAll('.gallery-thumb');
+            
+            mainImage.style.filter = 'blur(10px) opacity(0.5)';
+            
+            setTimeout(() => {
+                mainImage.src = currentImages[index].src;
+                document.getElementById('image-label').innerText = currentImages[index].label;
+                document.getElementById('image-counter').innerText = `${index + 1} / ${currentImages.length}`;
+                mainImage.style.filter = 'blur(0) opacity(1)';
+            }, 400);
+
+            thumbs.forEach((t, i) => {
+                if(i === index) t.classList.add('active', 'opacity-100');
+                else t.classList.remove('active', 'opacity-100');
+            });
+        }
+
+        // Reveal animation on scroll
+        const observerOptions = { threshold: 0.1 };
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) entry.target.classList.add('active');
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    </script>
+  </body>
+</html>
