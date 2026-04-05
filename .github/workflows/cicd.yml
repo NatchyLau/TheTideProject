@@ -20,6 +20,8 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Detect changed paths
         id: changes
@@ -56,7 +58,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Create .env file
+      - name: Create deployment .env file
         env:
           MY_ENV_FILE: ${{ secrets.ENV_FILE }}
         run: |
@@ -99,8 +101,8 @@ jobs:
         run: |
           # สร้าง folder ปลายทาง
           ssh ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} "mkdir -p ~/webapp && rm -rf ~/webapp/subdomain_concrete"
-          # Copy ไฟล์ config และ static site
-          scp -r ./nginx docker-compose.yml ./subdomain_concrete ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:~/webapp
+          # Copy ไฟล์ config, static site และ .env สำหรับ docker compose บน server
+          scp -r ./nginx docker-compose.yml ./subdomain_concrete ./.env ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:~/webapp
 
       - name: Deploy to Server
         run: |
