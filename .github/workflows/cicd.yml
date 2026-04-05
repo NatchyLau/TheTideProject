@@ -147,4 +147,5 @@ jobs:
             set -e
             cd webapp
             docker compose up -d --no-deps nginx
+            docker compose restart nginx
           EOF
