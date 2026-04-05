@@ -12,7 +12,45 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
+  detect-changes:
+    runs-on: ubuntu-latest
+    outputs:
+      static_only: ${{ steps.changes.outputs.static_only }}
+      static_changed: ${{ steps.changes.outputs.static_changed }}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Detect changed paths
+        id: changes
+        run: |
+          BEFORE_SHA="${{ github.event.before }}"
+          CURRENT_SHA="${{ github.sha }}"
+
+          if [ "$BEFORE_SHA" = "0000000000000000000000000000000000000000" ]; then
+            CHANGED_FILES=$(git diff-tree --no-commit-id --name-only -r "$CURRENT_SHA")
+          else
+            CHANGED_FILES=$(git diff --name-only "$BEFORE_SHA" "$CURRENT_SHA")
+          fi
+
+          echo "Changed files:"
+          echo "$CHANGED_FILES"
+
+          if echo "$CHANGED_FILES" | grep -q '^subdomain_concrete/'; then
+            echo "static_changed=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "static_changed=false" >> "$GITHUB_OUTPUT"
+          fi
+
+          if [ -n "$CHANGED_FILES" ] && echo "$CHANGED_FILES" | grep -qv '^subdomain_concrete/'; then
+            echo "static_only=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "static_only=true" >> "$GITHUB_OUTPUT"
+          fi
+
   build-and-deploy:
+    needs: detect-changes
+    if: needs.detect-changes.outputs.static_only != 'true'
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
@@ -60,9 +98,9 @@ jobs:
       - name: Copy Necessary Files to Server
         run: |
           # สร้าง folder ปลายทาง
-          ssh ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} "mkdir -p ~/webapp"
-          # Copy ไฟล์ config
-          scp -r ./nginx docker-compose.yml ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:~/webapp
+          ssh ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} "mkdir -p ~/webapp && rm -rf ~/webapp/subdomain_concrete"
+          # Copy ไฟล์ config และ static site
+          scp -r ./nginx docker-compose.yml ./subdomain_concrete ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:~/webapp
 
       - name: Deploy to Server
         run: |
@@ -76,4 +114,35 @@ jobs:
             docker compose pull
             docker compose up -d --remove-orphans
             docker image prune -f
+          EOF
+
+  deploy-static-only:
+    needs: detect-changes
+    if: needs.detect-changes.outputs.static_only == 'true' && needs.detect-changes.outputs.static_changed == 'true'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup SSH Agent
+        uses: webfactory/ssh-agent@v0.9.0
+        with:
+          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+
+      - name: Add Known Hosts
+        run: |
+          mkdir -p ~/.ssh
+          ssh-keyscan -H ${{ secrets.SSH_HOST }} >> ~/.ssh/known_hosts
+
+      - name: Copy Concrete Static Files to Server
+        run: |
+          ssh ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} "mkdir -p ~/webapp && rm -rf ~/webapp/subdomain_concrete"
+          scp -r ./subdomain_concrete ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:~/webapp
+
+      - name: Restart Nginx Container Only
+        run: |
+          ssh ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} << 'EOF'
+            set -e
+            cd webapp
+            docker compose up -d --no-deps nginx
           EOF
