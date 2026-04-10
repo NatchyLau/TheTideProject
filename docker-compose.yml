@@ -19,6 +19,7 @@ services:
     volumes:
       - static_volume:/app/staticfiles
       - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
+      - ./subdomain_concrete:/usr/share/nginx/subdomain_concrete  # Concrete Site HTML
     depends_on:
       - web
 
