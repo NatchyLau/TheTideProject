@@ -42,8 +42,8 @@ jobs:
           platforms: linux/amd64
           tags: ghcr.io/${{ secrets.GH_USERNAME }}/thetide-app:latest
           # Cache Layers
-          cache-from: type=gha
-          cache-to: type=gha,mode=max
+          # cache-from: type=gha
+          # cache-to: type=gha,mode=max
 
       # --- ส่วน Deploy ---
       
