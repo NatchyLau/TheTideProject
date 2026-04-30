@@ -135,9 +135,9 @@ FLOOR_PLAN_DATA = {
             'floors': '2',
             'parking': '2',
             'images': [
-                'core/images/terdprakiat_type1.jpg',
-                'core/images/terdprakiat_type1_2.jpg',
-                'core/images/terdprakiat_type1_3.jpg',
+                'core/images/prive_bbhouse.jpg',
+                'core/images/priv_living2.jpg',
+                'core/images/priv_bedroom.jpg',
             ],
             'highlights': [
                 'บ้านหรู ระดับพรีเมียม',
@@ -158,9 +158,9 @@ FLOOR_PLAN_DATA = {
             'floors': '2',
             'parking': '2',
             'images': [
-                'core/images/terdprakiat_type2.jpg',
-                'core/images/terdprakiat_type2_2.jpg',
-                'core/images/terdprakiat_type2_3.jpg',
+                'core/images/twin1.png',
+                'core/images/priv_closet.jpg',
+                'core/images/priv_living.jpg',
             ],
             'highlights': [
                 'ความเป็นส่วนตัวสูงสุด',
