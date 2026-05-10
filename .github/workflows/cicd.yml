@@ -1,7 +1,7 @@
 name: cicd
 on:
   push:
-    branches: ["main", "develop", "test_deployment", "concrete"]
+    branches: ["main", "develop", "test_deployment", "concrete", "security"]
 
 permissions:
   contents: read
@@ -94,7 +94,7 @@ jobs:
             ghcr.io/${{ secrets.GH_USERNAME }}/thetide-app:${{ github.sha }}
 
       - name: Scan Docker image with Trivy
-        uses: aquasecurity/trivy-action@v0.36.0
+        uses: aquasecurity/trivy-action@ed142fd0673e97e23eac54620cfb913e5ce36c25  # v0.36.0
         with:
           image-ref: ghcr.io/${{ secrets.GH_USERNAME }}/thetide-app:${{ github.sha }}
           format: table
