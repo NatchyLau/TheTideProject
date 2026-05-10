@@ -89,16 +89,31 @@ jobs:
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
 
-      - name: Build and push Docker image
+      - name: Build Docker image
         uses: docker/build-push-action@v6
         with:
           context: .
-          push: true
+          load: true
           platforms: linux/amd64
-          tags: ghcr.io/${{ secrets.GH_USERNAME }}/thetide-app:latest
-          # Cache Layers
-          # cache-from: type=gha
-          # cache-to: type=gha,mode=max
+          tags: |
+            ghcr.io/${{ secrets.GH_USERNAME }}/thetide-app:latest
+            ghcr.io/${{ secrets.GH_USERNAME }}/thetide-app:${{ github.sha }}
+
+      - name: Scan Docker image with Trivy
+        uses: aquasecurity/trivy-action@v0.36.0
+        with:
+          image-ref: ghcr.io/${{ secrets.GH_USERNAME }}/thetide-app:${{ github.sha }}
+          format: table
+          exit-code: '1'
+          ignore-unfixed: true
+          vuln-type: os,library
+          severity: CRITICAL
+          scanners: vuln
+
+      - name: Push Docker image
+        run: |
+          docker push ghcr.io/${{ secrets.GH_USERNAME }}/thetide-app:${{ github.sha }}
+          docker push ghcr.io/${{ secrets.GH_USERNAME }}/thetide-app:latest
 
       # --- ส่วน Deploy ---
       
