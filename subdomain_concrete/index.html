@@ -4,6 +4,7 @@
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>The Tide Concrete — เดอะไทด์คอนกรีต</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@300;400;500;600&display=swap" rel="stylesheet">
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=Bebas+Neue&family=Outfit:wght@300;400;500;600&family=Sarabun:wght@300;400;500;600&display=swap" rel="stylesheet"/>
@@ -28,10 +29,29 @@
       --serif:    'Playfair Display',Georgia,serif;
       --display:  'Bebas Neue',sans-serif;
       --body:     'Outfit','Sarabun',sans-serif;
-      --thai:     'Sarabun',sans-serif;
+      --thai:'Noto Sans Thai', sans-serif;
     }
     html{scroll-behavior:smooth;}
-    body{background:var(--cream);color:var(--gray-dk);font-family:var(--body);font-weight:300;overflow-x:hidden;cursor:none;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;-webkit-text-size-adjust:100%;text-size-adjust:100%;}
+    body{
+    background:var(--cream);
+    color:var(--gray-dk);
+    font-family:var(--thai), var(--body);
+    font-weight:300;
+    overflow-x:hidden;
+    cursor:none;
+    -webkit-font-smoothing:antialiased;
+    text-rendering:optimizeLegibility;
+    -webkit-text-size-adjust:100%;
+    text-size-adjust:100%;
+  }
+
+  @media(max-width:768px){
+    body{
+      font-size:15px;
+      line-height:1.6;
+    }
+    h1,h2,h3{letter-spacing:0.5px;}
+  }
 
     /* CURSOR */
     .cursor{position:fixed;width:8px;height:8px;background:var(--gold);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:width .3s,height .3s;}
@@ -59,12 +79,11 @@
     .hero-eyebrow{display:flex;align-items:center;gap:14px;margin-bottom:28px;opacity:0;animation:fadeUp .8s .3s ease forwards;}
     .eyebrow-line{width:40px;height:1px;background:var(--gold);}
     .eyebrow-text{font-size:11px;letter-spacing:5px;text-transform:uppercase;color:var(--gold);}
-    .hero-h1{font-family:var(--display);font-size:clamp(64px,7.5vw,110px);line-height:.92;letter-spacing:2px;color:var(--gray-dk);opacity:0;animation:fadeUp .9s .5s ease forwards;}
+    .hero-h1{font-family:var(--serif);font-size:clamp(64px,7.5vw,110px);line-height:.92;letter-spacing:2px;color:var(--gray-dk);opacity:0;animation:fadeUp .9s .5s ease forwards;}
     .hero-h1 .g{color:var(--gold);}
     .hero-h1 .b{color:var(--blue-mid);}
     .hero-h1 .outline{-webkit-text-stroke:1.5px var(--blue-mid);color:transparent;}
-    .hero-tagline{margin-top:20px;font-family:var(--thai);font-size:18px;font-weight:400;color:var(--gray-mid);line-height:1.5;opacity:0;animation:fadeUp .9s .65s ease forwards;}
-    .hero-tagline strong{color:var(--blue-mid);font-weight:600;}
+    .hero-tagline{margin-top:20px;font-family:var(--thai);font-size:18px;font-weight:400;color:var(--gray-mid);line-height:1.7;letter-spacing:0.2px;opacity:0;animation:fadeUp .9s .65s ease forwards;}    .hero-tagline strong{color:var(--blue-mid);font-weight:600;}
     .hero-desc{margin-top:14px;font-family:var(--serif);font-size:15px;font-style:italic;line-height:1.65;color:var(--gray-lt);max-width:400px;opacity:0;animation:fadeUp .9s .75s ease forwards;}
     .hero-price-badge{display:inline-flex;align-items:center;gap:12px;margin-top:28px;background:var(--blue-dk);padding:14px 24px;opacity:0;animation:fadeUp .9s .88s ease forwards;}
     .price-label{font-family:var(--thai);font-size:13px;color:rgba(255,255,255,.7);letter-spacing:1px;}
